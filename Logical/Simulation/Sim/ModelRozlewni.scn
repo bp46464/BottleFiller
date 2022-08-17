@@ -1,0 +1,689 @@
+﻿<?xml version="1.0"?>
+<Object objecttypeid="1" name="Scene" visible="1" mask="" binding="" jointoparent="0">
+	<ParID parid="80" val="TRUE"/>
+	<ParID parid="81" val="60"/>
+	<ParID parid="82" val="1"/>
+	<ParID parid="90" val="0"/>
+	<ParID parid="100" val="-3"/>
+	<ParID parid="101" val="-552.753"/>
+	<ParID parid="102" val="1230"/>
+	<ParID parid="103" val="0"/>
+	<ParID parid="104" val="1"/>
+	<ParID parid="105" val="0"/>
+	<ParID parid="106" val="0"/>
+	<ParID parid="107" val="0"/>
+	<ParID parid="108" val="1"/>
+	<ParID parid="110" val="0.5"/>
+	<ParID parid="120" val="1,1,1"/>
+	<ParID parid="140" val="0.5,0.5,0.5"/>
+	<ParID parid="145" val=""/>
+	<ParID parid="146" val="0"/>
+	<Object objecttypeid="2" name="Light 1" visible="1" mask="" binding="" jointoparent="0">
+		<ParID parid="100" val="1500"/>
+		<ParID parid="101" val="-3000"/>
+		<ParID parid="102" val="-3000"/>
+		<ParID parid="130" val="1"/>
+		<ParID parid="140" val="1,1,1"/>
+		<ParID parid="150" val="FALSE"/>
+	</Object>
+	<Object objecttypeid="2" name="Light 2" visible="1" mask="" binding="" jointoparent="0">
+		<ParID parid="100" val="0"/>
+		<ParID parid="101" val="0"/>
+		<ParID parid="102" val="6000"/>
+		<ParID parid="130" val="1"/>
+		<ParID parid="140" val="1,1,1"/>
+		<ParID parid="150" val="FALSE"/>
+	</Object>
+	<Object objecttypeid="110" name="Stol.STL" visible="1" mask="" binding="" jointoparent="0">
+		<ParID parid="100" val="-2000"/>
+		<ParID parid="101" val="0"/>
+		<ParID parid="102" val="0"/>
+		<ParID parid="103" val="0"/>
+		<ParID parid="104" val="0"/>
+		<ParID parid="105" val="0"/>
+		<ParID parid="106" val="1"/>
+		<ParID parid="107" val="0.5"/>
+		<ParID parid="108" val="1"/>
+		<ParID parid="120" val=".\Stol.STL"/>
+		<ParID parid="121" val="3: Grey Matte"/>
+		<ParID parid="130" val="1"/>
+	</Object>
+	<Object objecttypeid="250" name="ZeroOnTable" visible="1" mask="" binding="" jointoparent="0">
+		<ParID parid="100" val="0"/>
+		<ParID parid="101" val="0"/>
+		<ParID parid="102" val="1000"/>
+		<ParID parid="103" val="0"/>
+		<ParID parid="104" val="0"/>
+		<ParID parid="105" val="0"/>
+		<ParID parid="106" val="1"/>
+		<ParID parid="107" val="1"/>
+		<ParID parid="108" val="1"/>
+		<ParID parid="124" val="100"/>
+		<ParID parid="125" val="TRUE"/>
+		<Object objecttypeid="180" name="Czujnik butelki" visible="1" mask="" binding="#120*::RobVis:RobVisData.SensorColor" jointoparent="0">
+			<ParID parid="100" val="0"/>
+			<ParID parid="101" val="0"/>
+			<ParID parid="102" val="0"/>
+			<ParID parid="103" val="0"/>
+			<ParID parid="104" val="0"/>
+			<ParID parid="105" val="-90"/>
+			<ParID parid="106" val="1"/>
+			<ParID parid="107" val="1"/>
+			<ParID parid="108" val="1"/>
+			<ParID parid="120" val="5: Green Matte"/>
+			<ParID parid="121" val="18"/>
+			<ParID parid="122" val="FALSE"/>
+			<ParID parid="123" val="FALSE"/>
+			<ParID parid="140" val="3"/>
+			<ParID parid="141" val="3"/>
+			<ParID parid="142" val="350"/>
+		</Object>
+		<Object objecttypeid="190" name="NapedTasmociagu" visible="1" mask="" binding="#150*::RobVis:RobVisData.Conveyor" jointoparent="0">
+			<ParID parid="100" val="0"/>
+			<ParID parid="101" val="0"/>
+			<ParID parid="102" val="0"/>
+			<ParID parid="103" val="0"/>
+			<ParID parid="104" val="90"/>
+			<ParID parid="105" val="0"/>
+			<ParID parid="106" val="1"/>
+			<ParID parid="107" val="1"/>
+			<ParID parid="108" val="1"/>
+			<ParID parid="120" val="2: Blue Matte"/>
+			<ParID parid="121" val="1: Red Matte"/>
+			<ParID parid="123" val="10"/>
+			<ParID parid="124" val="FALSE"/>
+			<ParID parid="125" val="FALSE"/>
+			<ParID parid="126" val="TRUE"/>
+			<ParID parid="130" val="0"/>
+			<ParID parid="131" val="0"/>
+			<ParID parid="140" val="1e-06"/>
+			<ParID parid="141" val="1e-06"/>
+			<ParID parid="142" val="0"/>
+			<ParID parid="143" val="5000"/>
+			<ParID parid="144" val="1"/>
+			<ParID parid="145" val="0"/>
+			<ParID parid="150" val="1416"/>
+			<ParID parid="160" val="FALSE"/>
+			<Object objecttypeid="110" name="Butelka" visible="1" mask="" binding="" jointoparent="0">
+				<ParID parid="100" val="25"/>
+				<ParID parid="101" val="-20"/>
+				<ParID parid="102" val="-180"/>
+				<ParID parid="103" val="0"/>
+				<ParID parid="104" val="-90"/>
+				<ParID parid="105" val="0"/>
+				<ParID parid="106" val="1"/>
+				<ParID parid="107" val="1"/>
+				<ParID parid="108" val="1"/>
+				<ParID parid="120" val=".\Butelki - Butelka-1.STL"/>
+				<ParID parid="121" val="17: Cerulean Blue Shine"/>
+				<ParID parid="130" val="1"/>
+				<Object objecttypeid="110" name="Butelka" visible="1" mask="" binding="" jointoparent="0">
+					<ParID parid="100" val="-100"/>
+					<ParID parid="101" val="0"/>
+					<ParID parid="102" val="0"/>
+					<ParID parid="103" val="0"/>
+					<ParID parid="104" val="0"/>
+					<ParID parid="105" val="0"/>
+					<ParID parid="106" val="1"/>
+					<ParID parid="107" val="1"/>
+					<ParID parid="108" val="1"/>
+					<ParID parid="120" val=".\Butelki - Butelka-1.STL"/>
+					<ParID parid="121" val="7: White Matte"/>
+					<ParID parid="130" val="1"/>
+					<Object objecttypeid="110" name="Butelka" visible="1" mask="" binding="" jointoparent="0">
+						<ParID parid="100" val="-100"/>
+						<ParID parid="101" val="0"/>
+						<ParID parid="102" val="0"/>
+						<ParID parid="103" val="0"/>
+						<ParID parid="104" val="0"/>
+						<ParID parid="105" val="0"/>
+						<ParID parid="106" val="1"/>
+						<ParID parid="107" val="1"/>
+						<ParID parid="108" val="1"/>
+						<ParID parid="120" val=".\Butelki - Butelka-1.STL"/>
+						<ParID parid="121" val="7: White Matte"/>
+						<ParID parid="130" val="1"/>
+						<Object objecttypeid="110" name="Butelka" visible="1" mask="" binding="" jointoparent="0">
+							<ParID parid="100" val="-100"/>
+							<ParID parid="101" val="0"/>
+							<ParID parid="102" val="0"/>
+							<ParID parid="103" val="0"/>
+							<ParID parid="104" val="0"/>
+							<ParID parid="105" val="0"/>
+							<ParID parid="106" val="1"/>
+							<ParID parid="107" val="1"/>
+							<ParID parid="108" val="1"/>
+							<ParID parid="120" val=".\Butelki - Butelka-1.STL"/>
+							<ParID parid="121" val="7: White Matte"/>
+							<ParID parid="130" val="1"/>
+							<Object objecttypeid="110" name="Butelka" visible="1" mask="" binding="" jointoparent="0">
+								<ParID parid="100" val="-100"/>
+								<ParID parid="101" val="0"/>
+								<ParID parid="102" val="0"/>
+								<ParID parid="103" val="0"/>
+								<ParID parid="104" val="0"/>
+								<ParID parid="105" val="0"/>
+								<ParID parid="106" val="1"/>
+								<ParID parid="107" val="1"/>
+								<ParID parid="108" val="1"/>
+								<ParID parid="120" val=".\Butelki - Butelka-1.STL"/>
+								<ParID parid="121" val="7: White Matte"/>
+								<ParID parid="130" val="1"/>
+								<Object objecttypeid="110" name="Butelka" visible="1" mask="" binding="" jointoparent="0">
+									<ParID parid="100" val="-100"/>
+									<ParID parid="101" val="0"/>
+									<ParID parid="102" val="0"/>
+									<ParID parid="103" val="0"/>
+									<ParID parid="104" val="0"/>
+									<ParID parid="105" val="0"/>
+									<ParID parid="106" val="1"/>
+									<ParID parid="107" val="1"/>
+									<ParID parid="108" val="1"/>
+									<ParID parid="120" val=".\Butelki - Butelka-1.STL"/>
+									<ParID parid="121" val="17: Cerulean Blue Shine"/>
+									<ParID parid="130" val="1"/>
+									<Object objecttypeid="110" name="Butelka" visible="1" mask="" binding="" jointoparent="0">
+										<ParID parid="100" val="-100"/>
+										<ParID parid="101" val="0"/>
+										<ParID parid="102" val="0"/>
+										<ParID parid="103" val="0"/>
+										<ParID parid="104" val="0"/>
+										<ParID parid="105" val="0"/>
+										<ParID parid="106" val="1"/>
+										<ParID parid="107" val="1"/>
+										<ParID parid="108" val="1"/>
+										<ParID parid="120" val=".\Butelki - Butelka-1.STL"/>
+										<ParID parid="121" val="7: White Matte"/>
+										<ParID parid="130" val="1"/>
+										<Object objecttypeid="110" name="Butelka" visible="1" mask="" binding="" jointoparent="0">
+											<ParID parid="100" val="-100"/>
+											<ParID parid="101" val="0"/>
+											<ParID parid="102" val="0"/>
+											<ParID parid="103" val="0"/>
+											<ParID parid="104" val="0"/>
+											<ParID parid="105" val="0"/>
+											<ParID parid="106" val="1"/>
+											<ParID parid="107" val="1"/>
+											<ParID parid="108" val="1"/>
+											<ParID parid="120" val=".\Butelki - Butelka-1.STL"/>
+											<ParID parid="121" val="7: White Matte"/>
+											<ParID parid="130" val="1"/>
+											<Object objecttypeid="110" name="Butelka" visible="1" mask="" binding="" jointoparent="0">
+												<ParID parid="100" val="-100"/>
+												<ParID parid="101" val="0"/>
+												<ParID parid="102" val="0"/>
+												<ParID parid="103" val="0"/>
+												<ParID parid="104" val="0"/>
+												<ParID parid="105" val="0"/>
+												<ParID parid="106" val="1"/>
+												<ParID parid="107" val="1"/>
+												<ParID parid="108" val="1"/>
+												<ParID parid="120" val=".\Butelki - Butelka-1.STL"/>
+												<ParID parid="121" val="7: White Matte"/>
+												<ParID parid="130" val="1"/>
+												<Object objecttypeid="110" name="Butelka" visible="1" mask="" binding="" jointoparent="0">
+													<ParID parid="100" val="-100"/>
+													<ParID parid="101" val="0"/>
+													<ParID parid="102" val="0"/>
+													<ParID parid="103" val="0"/>
+													<ParID parid="104" val="0"/>
+													<ParID parid="105" val="0"/>
+													<ParID parid="106" val="1"/>
+													<ParID parid="107" val="1"/>
+													<ParID parid="108" val="1"/>
+													<ParID parid="120" val=".\Butelki - Butelka-1.STL"/>
+													<ParID parid="121" val="7: White Matte"/>
+													<ParID parid="130" val="1"/>
+													<Object objecttypeid="110" name="Butelka" visible="1" mask="" binding="" jointoparent="0">
+														<ParID parid="100" val="-100"/>
+														<ParID parid="101" val="0"/>
+														<ParID parid="102" val="0"/>
+														<ParID parid="103" val="0"/>
+														<ParID parid="104" val="0"/>
+														<ParID parid="105" val="0"/>
+														<ParID parid="106" val="1"/>
+														<ParID parid="107" val="1"/>
+														<ParID parid="108" val="1"/>
+														<ParID parid="120" val=".\Butelki - Butelka-1.STL"/>
+														<ParID parid="121" val="17: Cerulean Blue Shine"/>
+														<ParID parid="130" val="1"/>
+														<Object objecttypeid="110" name="Butelka" visible="1" mask="" binding="" jointoparent="0">
+															<ParID parid="100" val="-100"/>
+															<ParID parid="101" val="0"/>
+															<ParID parid="102" val="0"/>
+															<ParID parid="103" val="0"/>
+															<ParID parid="104" val="0"/>
+															<ParID parid="105" val="0"/>
+															<ParID parid="106" val="1"/>
+															<ParID parid="107" val="1"/>
+															<ParID parid="108" val="1"/>
+															<ParID parid="120" val=".\Butelki - Butelka-1.STL"/>
+															<ParID parid="121" val="7: White Matte"/>
+															<ParID parid="130" val="1"/>
+															<Object objecttypeid="110" name="Butelka" visible="1" mask="" binding="" jointoparent="0">
+																<ParID parid="100" val="-100"/>
+																<ParID parid="101" val="0"/>
+																<ParID parid="102" val="0"/>
+																<ParID parid="103" val="0"/>
+																<ParID parid="104" val="0"/>
+																<ParID parid="105" val="0"/>
+																<ParID parid="106" val="1"/>
+																<ParID parid="107" val="1"/>
+																<ParID parid="108" val="1"/>
+																<ParID parid="120" val=".\Butelki - Butelka-1.STL"/>
+																<ParID parid="121" val="7: White Matte"/>
+																<ParID parid="130" val="1"/>
+																<Object objecttypeid="110" name="Butelka" visible="1" mask="" binding="" jointoparent="0">
+																	<ParID parid="100" val="-100"/>
+																	<ParID parid="101" val="0"/>
+																	<ParID parid="102" val="0"/>
+																	<ParID parid="103" val="0"/>
+																	<ParID parid="104" val="0"/>
+																	<ParID parid="105" val="0"/>
+																	<ParID parid="106" val="1"/>
+																	<ParID parid="107" val="1"/>
+																	<ParID parid="108" val="1"/>
+																	<ParID parid="120" val=".\Butelki - Butelka-1.STL"/>
+																	<ParID parid="121" val="7: White Matte"/>
+																	<ParID parid="130" val="1"/>
+																	<Object objecttypeid="110" name="Butelka" visible="1" mask="" binding="" jointoparent="0">
+																		<ParID parid="100" val="-100"/>
+																		<ParID parid="101" val="0"/>
+																		<ParID parid="102" val="0"/>
+																		<ParID parid="103" val="0"/>
+																		<ParID parid="104" val="0"/>
+																		<ParID parid="105" val="0"/>
+																		<ParID parid="106" val="1"/>
+																		<ParID parid="107" val="1"/>
+																		<ParID parid="108" val="1"/>
+																		<ParID parid="120" val=".\Butelki - Butelka-1.STL"/>
+																		<ParID parid="121" val="7: White Matte"/>
+																		<ParID parid="130" val="1"/>
+																		<Object objecttypeid="110" name="Butelka" visible="1" mask="" binding="" jointoparent="0">
+																			<ParID parid="100" val="-100"/>
+																			<ParID parid="101" val="0"/>
+																			<ParID parid="102" val="0"/>
+																			<ParID parid="103" val="0"/>
+																			<ParID parid="104" val="0"/>
+																			<ParID parid="105" val="0"/>
+																			<ParID parid="106" val="1"/>
+																			<ParID parid="107" val="1"/>
+																			<ParID parid="108" val="1"/>
+																			<ParID parid="120" val=".\Butelki - Butelka-1.STL"/>
+																			<ParID parid="121" val="17: Cerulean Blue Shine"/>
+																			<ParID parid="130" val="1"/>
+																			<Object objecttypeid="110" name="Butelka" visible="1" mask="" binding="" jointoparent="0">
+																				<ParID parid="100" val="-100"/>
+																				<ParID parid="101" val="0"/>
+																				<ParID parid="102" val="0"/>
+																				<ParID parid="103" val="0"/>
+																				<ParID parid="104" val="0"/>
+																				<ParID parid="105" val="0"/>
+																				<ParID parid="106" val="1"/>
+																				<ParID parid="107" val="1"/>
+																				<ParID parid="108" val="1"/>
+																				<ParID parid="120" val=".\Butelki - Butelka-1.STL"/>
+																				<ParID parid="121" val="7: White Matte"/>
+																				<ParID parid="130" val="1"/>
+																				<Object objecttypeid="110" name="Butelka" visible="1" mask="" binding="" jointoparent="0">
+																					<ParID parid="100" val="-100"/>
+																					<ParID parid="101" val="0"/>
+																					<ParID parid="102" val="0"/>
+																					<ParID parid="103" val="0"/>
+																					<ParID parid="104" val="0"/>
+																					<ParID parid="105" val="0"/>
+																					<ParID parid="106" val="1"/>
+																					<ParID parid="107" val="1"/>
+																					<ParID parid="108" val="1"/>
+																					<ParID parid="120" val=".\Butelki - Butelka-1.STL"/>
+																					<ParID parid="121" val="7: White Matte"/>
+																					<ParID parid="130" val="1"/>
+																					<Object objecttypeid="110" name="Butelka" visible="1" mask="" binding="" jointoparent="0">
+																						<ParID parid="100" val="-100"/>
+																						<ParID parid="101" val="0"/>
+																						<ParID parid="102" val="0"/>
+																						<ParID parid="103" val="0"/>
+																						<ParID parid="104" val="0"/>
+																						<ParID parid="105" val="0"/>
+																						<ParID parid="106" val="1"/>
+																						<ParID parid="107" val="1"/>
+																						<ParID parid="108" val="1"/>
+																						<ParID parid="120" val=".\Butelki - Butelka-1.STL"/>
+																						<ParID parid="121" val="7: White Matte"/>
+																						<ParID parid="130" val="1"/>
+																						<Object objecttypeid="110" name="Butelka" visible="1" mask="" binding="" jointoparent="0">
+																							<ParID parid="100" val="-100"/>
+																							<ParID parid="101" val="0"/>
+																							<ParID parid="102" val="0"/>
+																							<ParID parid="103" val="0"/>
+																							<ParID parid="104" val="0"/>
+																							<ParID parid="105" val="0"/>
+																							<ParID parid="106" val="1"/>
+																							<ParID parid="107" val="1"/>
+																							<ParID parid="108" val="1"/>
+																							<ParID parid="120" val=".\Butelki - Butelka-1.STL"/>
+																							<ParID parid="121" val="7: White Matte"/>
+																							<ParID parid="130" val="1"/>
+																							<Object objecttypeid="110" name="Butelka" visible="1" mask="" binding="" jointoparent="0">
+																								<ParID parid="100" val="-100"/>
+																								<ParID parid="101" val="0"/>
+																								<ParID parid="102" val="0"/>
+																								<ParID parid="103" val="0"/>
+																								<ParID parid="104" val="0"/>
+																								<ParID parid="105" val="0"/>
+																								<ParID parid="106" val="1"/>
+																								<ParID parid="107" val="1"/>
+																								<ParID parid="108" val="1"/>
+																								<ParID parid="120" val=".\Butelki - Butelka-1.STL"/>
+																								<ParID parid="121" val="17: Cerulean Blue Shine"/>
+																								<ParID parid="130" val="1"/>
+																								<Object objecttypeid="110" name="Butelka" visible="1" mask="" binding="" jointoparent="0">
+																									<ParID parid="100" val="-100"/>
+																									<ParID parid="101" val="0"/>
+																									<ParID parid="102" val="0"/>
+																									<ParID parid="103" val="0"/>
+																									<ParID parid="104" val="0"/>
+																									<ParID parid="105" val="0"/>
+																									<ParID parid="106" val="1"/>
+																									<ParID parid="107" val="1"/>
+																									<ParID parid="108" val="1"/>
+																									<ParID parid="120" val=".\Butelki - Butelka-1.STL"/>
+																									<ParID parid="121" val="7: White Matte"/>
+																									<ParID parid="130" val="1"/>
+																									<Object objecttypeid="110" name="Butelka" visible="1" mask="" binding="" jointoparent="0">
+																										<ParID parid="100" val="-100"/>
+																										<ParID parid="101" val="0"/>
+																										<ParID parid="102" val="0"/>
+																										<ParID parid="103" val="0"/>
+																										<ParID parid="104" val="0"/>
+																										<ParID parid="105" val="0"/>
+																										<ParID parid="106" val="1"/>
+																										<ParID parid="107" val="1"/>
+																										<ParID parid="108" val="1"/>
+																										<ParID parid="120" val=".\Butelki - Butelka-1.STL"/>
+																										<ParID parid="121" val="7: White Matte"/>
+																										<ParID parid="130" val="1"/>
+																										<Object objecttypeid="110" name="Butelka" visible="1" mask="" binding="" jointoparent="0">
+																											<ParID parid="100" val="-100"/>
+																											<ParID parid="101" val="0"/>
+																											<ParID parid="102" val="0"/>
+																											<ParID parid="103" val="0"/>
+																											<ParID parid="104" val="0"/>
+																											<ParID parid="105" val="0"/>
+																											<ParID parid="106" val="1"/>
+																											<ParID parid="107" val="1"/>
+																											<ParID parid="108" val="1"/>
+																											<ParID parid="120" val=".\Butelki - Butelka-1.STL"/>
+																											<ParID parid="121" val="7: White Matte"/>
+																											<ParID parid="130" val="1"/>
+																											<Object objecttypeid="110" name="Butelka" visible="1" mask="" binding="" jointoparent="0">
+																												<ParID parid="100" val="-100"/>
+																												<ParID parid="101" val="0"/>
+																												<ParID parid="102" val="0"/>
+																												<ParID parid="103" val="0"/>
+																												<ParID parid="104" val="0"/>
+																												<ParID parid="105" val="0"/>
+																												<ParID parid="106" val="1"/>
+																												<ParID parid="107" val="1"/>
+																												<ParID parid="108" val="1"/>
+																												<ParID parid="120" val=".\Butelki - Butelka-1.STL"/>
+																												<ParID parid="121" val="7: White Matte"/>
+																												<ParID parid="130" val="1"/>
+																											</Object>
+																										</Object>
+																									</Object>
+																								</Object>
+																							</Object>
+																						</Object>
+																					</Object>
+																				</Object>
+																			</Object>
+																		</Object>
+																	</Object>
+																</Object>
+															</Object>
+														</Object>
+													</Object>
+												</Object>
+											</Object>
+										</Object>
+									</Object>
+								</Object>
+							</Object>
+						</Object>
+					</Object>
+				</Object>
+			</Object>
+		</Object>
+		<Object objecttypeid="190" name="NapedWozka" visible="1" mask="" binding="#150*::RobVis:RobVisData.Cart" jointoparent="0">
+			<ParID parid="100" val="-50"/>
+			<ParID parid="101" val="0"/>
+			<ParID parid="102" val="310"/>
+			<ParID parid="103" val="0"/>
+			<ParID parid="104" val="90"/>
+			<ParID parid="105" val="0"/>
+			<ParID parid="106" val="1"/>
+			<ParID parid="107" val="1"/>
+			<ParID parid="108" val="1"/>
+			<ParID parid="120" val="6: Orange Matte"/>
+			<ParID parid="121" val="6: Orange Matte"/>
+			<ParID parid="123" val="10"/>
+			<ParID parid="124" val="FALSE"/>
+			<ParID parid="125" val="FALSE"/>
+			<ParID parid="126" val="TRUE"/>
+			<ParID parid="130" val="0"/>
+			<ParID parid="131" val="0"/>
+			<ParID parid="140" val="10"/>
+			<ParID parid="141" val="25"/>
+			<ParID parid="142" val="0"/>
+			<ParID parid="143" val="1200"/>
+			<ParID parid="144" val="10"/>
+			<ParID parid="145" val="0"/>
+			<ParID parid="150" val="215"/>
+			<ParID parid="160" val="FALSE"/>
+			<Object objecttypeid="330" name="Wozek" visible="1" mask="#102:4" binding="" jointoparent="0">
+				<ParID parid="100" val="0"/>
+				<ParID parid="101" val="0"/>
+				<ParID parid="102" val="0"/>
+				<ParID parid="103" val="0"/>
+				<ParID parid="104" val="90"/>
+				<ParID parid="105" val="0"/>
+				<ParID parid="106" val="1"/>
+				<ParID parid="107" val="1"/>
+				<ParID parid="108" val="1"/>
+				<ParID parid="120" val="18: Silver"/>
+				<ParID parid="123" val="30"/>
+				<ParID parid="124" val="FALSE"/>
+				<ParID parid="125" val="FALSE"/>
+				<ParID parid="140" val="30"/>
+				<ParID parid="141" val="30"/>
+				<ParID parid="142" val="400"/>
+				<ParID parid="143" val="100"/>
+				<Object objecttypeid="330" name="Wozek gorna czesc" visible="0" mask="" binding="" jointoparent="0">
+					<ParID parid="100" val="0"/>
+					<ParID parid="101" val="0"/>
+					<ParID parid="102" val="-100"/>
+					<ParID parid="103" val="180"/>
+					<ParID parid="104" val="0"/>
+					<ParID parid="105" val="0"/>
+					<ParID parid="106" val="1"/>
+					<ParID parid="107" val="1"/>
+					<ParID parid="108" val="1"/>
+					<ParID parid="120" val="3: Grey Matte"/>
+					<ParID parid="123" val="30"/>
+					<ParID parid="124" val="FALSE"/>
+					<ParID parid="125" val="FALSE"/>
+					<ParID parid="140" val="15"/>
+					<ParID parid="141" val="15"/>
+					<ParID parid="142" val="400"/>
+					<ParID parid="143" val="250"/>
+				</Object>
+			</Object>
+			<Object objecttypeid="250" name="Transform coordinate system" visible="1" mask="" binding="" jointoparent="0">
+				<ParID parid="100" val="0"/>
+				<ParID parid="101" val="0"/>
+				<ParID parid="102" val="0"/>
+				<ParID parid="103" val="0"/>
+				<ParID parid="104" val="90"/>
+				<ParID parid="105" val="0"/>
+				<ParID parid="106" val="1"/>
+				<ParID parid="107" val="1"/>
+				<ParID parid="108" val="1"/>
+				<ParID parid="124" val="100"/>
+				<ParID parid="125" val="TRUE"/>
+				<Object objecttypeid="190" name="NapedNalewakow" visible="1" mask="" binding="#150*::RobVis:RobVisData.Nozzle" jointoparent="0">
+					<ParID parid="100" val="10"/>
+					<ParID parid="101" val="0"/>
+					<ParID parid="102" val="60"/>
+					<ParID parid="103" val="0"/>
+					<ParID parid="104" val="0"/>
+					<ParID parid="105" val="0"/>
+					<ParID parid="106" val="1"/>
+					<ParID parid="107" val="1"/>
+					<ParID parid="108" val="1"/>
+					<ParID parid="120" val="2: Blue Matte"/>
+					<ParID parid="121" val="1: Red Matte"/>
+					<ParID parid="123" val="10"/>
+					<ParID parid="124" val="FALSE"/>
+					<ParID parid="125" val="FALSE"/>
+					<ParID parid="126" val="FALSE"/>
+					<ParID parid="130" val="0"/>
+					<ParID parid="131" val="0"/>
+					<ParID parid="140" val="0"/>
+					<ParID parid="141" val="1e-06"/>
+					<ParID parid="142" val="0"/>
+					<ParID parid="143" val="200"/>
+					<ParID parid="144" val="1"/>
+					<ParID parid="145" val="0"/>
+					<ParID parid="150" val="9"/>
+					<ParID parid="160" val="FALSE"/>
+					<Object objecttypeid="110" name="Nalewak.STL" visible="1" mask="#102:8" binding="" jointoparent="0">
+						<ParID parid="100" val="0"/>
+						<ParID parid="101" val="0"/>
+						<ParID parid="102" val="0"/>
+						<ParID parid="103" val="180"/>
+						<ParID parid="104" val="0"/>
+						<ParID parid="105" val="180"/>
+						<ParID parid="106" val="1"/>
+						<ParID parid="107" val="1"/>
+						<ParID parid="108" val="2"/>
+						<ParID parid="120" val=".\Nalewak.STL"/>
+						<ParID parid="121" val="1: Red Matte"/>
+						<ParID parid="130" val="1"/>
+						<Object objecttypeid="110" name="Nalewak.STL" visible="1" mask="" binding="" jointoparent="0">
+							<ParID parid="100" val="-100"/>
+							<ParID parid="101" val="0"/>
+							<ParID parid="102" val="0"/>
+							<ParID parid="103" val="0"/>
+							<ParID parid="104" val="0"/>
+							<ParID parid="105" val="0"/>
+							<ParID parid="106" val="1"/>
+							<ParID parid="107" val="1"/>
+							<ParID parid="108" val="2"/>
+							<ParID parid="120" val=".\Nalewak.STL"/>
+							<ParID parid="121" val="1: Red Matte"/>
+							<ParID parid="130" val="1"/>
+							<Object objecttypeid="110" name="Nalewak.STL" visible="1" mask="" binding="" jointoparent="0">
+								<ParID parid="100" val="-100"/>
+								<ParID parid="101" val="0"/>
+								<ParID parid="102" val="0"/>
+								<ParID parid="103" val="0"/>
+								<ParID parid="104" val="0"/>
+								<ParID parid="105" val="0"/>
+								<ParID parid="106" val="1"/>
+								<ParID parid="107" val="1"/>
+								<ParID parid="108" val="2"/>
+								<ParID parid="120" val=".\Nalewak.STL"/>
+								<ParID parid="121" val="1: Red Matte"/>
+								<ParID parid="130" val="1"/>
+								<Object objecttypeid="110" name="Nalewak.STL" visible="1" mask="" binding="" jointoparent="0">
+									<ParID parid="100" val="-100"/>
+									<ParID parid="101" val="0"/>
+									<ParID parid="102" val="0"/>
+									<ParID parid="103" val="0"/>
+									<ParID parid="104" val="0"/>
+									<ParID parid="105" val="0"/>
+									<ParID parid="106" val="1"/>
+									<ParID parid="107" val="1"/>
+									<ParID parid="108" val="2"/>
+									<ParID parid="120" val=".\Nalewak.STL"/>
+									<ParID parid="121" val="1: Red Matte"/>
+									<ParID parid="130" val="1"/>
+									<Object objecttypeid="110" name="Nalewak.STL" visible="1" mask="" binding="" jointoparent="0">
+										<ParID parid="100" val="-100"/>
+										<ParID parid="101" val="0"/>
+										<ParID parid="102" val="0"/>
+										<ParID parid="103" val="0"/>
+										<ParID parid="104" val="0"/>
+										<ParID parid="105" val="0"/>
+										<ParID parid="106" val="1"/>
+										<ParID parid="107" val="1"/>
+										<ParID parid="108" val="2"/>
+										<ParID parid="120" val=".\Nalewak.STL"/>
+										<ParID parid="121" val="1: Red Matte"/>
+										<ParID parid="130" val="1"/>
+									</Object>
+								</Object>
+							</Object>
+						</Object>
+					</Object>
+				</Object>
+			</Object>
+		</Object>
+	</Object>
+</Object>
+<Materials>
+	<Material ID="0" Name="Undefined" Ambient="0.100000 0.100000 0.100000 1.000000" Specular="0.000000 0.000000 0.000000 1.000000" Emission="0.000000 0.000000 0.000000 1.000000" Shininess="32.000000"/>
+	<Material ID="1" Name="Red Matte" Ambient="0.700000 0.050000 0.050000 1.000000" Specular="0.000000 0.000000 0.000000 1.000000" Emission="0.000000 0.000000 0.000000 1.000000" Shininess="64.000000"/>
+	<Material ID="2" Name="Blue Matte" Ambient="0.100000 0.100000 0.800000 1.000000" Specular="0.000000 0.000000 0.000000 1.000000" Emission="0.000000 0.000000 0.000000 1.000000" Shininess="64.000000"/>
+	<Material ID="3" Name="Grey Matte" Ambient="0.400000 0.400000 0.400000 1.000000" Specular="0.000000 0.000000 0.000000 1.000000" Emission="0.000000 0.000000 0.000000 1.000000" Shininess="64.000000"/>
+	<Material ID="4" Name="Yellow Matte" Ambient="0.800000 0.800000 0.000000 1.000000" Specular="0.000000 0.000000 0.000000 1.000000" Emission="0.000000 0.000000 0.000000 1.000000" Shininess="64.000000"/>
+	<Material ID="5" Name="Green Matte" Ambient="0.100000 0.800000 0.100000 1.000000" Specular="0.000000 0.000000 0.000000 1.000000" Emission="0.000000 0.000000 0.000000 1.000000" Shininess="64.000000"/>
+	<Material ID="6" Name="Orange Matte" Ambient="0.800000 0.400000 0.000000 1.000000" Specular="0.000000 0.000000 0.000000 1.000000" Emission="0.000000 0.000000 0.000000 1.000000" Shininess="64.000000"/>
+	<Material ID="7" Name="White Matte" Ambient="0.900000 0.900000 0.900000 1.000000" Specular="0.000000 0.000000 0.000000 1.000000" Emission="0.000000 0.000000 0.000000 1.000000" Shininess="64.000000"/>
+	<Material ID="8" Name="Black Matte" Ambient="0.100000 0.100000 0.100000 1.000000" Specular="0.000000 0.000000 0.000000 1.000000" Emission="0.000000 0.000000 0.000000 1.000000" Shininess="64.000000"/>
+	<Material ID="9" Name="Violet Matte" Ambient="0.700000 0.000000 0.700000 1.000000" Specular="0.000000 0.000000 0.000000 1.000000" Emission="0.000000 0.000000 0.000000 1.000000" Shininess="64.000000"/>
+	<Material ID="10" Name="Metal Shine" Ambient="0.200000 0.200000 0.200000 1.000000" Specular="0.800000 0.800000 1.000000 1.000000" Emission="0.000000 0.000000 0.000000 1.000000" Shininess="10.000000"/>
+	<Material ID="11" Name="Red Metal Shine" Ambient="0.600000 0.000000 0.000000 1.000000" Specular="1.000000 0.700000 0.700000 1.000000" Emission="0.000000 0.000000 0.000000 1.000000" Shininess="10.000000"/>
+	<Material ID="12" Name="Yellow Metal Shine" Ambient="0.500000 0.500000 0.000000 1.000000" Specular="0.600000 0.600000 0.850000 1.000000" Emission="0.000000 0.000000 0.000000 1.000000" Shininess="25.000000"/>
+	<Material ID="13" Name="Black Metal Shine" Ambient="0.200000 0.200000 0.200000 1.000000" Specular="0.500000 0.500000 0.500000 1.000000" Emission="0.000000 0.000000 0.000000 1.000000" Shininess="12.500000"/>
+	<Material ID="14" Name="Cyan Matte" Ambient="0.000000 0.500000 0.500000 1.000000" Specular="0.000000 0.000000 0.000000 1.000000" Emission="0.000000 0.000000 0.000000 1.000000" Shininess="64.000000"/>
+	<Material ID="15" Name="Magenta Matte" Ambient="0.500000 0.000000 0.500000 1.000000" Specular="0.000000 0.000000 0.000000 1.000000" Emission="0.000000 0.000000 0.000000 1.000000" Shininess="64.000000"/>
+	<Material ID="16" Name="Light Grey Matte" Ambient="0.700000 0.700000 0.700000 1.000000" Specular="0.000000 0.000000 0.000000 1.000000" Emission="0.000000 0.000000 0.000000 1.000000" Shininess="64.000000"/>
+	<Material ID="17" Name="Cerulean Blue Shine" Ambient="0.000000 0.540000 0.750000 1.000000" Specular="0.600000 0.600000 0.850000 1.000000" Emission="0.000000 0.000000 0.000000 1.000000" Shininess="25.000000"/>
+	<Material ID="18" Name="Silver" Ambient="0.550000 0.600000 0.650000 1.000000" Specular="0.500000 0.550000 0.600000 1.000000" Emission="0.000000 0.000000 0.000000 1.000000" Shininess="64.000000"/>
+</Materials>
+<Views>
+	<View ID="5" Name="Main" Zoom="1.000000" Perspective="1" ViewPoint="-83.000000 -1032.753174 1240.000000" ViewVector="0.000000 1.000000 0.000000" AxisOrientation="0.000000 0.000000 1.000000"/>
+	<View ID="2" Name="Gora" Zoom="1.000000" Perspective="1" ViewPoint="700.000000 0.000000 2400.000000" ViewVector="0.000000 0.000000 -1.000000" AxisOrientation="0.000000 1.000000 0.000000"/>
+	<View ID="4" Name="View_4" Zoom="1.000000" Perspective="1" ViewPoint="-122.992676 -372.563354 1336.610840" ViewVector="0.000000 0.965926 -0.258819" AxisOrientation="0.000000 0.258819 0.965926"/>
+	<View ID="1" Name="Przod" Zoom="1.000000" Perspective="1" ViewPoint="126.651367 -1597.543091 1000.000000" ViewVector="0.500000 0.866025 0.000000" AxisOrientation="0.000000 0.000000 1.000000"/>
+	<View ID="3" Name="2" Zoom="1.000000" Perspective="1" ViewPoint="497.007172 -559.125916 1180.000000" ViewVector="0.000000 1.000000 0.000000" AxisOrientation="0.000000 0.000000 1.000000"/>
+</Views>
+<Connection>
+	<PVI>
+		<NameTask>
+			vis
+		</NameTask>
+		<NameTime>
+		</NameTime>
+		<NameVariable>
+			vis
+		</NameVariable>
+		<ExtraSettings>
+		</ExtraSettings>
+		<ConectionParameters>
+		</ConectionParameters>
+		<RF>
+		</RF>
+		<DAIP>
+			127.0.0.1
+		</DAIP>
+		<Size>
+			0
+		</Size>
+		<TimerModeOn>
+			0
+		</TimerModeOn>
+	</PVI>
+</Connection>

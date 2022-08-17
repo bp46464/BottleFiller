@@ -1,0 +1,4 @@
+VAR
+	gAdrAxesPositions : UDINT;
+	gMachineInterface : MachineAPIType;
+END_VAR

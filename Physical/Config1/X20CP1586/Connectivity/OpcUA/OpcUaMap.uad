@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio FileVersion="4.9"?>
+<OpcUaSource FileVersion="8" ArVersion="E4.83">
+  <Aliases>
+    <ACLAliases>
+      <ACL Id="1">
+        <ACE RoleName="Everyone" Access="0x005F" />
+      </ACL>
+    </ACLAliases>
+    <EURangeViolationAliases />
+    <EURangesAliases />
+    <EngineeringUnitAliases />
+  </Aliases>
+  <DefaultView AclId="1">
+    <Module Name="&lt;Default&gt;">
+      <Task Name="RobVis">
+        <Variable Name="RobVisData">
+          <Variable Name="SensorColor" />
+          <Variable Name="Conveyor" />
+          <Variable Name="Cart" />
+          <Variable Name="Nozzle" />
+        </Variable>
+        <Variable Name="AxesPosition">
+          <Variable Name="Conveyor" />
+          <Variable Name="Cart" />
+          <Variable Name="Nozzle" />
+        </Variable>
+      </Task>
+    </Module>
+  </DefaultView>
+</OpcUaSource>

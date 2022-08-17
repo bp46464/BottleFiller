@@ -1,0 +1,16 @@
+VAR
+	cmdTestModelMovements : BOOL;
+	RobVisData : RobVisPosType;
+	ModelConfig : ModelConfigType;
+	i : INT;
+	diBottleOld : BOOL;
+	ConveyorAxisPosition : REAL;
+	CartAxisPosition : REAL;
+	NozzleAxisPosition : REAL;
+	pAxesPositions : REFERENCE TO AxesPositionsType;
+	AxesPosition : AxesPositionsType;
+	bottleStartPoint : REAL;
+	bottleEndPoint : REAL;
+	diBottle: BOOL := FALSE;
+	cntBottle : UDINT := 0;
+END_VAR
