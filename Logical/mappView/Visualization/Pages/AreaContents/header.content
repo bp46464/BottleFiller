@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Content id="header" height="100" width="1600" xmlns="http://www.br-automation.com/iat2015/contentDefinition/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Widgets>
+    <Widget xsi:type="widgets.brease.Image" id="Image1" top="0" left="1040" width="100" zIndex="0" image="Media/SymbolLib/User/User.svg" />
+    <Widget xsi:type="widgets.brease.LoginInfo" id="LoginInfo1" top="40" left="1160" width="260" zIndex="1" fontSize="24px" />
+    <Widget xsi:type="widgets.brease.TextOutput" id="textLogin" top="40" left="860" width="160" zIndex="2" value="Logged in as:" fontSize="24px" />
+    <Widget xsi:type="widgets.brease.LogoutButton" id="buttonLogout" top="40" left="1420" width="160" zIndex="3" text="Logout" bold="true" />
+  </Widgets>
+</Content>
