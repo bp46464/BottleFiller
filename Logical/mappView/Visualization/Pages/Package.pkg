@@ -5,6 +5,8 @@
     <Object Type="Package" Description="AreaContents">AreaContents</Object>
     <Object Type="Package">MainPage</Object>
     <Object Type="Package">loginPage</Object>
-    <Object Type="Package">alarmPage</Object>
+    <Object Type="Package">servicePage</Object>
+    <Object Type="Package">shiftLeaderPage</Object>
+    <Object Type="Package">operatorPage</Object>
   </Objects>
 </Package>

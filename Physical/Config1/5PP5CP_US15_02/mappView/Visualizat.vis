@@ -5,13 +5,17 @@
     <Page refId="serwisPage" />
     <Page refId="loginPage" />
     <Page refId="mainPage" />
+    <Page refId="shiftLeaderPage" />
+    <Page refId="operatorPage" />
   </Pages>
   <Navigations />
   <BindingsSets>
     <BindingsSet refId="binding_0" />
+    <BindingsSet refId="nav_binding" />
   </BindingsSets>
   <EventBindingsSets>
     <EventBindingsSet refId="loginContent_eventbinding" />
+    <EventBindingsSet refId="header_eventbinding" />
   </EventBindingsSets>
   <Dialogs />
   <Contents>
@@ -20,6 +24,7 @@
     <Content refId="header" />
     <Content refId="footer" />
     <Content refId="loginContent" />
+    <Content refId="operatorContent" />
   </Contents>
   <SnippetsSets />
   <VariablesSets>
@@ -29,6 +34,7 @@
   <StartTheme themeRefId="BuRThemeFlat2" />
   <Themes>
     <Theme refId="BuRThemeFlat2" />
+    <Theme refId="BuRTheme1" />
   </Themes>
   <Configurations>
     <Configuration key="activityCount" value="false" />

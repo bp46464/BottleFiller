@@ -7,5 +7,7 @@
     <Object Type="File">Binding.binding</Object>
     <Object Type="File">loginContent.eventbinding</Object>
     <Object Type="File">loginContent.binding</Object>
+    <Object Type="File">nav.binding</Object>
+    <Object Type="File">header.eventbinding</Object>
   </Objects>
 </Package>
