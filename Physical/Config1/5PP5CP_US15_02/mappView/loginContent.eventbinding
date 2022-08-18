@@ -5,8 +5,32 @@
       <Source xsi:type="widgets.brease.Login.Event" contentRefId="loginContent" widgetRefId="Login1" event="LoginSuccess" />
       <EventHandler>
         <Action>
-          <Target xsi:type="clientSystem.Action">
-            <Method xsi:type="clientSystem.Action.Navigate" pageId="=mainPage" />
+          <ReadTarget xsi:type="opcUa.NodeAction.Read" refId="::BootleFill:roleInfo.Name">
+            <Method xsi:type="opcUa.NodeAction.GetValue" />
+          </ReadTarget>
+          <Result>
+            <ResultHandler>
+              <Action>
+                <Target xsi:type="widgets.brease.TextOutput.Action" contentRefId="loginContent" widgetRefId="TextOutput2">
+                  <Method xsi:type="widgets.brease.TextOutput.Action.SetValue" value="=result" />
+                </Target>
+              </Action>
+            </ResultHandler>
+          </Result>
+        </Action>
+      </EventHandler>
+    </EventBinding>
+    <EventBinding id="loginContent.NumericOutput1.Click">
+      <Source xsi:type="widgets.brease.NumericOutput.Event" contentRefId="loginContent" widgetRefId="NumericOutput1" event="Click" />
+      <Operand datatype="ANY_INT" name="numer">
+        <ReadTarget xsi:type="opcUa.NodeAction.Read" refId="::BootleFill:roleInfo.Index">
+          <Method xsi:type="opcUa.NodeAction.GetValue" />
+        </ReadTarget>
+      </Operand>
+      <EventHandler>
+        <Action>
+          <Target xsi:type="widgets.brease.NumericOutput.Action" contentRefId="loginContent" widgetRefId="NumericOutput1">
+            <Method xsi:type="widgets.brease.NumericOutput.Action.SetValue" value="=numer" />
           </Target>
         </Action>
       </EventHandler>

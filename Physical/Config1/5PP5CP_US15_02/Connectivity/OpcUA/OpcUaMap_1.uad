@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio FileVersion="4.9"?>
+<OpcUaSource FileVersion="8" ArVersion="E4.83">
+  <Aliases>
+    <ACLAliases />
+    <EURangeViolationAliases />
+    <EURangesAliases />
+    <EngineeringUnitAliases />
+  </Aliases>
+  <DefaultView>
+    <Module Name="&lt;Default&gt;">
+      <GlobalVariables Name="Global Variables">
+        <Variable Name="role">
+          <Variable Name="Roles" />
+          <Variable Name="UserName" />
+          <Variable Name="FullName" />
+          <Variable Name="Locked" />
+          <Variable Name="Expired" />
+          <Variable Name="RemainingAttempts" />
+          <Variable Name="Language" />
+          <Variable Name="DisplayUnit" />
+          <Variable Name="Creation" />
+          <Variable Name="FirstLogin" />
+          <Variable Name="LastLogin" />
+          <Variable Name="PasswordExpired" />
+          <Variable Name="AdditionalData" />
+          <Variable Name="UserType" />
+        </Variable>
+        <Variable Name="roleInfo">
+          <Variable Name="Name" />
+          <Variable Name="Index" />
+        </Variable>
+      </GlobalVariables>
+      <Task Name="BootleFill">
+        <Variable Name="roleInfo">
+          <Variable Name="Name" />
+          <Variable Name="Index" />
+        </Variable>
+      </Task>
+    </Module>
+  </DefaultView>
+</OpcUaSource>

@@ -1,8 +1,4 @@
-
 VAR
-
-END_VAR
-
-VAR CONSTANT
-
+	roleInfo : MpUserXMgrUIRoleInfoType;
+	role : MpUserXMgrUIUserInfoType;
 END_VAR

@@ -1,5 +1,6 @@
 (*case machine*)
 VAR
+	roleInfo : MpUserXMgrUIRoleInfoType;
 	FillerTyp : FillerEnum;
 END_VAR
 (*digital inputs*)

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Styles id="BuRTheme1ListStyles" xmlns="http://www.br-automation.com/iat2015/styles/engineering/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<Styles id="BuRThemeFlat2ListStyles" xmlns="http://www.br-automation.com/iat2015/styles/engineering/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	
 	<!-- version 5.2 widgets-->
 	
@@ -7,7 +7,7 @@
 	
 	<!-- Alarm inactive -->
 	<Style id="style1" xsi:type="widgets.brease.AlarmListStyle" 
-		textColor="#474747"
+		textColor="#FFFFFF"
 		backColor="rgba(255,255,255,0)"
 	/>
 	
