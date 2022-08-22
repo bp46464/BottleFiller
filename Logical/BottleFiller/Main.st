@@ -15,9 +15,23 @@ PROGRAM _CYCLIC
 	//MpBFRecipeHMI();
 	CASE FillerTyp OF
 		DISABLED: 
+			diStart:=0;
+			diStop:=0;
+			
+			IF diPowerSwitch THEN
+				FillerTyp:=INIT;
+			END_IF;
 			
 		INIT:
-		
+			//procedury pocz¹tkowe; home, kierunek
+			IF diStart AND NOT diStop AND NOT diError THEN
+				IF diManual THEN
+					FillerTyp:=SERVICE;
+				ELSE
+					FillerTyp:= AUTOMAT;
+				END_IF;
+			END_IF;
+					
 		AUTOMAT:
 			
 		SERVICE:

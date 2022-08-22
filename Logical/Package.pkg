@@ -9,6 +9,6 @@
     <Object Type="Package">Simulation</Object>
     <Object Type="Package">mappView</Object>
     <Object Type="DataObject" Language="Cam">Cam</Object>
-    <Object Type="Program" Language="IEC">test</Object>
+    <Object Type="Package">Package</Object>
   </Objects>
 </Package>

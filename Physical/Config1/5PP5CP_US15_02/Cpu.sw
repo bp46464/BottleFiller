@@ -7,7 +7,7 @@
   <TaskClass Name="Cyclic#4">
     <Task Name="RobVis" Source="Simulation.Logic.RobVis.prg" Memory="UserROM" Language="IEC" Debugging="true" Disabled="true" />
     <Task Name="BootleFill" Source="BottleFiller.prg" Memory="UserROM" Language="IEC" Debugging="true" />
-    <Task Name="test" Source="test.prg" Memory="UserROM" Language="IEC" Debugging="true" Disabled="true" />
+    <Task Name="test" Source="Package.test.prg" Memory="UserROM" Language="IEC" Debugging="true" Disabled="true" />
   </TaskClass>
   <TaskClass Name="Cyclic#5" />
   <TaskClass Name="Cyclic#6" />

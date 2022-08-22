@@ -31,4 +31,5 @@ VAR
 	MpBFRecipeRegPar : MpRecipeRegPar; (*MpBFRecipeHMI : MpRecipeUI;
 	UISetup : MpRecipeUISetupType;
 	MpRecipeUIConnectType : MpRecipeUIConnectType;*)
+	diError : BOOL;
 END_VAR
