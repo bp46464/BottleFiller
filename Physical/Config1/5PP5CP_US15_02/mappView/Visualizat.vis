@@ -12,10 +12,12 @@
   <BindingsSets>
     <BindingsSet refId="binding_0" />
     <BindingsSet refId="nav_binding" />
+    <BindingsSet refId="shiftLeaderContent_binding" />
   </BindingsSets>
   <EventBindingsSets>
     <EventBindingsSet refId="loginContent_eventbinding" />
     <EventBindingsSet refId="header_eventbinding" />
+    <EventBindingsSet refId="shiftLeaderContent_eventbinding" />
   </EventBindingsSets>
   <Dialogs />
   <Contents>
@@ -25,11 +27,10 @@
     <Content refId="footer" />
     <Content refId="loginContent" />
     <Content refId="operatorContent" />
+    <Content refId="shiftLeaderContent" />
   </Contents>
   <SnippetsSets />
-  <VariablesSets>
-    <VariablesSet refId="svar_1" />
-  </VariablesSets>
+  <VariablesSets />
   <ExpressionsSets />
   <StartTheme themeRefId="BuRThemeFlat2" />
   <Themes>

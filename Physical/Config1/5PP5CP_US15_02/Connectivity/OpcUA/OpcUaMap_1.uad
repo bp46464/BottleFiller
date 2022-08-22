@@ -2,12 +2,28 @@
 <?AutomationStudio FileVersion="4.9"?>
 <OpcUaSource FileVersion="8" ArVersion="E4.83">
   <Aliases>
-    <ACLAliases />
+    <ACLAliases>
+      <ACL Id="1">
+        <ACE RoleName="Shift Leader" Access="0x005F" />
+        <ACE RoleName="Operator" Access="0x005F" />
+        <ACE RoleName="Service" Access="0x005F" />
+      </ACL>
+      <ACL Id="2">
+        <ACE RoleName="Shift Leader" Access="0x01FF" />
+        <ACE RoleName="Operator" Access="0x01FF" />
+        <ACE RoleName="Service" Access="0x01FF" />
+      </ACL>
+      <ACL Id="3">
+        <ACE RoleName="Shift Leader" Access="0x01FF" />
+        <ACE RoleName="Operator" Access="0x0008" />
+        <ACE RoleName="Service" Access="0x0008" />
+      </ACL>
+    </ACLAliases>
     <EURangeViolationAliases />
     <EURangesAliases />
     <EngineeringUnitAliases />
   </Aliases>
-  <DefaultView>
+  <DefaultView AclId="2">
     <Module Name="&lt;Default&gt;">
       <GlobalVariables Name="Global Variables">
         <Variable Name="role">
@@ -36,6 +52,13 @@
           <Variable Name="Name" />
           <Variable Name="Index" />
         </Variable>
+        <Variable AclId="3" AclInherit="2" Name="bottleFillerRecipeTyp" AutomaticEnable="True">
+          <Variable Name="diPumpSpeedFlow" />
+          <Variable Name="diVelocity" />
+          <Variable Name="diSpeedProfile" />
+          <Variable Name="diBottleShape" />
+        </Variable>
+        <Variable Name="doPumpRelay" />
       </Task>
     </Module>
   </DefaultView>

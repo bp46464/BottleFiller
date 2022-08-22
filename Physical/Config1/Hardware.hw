@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<?AutomationStudio Version=4.11.2.75 FileVersion="4.9"?>
+<?AutomationStudio Version=4.11.3.51 FileVersion="4.9"?>
 <Hardware xmlns="http://br-automation.co.at/AS/Hardware">
   <Module Name="5PP520.0702-B10" Type="5PP520.0702-B10" Version="2.0.1.1">
     <Connector Name="IF3">
@@ -13,7 +13,11 @@
   <Module Name="5PP5CP_US15_02" Type="5PP5CP.US15-02" Version="2.1.6.0">
     <Connection Connector="SY" TargetModule="5PP520.0702-B10" TargetConnector="SY1" />
     <Parameter ID="ConfigurationID" Value="BottleFiller_Config1" />
+    <Parameter ID="UserPartitionSize" Value="10" />
     <Parameter ID="Simulation" Value="1" />
+    <Group ID="FileDevice1" />
+    <Parameter ID="FileDeviceName1" Value="USER" />
+    <Parameter ID="FileDevicePath1" Value="C:\Recipe\" />
     <Parameter ID="ActivateOpcUa" Value="1" />
     <Parameter ID="OpcUaInformationModels_PV_Version" Value="1" />
   </Module>
@@ -67,7 +71,7 @@
     <Parameter ID="McAcoposTypeID" Location="DriveConfiguration/Module" Value="AcoposConfig" />
     <Parameter ID="ActivateACOPOSSimulationOnPLC" Location="DriveConfiguration/Module" Value="0" />
     <Parameter ID="PowerSupply" Location="DriveConfiguration/Module" Value="ETA" />
-    <Parameter ID="AxisReference" Location="DriveConfiguration/Channel[1]/RealAxis" Value="" />
+    <Parameter ID="AxisReference" Location="DriveConfiguration/Channel[1]/RealAxis" Value="axisCart" />
     <Parameter ID="MechanicalElementsIsInvisible" Location="DriveConfiguration/Channel[1]/RealAxis" Value="0" />
     <Parameter ID="InputIsReadOnly" Location="DriveConfiguration/Channel[1]/RealAxis/MechanicalElements/Gearbox" Value="0" />
     <Parameter ID="Input" Location="DriveConfiguration/Channel[1]/RealAxis/MechanicalElements/Gearbox" Value="1" />
@@ -77,7 +81,7 @@
     <Parameter ID="ReferenceDistance" Location="DriveConfiguration/Channel[1]/RealAxis/MechanicalElements/RotaryToLinearTransformation" Value="1" />
     <Parameter ID="ModeIsReadOnly" Location="DriveConfiguration/Channel[1]/RealAxis/Controller" Value="0" />
     <Parameter ID="Mode" Location="DriveConfiguration/Channel[1]/RealAxis/Controller" Value="PositionController" />
-    <Parameter ID="ProportionalGain" Location="DriveConfiguration/Channel[1]/RealAxis/Controller/Mode/Position" Value="500" />
+    <Parameter ID="ProportionalGain" Location="DriveConfiguration/Channel[1]/RealAxis/Controller/Mode/Position" Value="50" />
     <Parameter ID="IntegrationTime" Location="DriveConfiguration/Channel[1]/RealAxis/Controller/Mode/Position" Value="0.0" />
     <Parameter ID="PredictionTime" Location="DriveConfiguration/Channel[1]/RealAxis/Controller/Mode/Position" Value="0.0004" />
     <Parameter ID="TotalDelayTime" Location="DriveConfiguration/Channel[1]/RealAxis/Controller/Mode/Position" Value="0.0004" />
@@ -124,7 +128,7 @@
     <Parameter ID="McAcoposTypeID" Location="DriveConfiguration/Module" Value="AcoposConfig" />
     <Parameter ID="ActivateACOPOSSimulationOnPLC" Location="DriveConfiguration/Module" Value="1" />
     <Parameter ID="PowerSupply" Location="DriveConfiguration/Module" Value="ETA" />
-    <Parameter ID="AxisReference" Location="DriveConfiguration/Channel[1]/RealAxis" Value="" />
+    <Parameter ID="AxisReference" Location="DriveConfiguration/Channel[1]/RealAxis" Value="axisNozzle" />
     <Parameter ID="MechanicalElementsIsInvisible" Location="DriveConfiguration/Channel[1]/RealAxis" Value="0" />
     <Parameter ID="InputIsReadOnly" Location="DriveConfiguration/Channel[1]/RealAxis/MechanicalElements/Gearbox" Value="0" />
     <Parameter ID="Input" Location="DriveConfiguration/Channel[1]/RealAxis/MechanicalElements/Gearbox" Value="1" />
@@ -181,7 +185,7 @@
     <Parameter ID="McAcoposTypeID" Location="DriveConfiguration/Module" Value="AcoposConfig" />
     <Parameter ID="ActivateACOPOSSimulationOnPLC" Location="DriveConfiguration/Module" Value="1" />
     <Parameter ID="PowerSupply" Location="DriveConfiguration/Module" Value="ETA" />
-    <Parameter ID="AxisReference" Location="DriveConfiguration/Channel[1]/RealAxis" Value="" />
+    <Parameter ID="AxisReference" Location="DriveConfiguration/Channel[1]/RealAxis" Value="axisConv" />
     <Parameter ID="MechanicalElementsIsInvisible" Location="DriveConfiguration/Channel[1]/RealAxis" Value="0" />
     <Parameter ID="InputIsReadOnly" Location="DriveConfiguration/Channel[1]/RealAxis/MechanicalElements/Gearbox" Value="0" />
     <Parameter ID="Input" Location="DriveConfiguration/Channel[1]/RealAxis/MechanicalElements/Gearbox" Value="1" />

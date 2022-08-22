@@ -3,7 +3,7 @@
   <Assignments>
     <Assignment type="Content" baseContentRefId="header" areaRefId="Header" />
     <Assignment type="Content" baseContentRefId="nav" areaRefId="Navigation" />
-    <Assignment type="Content" baseContentRefId="content" areaRefId="Content" />
+    <Assignment type="Content" baseContentRefId="shiftLeaderContent" areaRefId="Content" />
     <Assignment type="Content" baseContentRefId="footer" areaRefId="Footer" />
   </Assignments>
 </pdef:Page>
