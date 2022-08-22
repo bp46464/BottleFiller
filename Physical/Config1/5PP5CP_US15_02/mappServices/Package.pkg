@@ -4,5 +4,6 @@
   <Objects>
     <Object Type="File">recipeXML.mprecipexml</Object>
     <Object Type="File">fileM.mpfilemanager</Object>
+    <Object Type="File">alarm.mpalarmxcore</Object>
   </Objects>
 </Package>

@@ -13,11 +13,15 @@
     <BindingsSet refId="binding_0" />
     <BindingsSet refId="nav_binding" />
     <BindingsSet refId="shiftLeaderContent_binding" />
+    <BindingsSet refId="operatorContent_binding" />
+    <BindingsSet refId="serviceContent_binding" />
   </BindingsSets>
   <EventBindingsSets>
     <EventBindingsSet refId="loginContent_eventbinding" />
     <EventBindingsSet refId="header_eventbinding" />
     <EventBindingsSet refId="shiftLeaderContent_eventbinding" />
+    <EventBindingsSet refId="operatorContent_eventbinding" />
+    <EventBindingsSet refId="serviceContent_eventbinding" />
   </EventBindingsSets>
   <Dialogs />
   <Contents>
@@ -28,6 +32,7 @@
     <Content refId="loginContent" />
     <Content refId="operatorContent" />
     <Content refId="shiftLeaderContent" />
+    <Content refId="serviceContent" />
   </Contents>
   <SnippetsSets />
   <VariablesSets />

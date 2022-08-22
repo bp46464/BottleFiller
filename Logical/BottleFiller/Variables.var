@@ -5,6 +5,11 @@ VAR
 END_VAR
 (*digital inputs*)
 VAR
+	diManual : BOOL := FALSE; (*Determine if machine works automatically or needs manual control*)
+	diStop : BOOL := FALSE; (*Stop switch*)
+	diStart : BOOL := FALSE; (*Start switch*)
+	diPowerSwitch : BOOL := FALSE; (*Power on switch*)
+	diLiquidLevel : REAL := 100;
 	diConveyorHomingSwitch : BOOL := FALSE; (*Sensor detecting conveyor at homing position*)
 	diNozzleHomingSwitch : BOOL := FALSE; (*Sensor detecting nozzle at homing position*)
 	diCartHomingSwitch : BOOL := FALSE; (*Sensor detecting cart at homing position*)

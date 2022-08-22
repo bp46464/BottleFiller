@@ -11,5 +11,9 @@
     <Object Type="File">header.eventbinding</Object>
     <Object Type="File">shiftLeaderContent.binding</Object>
     <Object Type="File">shiftLeaderContent.eventbinding</Object>
+    <Object Type="File">operatorContent.binding</Object>
+    <Object Type="File">operatorContent.eventbinding</Object>
+    <Object Type="File">serviceContent.binding</Object>
+    <Object Type="File">serviceContent.eventbinding</Object>
   </Objects>
 </Package>

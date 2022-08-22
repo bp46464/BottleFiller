@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Content id="serviceContent" height="740" width="1360" xmlns="http://www.br-automation.com/iat2015/contentDefinition/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Widgets>
+    <Widget xsi:type="widgets.brease.Button" id="Button1" top="100" left="180" width="200" zIndex="0" text="Enable manual control" />
+    <Widget xsi:type="widgets.brease.Button" id="Button2" top="140" left="180" width="200" zIndex="1" text="Disable manual control" />
+  </Widgets>
+</Content>

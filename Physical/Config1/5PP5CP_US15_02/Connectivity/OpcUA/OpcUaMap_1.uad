@@ -18,6 +18,16 @@
         <ACE RoleName="Operator" Access="0x0008" />
         <ACE RoleName="Service" Access="0x0008" />
       </ACL>
+      <ACL Id="4">
+        <ACE RoleName="Shift Leader" Access="0x0008" />
+        <ACE RoleName="Operator" Access="0x0008" />
+        <ACE RoleName="Service" Access="0x01FF" />
+      </ACL>
+      <ACL Id="20">
+        <ACE RoleName="Shift Leader" Access="0x0008" />
+        <ACE RoleName="Operator" Access="0x01FF" />
+        <ACE RoleName="Service" Access="0x0008" />
+      </ACL>
     </ACLAliases>
     <EURangeViolationAliases />
     <EURangesAliases />
@@ -59,6 +69,10 @@
           <Variable Name="diBottleShape" />
         </Variable>
         <Variable Name="doPumpRelay" />
+        <Variable AclId="20" AclInherit="2" Name="diPowerSwitch" />
+        <Variable AclId="20" AclInherit="2" Name="diStart" />
+        <Variable AclId="20" AclInherit="2" Name="diStop" />
+        <Variable AclId="4" AclInherit="2" Name="diManual" />
       </Task>
     </Module>
   </DefaultView>
