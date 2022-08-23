@@ -5,23 +5,23 @@
     <Page refId="serwisPage" />
     <Page refId="loginPage" />
     <Page refId="mainPage" />
-    <Page refId="shiftLeaderPage" />
     <Page refId="operatorPage" />
+    <Page refId="shiftLeaderPage" />
   </Pages>
   <Navigations />
   <BindingsSets>
     <BindingsSet refId="binding_0" />
     <BindingsSet refId="nav_binding" />
-    <BindingsSet refId="shiftLeaderContent_binding" />
     <BindingsSet refId="operatorContent_binding" />
     <BindingsSet refId="serviceContent_binding" />
+    <BindingsSet refId="shiftLeaderContent_binding" />
   </BindingsSets>
   <EventBindingsSets>
     <EventBindingsSet refId="loginContent_eventbinding" />
     <EventBindingsSet refId="header_eventbinding" />
-    <EventBindingsSet refId="shiftLeaderContent_eventbinding" />
     <EventBindingsSet refId="operatorContent_eventbinding" />
     <EventBindingsSet refId="serviceContent_eventbinding" />
+    <EventBindingsSet refId="shiftLeaderContent_eventbinding" />
   </EventBindingsSets>
   <Dialogs />
   <Contents>
@@ -31,11 +31,11 @@
     <Content refId="footer" />
     <Content refId="loginContent" />
     <Content refId="operatorContent" />
-    <Content refId="shiftLeaderContent" />
     <Content refId="serviceContent" />
+    <Content refId="shiftLeaderContent" />
   </Contents>
   <SnippetsSets />
-  <VariablesSets />
+
   <ExpressionsSets />
   <StartTheme themeRefId="BuRThemeFlat2" />
   <Themes>

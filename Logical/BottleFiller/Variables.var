@@ -5,6 +5,7 @@ VAR
 END_VAR
 (*digital inputs*)
 VAR
+	diError : BOOL;
 	diManual : BOOL := FALSE; (*Determine if machine works automatically or needs manual control*)
 	diStop : BOOL := FALSE; (*Stop switch*)
 	diStart : BOOL := FALSE; (*Start switch*)
@@ -31,5 +32,8 @@ VAR
 	MpBFRecipeRegPar : MpRecipeRegPar; (*MpBFRecipeHMI : MpRecipeUI;
 	UISetup : MpRecipeUISetupType;
 	MpRecipeUIConnectType : MpRecipeUIConnectType;*)
-	diError : BOOL;
+	MpAxisConvParType : MpAxisBasicParType;
+	MpAxisConv : MpAxisBasic;
+	MpAxisCart : MpAxisBasic;
+	MpAxisNozzle : MpAxisBasic;
 END_VAR

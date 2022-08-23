@@ -9,8 +9,14 @@ PROGRAM _CYCLIC
 	MpBFRecipeXml(MpLink := ADR(BFRecipe) , Enable := 1, DeviceName := ADR('USER') , FileName := ADR('BottleFillerRecipe'));
 	MpBFRecipeRegPar(MpLink := ADR(BFRecipe), Enable := 1, PVName := ADR('BootleFiller:bottleFillerRecipeTyp'));
 	//MpBFRecipeHMI(MpLink := ADR(BFRecipe), Enable := 1 , ErrorReset := , UISetup := ADR(UISetup) , UIConnect := ADR(MpRecipeUIConnectType));
-	
-	
+	MpAxisConvParType.AutoTune.Mode:=mcAXIS_TUNE_AUTOMATIC;
+	MpAxisConvParType.AutoTune.MaxCurrentPercent:=80;
+	MpAxisConvParType.AutoTune.MaxDistance:=30;
+	MpAxisConvParType.AutoTune.MaxPositionError:=30;
+	MpAxisConv(MpLink := ADR(axisConv), Enable := 1, Parameters := ADR(MpAxisConvParType) ,   AutoTune := 1);
+	MpAxisCart(MpLink := ADR(axisCart), Enable := 1, Parameters := ADR(MpAxisConvParType) ,   AutoTune := 1);
+	MpAxisNozzle(MpLink := ADR(axisNozzle), Enable := 1, Parameters := ADR(MpAxisConvParType) ,  AutoTune := 1);
+
 	MpBFRecipeXml();
 	//MpBFRecipeHMI();
 	CASE FillerTyp OF

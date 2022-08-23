@@ -41,23 +41,20 @@
   </Element>
   <Element ID="axisCart" Type="axis">
     <Property ID="BaseTypeIsReadOnly" Value="0" />
-    <Selector ID="BaseType" Value="LinearPeriodic">
+    <Selector ID="BaseType" Value="LinearBounded">
       <Property ID="MeasurementUnit" Value="5066068" />
       <Property ID="MeasurementResolutionIsReadOnly" Value="0" />
       <Property ID="MeasurementResolution" Value="0.01" />
       <Property ID="CountDirectionIsReadOnly" Value="0" />
       <Property ID="CountDirection" Value="Standard" />
-      <Group ID="PeriodSettings">
-        <Property ID="Period" Value="1200" />
-      </Group>
     </Selector>
     <Property ID="MovementLimitsIsReadOnly" Value="0" />
     <Selector ID="MovementLimits" Value="Internal">
       <Group ID="Position">
         <Property ID="LowerLimitMin" Value="-1.79769313486231E308" />
         <Property ID="UpperLimitMax" Value="1.79769313486231E308" />
-        <Property ID="LowerLimit" Value="-1000.0" />
-        <Property ID="UpperLimit" Value="1000.0" />
+        <Property ID="LowerLimit" Value="0" />
+        <Property ID="UpperLimit" Value="1200" />
       </Group>
       <Property ID="VelocityIsReadOnly" Value="0" />
       <Selector ID="Velocity">
@@ -79,23 +76,20 @@
   </Element>
   <Element ID="axisNozzle" Type="axis">
     <Property ID="BaseTypeIsReadOnly" Value="0" />
-    <Selector ID="BaseType" Value="LinearPeriodic">
+    <Selector ID="BaseType" Value="LinearBounded">
       <Property ID="MeasurementUnit" Value="5066068" />
       <Property ID="MeasurementResolutionIsReadOnly" Value="0" />
       <Property ID="MeasurementResolution" Value="0.01" />
       <Property ID="CountDirectionIsReadOnly" Value="0" />
       <Property ID="CountDirection" Value="Standard" />
-      <Group ID="PeriodSettings">
-        <Property ID="Period" Value="200" />
-      </Group>
     </Selector>
     <Property ID="MovementLimitsIsReadOnly" Value="0" />
     <Selector ID="MovementLimits" Value="Internal">
       <Group ID="Position">
         <Property ID="LowerLimitMin" Value="-1.79769313486231E308" />
         <Property ID="UpperLimitMax" Value="1.79769313486231E308" />
-        <Property ID="LowerLimit" Value="-1000.0" />
-        <Property ID="UpperLimit" Value="1000.0" />
+        <Property ID="LowerLimit" Value="0" />
+        <Property ID="UpperLimit" Value="200" />
       </Group>
       <Property ID="VelocityIsReadOnly" Value="0" />
       <Selector ID="Velocity">
