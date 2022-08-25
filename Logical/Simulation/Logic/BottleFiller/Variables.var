@@ -41,4 +41,5 @@ VAR
 	MpAxisCart : MpAxisBasic;
 	MpAxisNozzle : MpAxisBasic;
 	SimulationAxisPosition : SimulationAxisPositionEnum;
+	camSeqNozzle : MpAxisCamSequencer;
 END_VAR
