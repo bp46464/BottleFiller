@@ -5,6 +5,6 @@
   <TaskClass Name="Cyclic#2" />
   <TaskClass Name="Cyclic#3" />
   <TaskClass Name="Cyclic#4">
-    <Task Name="RobVis" Source="Simulation.Logic.RobVis.prg" Memory="UserROM" Language="IEC" Debugging="true" />
+    <Task Name="RobVis" Source="s.Logic.RobVis.prg" Memory="UserROM" Language="IEC" Debugging="true" />
   </TaskClass>
 </SwConfiguration>

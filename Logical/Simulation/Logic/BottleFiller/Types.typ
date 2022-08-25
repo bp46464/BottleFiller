@@ -1,5 +1,10 @@
 
 TYPE
+	SimulationAxisPositionEnum : 	STRUCT 
+		Conveyor : REAL;
+		Cart : REAL;
+		Nozzle : REAL;
+	END_STRUCT;
 	bottleFillerRecipeEnum : 	STRUCT 
 		diPumpSpeedFlow : INT := 0;
 		diVelocity : INT := 0;

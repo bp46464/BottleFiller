@@ -4,5 +4,6 @@
   <Objects>
     <Object Type="File">configAxis.axis</Object>
     <Object Type="File">configCam.axisfeature</Object>
+    <Object Type="File">configNozz.axisfeature</Object>
   </Objects>
 </Package>

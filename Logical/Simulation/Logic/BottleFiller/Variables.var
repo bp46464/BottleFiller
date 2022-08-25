@@ -33,7 +33,12 @@ VAR
 	UISetup : MpRecipeUISetupType;
 	MpRecipeUIConnectType : MpRecipeUIConnectType;*)
 	MpAxisConvParType : MpAxisBasicParType;
+	camSeq : MpAxisCamSequencer;
+	camParameters : MpAxisCamSequencerParType;
+	coupCartConv : MpAxisCoupling;
+	coupParams : MpAxisCouplingParType;
 	MpAxisConv : MpAxisBasic;
 	MpAxisCart : MpAxisBasic;
 	MpAxisNozzle : MpAxisBasic;
+	SimulationAxisPosition : SimulationAxisPositionEnum;
 END_VAR

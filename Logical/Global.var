@@ -1,4 +1,0 @@
-VAR
-	roleInfo : MpUserXMgrUIRoleInfoType;
-	role : MpUserXMgrUIUserInfoType;
-END_VAR

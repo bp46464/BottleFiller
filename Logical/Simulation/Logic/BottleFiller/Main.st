@@ -6,9 +6,9 @@ END_PROGRAM
 
 PROGRAM _CYCLIC
 	(* Insert code here *)
-	MpBFRecipeXml(MpLink := ADR(BFRecipe) , Enable := 1, DeviceName := ADR('USER') , FileName := ADR('BottleFillerRecipe'));
-	MpBFRecipeRegPar(MpLink := ADR(BFRecipe), Enable := 1, PVName := ADR('BootleFiller:bottleFillerRecipeTyp'));
-	//MpBFRecipeHMI(MpLink := ADR(BFRecipe), Enable := 1 , ErrorReset := , UISetup := ADR(UISetup) , UIConnect := ADR(MpRecipeUIConnectType));
+//	MpBFRecipeXml(MpLink := ADR(BFRecipe) , Enable := 1, DeviceName := ADR('USER') , FileName := ADR('BottleFillerRecipe'));
+//	MpBFRecipeRegPar(MpLink := ADR(BFRecipe), Enable := 1, PVName := ADR('BootleFiller:bottleFillerRecipeTyp'));
+//	//MpBFRecipeHMI(MpLink := ADR(BFRecipe), Enable := 1 , ErrorReset := , UISetup := ADR(UISetup) , UIConnect := ADR(MpRecipeUIConnectType));
 	MpAxisConvParType.AutoTune.Mode:=mcAXIS_TUNE_AUTOMATIC;
 	MpAxisConvParType.AutoTune.MaxCurrentPercent:=80;
 	MpAxisConvParType.AutoTune.MaxDistance:=30;
@@ -16,8 +16,16 @@ PROGRAM _CYCLIC
 	MpAxisConv(MpLink := ADR(axisConv), Enable := 1, Parameters := ADR(MpAxisConvParType) ,   AutoTune := 1);
 	MpAxisCart(MpLink := ADR(axisCart), Enable := 1, Parameters := ADR(MpAxisConvParType) ,   AutoTune := 1);
 	MpAxisNozzle(MpLink := ADR(axisNozzle), Enable := 1, Parameters := ADR(MpAxisConvParType) ,  AutoTune := 1);
-
-	MpBFRecipeXml();
+//
+//	MpBFRecipeXml();
+//	coupCartConv(MpLink := ADR(axisCart), Enable := 1, Parameters := ADR(coupParams) , MpLinkMaster := ADR(axisConv));
+	
+	camSeq(MpLink := ADR(axisCart), Enable := 1, Parameters := ADR(camParameters), MpLinkMaster := ADR(axisConv));
+	
+	SimulationAxisPosition.Cart := LREAL_TO_REAL(MpAxisCart.Position);
+	SimulationAxisPosition.Conveyor := LREAL_TO_REAL(MpAxisConv.Position);
+	SimulationAxisPosition.Nozzle := LREAL_TO_REAL(MpAxisNozzle.Position);
+	gAdrAxesPositions := ADR(SimulationAxisPosition);
 	//MpBFRecipeHMI();
 	CASE FillerTyp OF
 		DISABLED: 

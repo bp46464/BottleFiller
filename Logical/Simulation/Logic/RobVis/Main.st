@@ -6,13 +6,13 @@ PROGRAM _INIT
 	
 	
 	RobVisData.Conveyor := 0.0;
-	RobVisData.Cart := 0.0;
-	RobVisData.Nozzle := 0.0;
+	RobVisData.Cart := -100.0;
+	RobVisData.Nozzle := 200.0;
 END_PROGRAM
 
 PROGRAM _CYCLIC
 
-	gAdrAxesPositions := ADR(AxesPosition);
+	//gAdrAxesPositions := ADR(AxesPosition);
 	
 	IF gAdrAxesPositions <> 0 THEN
 		pAxesPositions ACCESS gAdrAxesPositions;
@@ -57,9 +57,6 @@ PROGRAM _CYCLIC
 		cntBottle := cntBottle + 1;
 	END_IF
 	
-	IF (diBottleOld <> diBottle) AND NOT diBottle THEN
-		cntBottle := cntBottle - 1;
-	END_IF
 	diBottleOld := diBottle;
 	
 	// --------------------------------------------

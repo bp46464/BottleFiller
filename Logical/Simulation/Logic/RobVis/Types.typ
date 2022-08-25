@@ -8,8 +8,6 @@ TYPE
 	ModelConfigType : 	STRUCT 
 		Bottle : ModelConfigBottleType;
 	END_STRUCT;
-	New_Datatype : 	STRUCT 
-	END_STRUCT;
 	RobVisPosType : 	STRUCT 
 		Conveyor : REAL;
 		Cart : REAL;

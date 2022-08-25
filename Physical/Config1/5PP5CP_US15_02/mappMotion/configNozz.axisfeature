@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <?AutomationStudio FileVersion="4.9"?>
 <Configuration>
-  <Element ID="Feature_CamAutomat" Type="axisfeature">
+  <Element ID="Feature_CamList" Type="axisfeature">
     <Selector ID="Type" Value="CamAutomat">
       <Selector ID="CamAutomatType" Value="ACOPOS">
         <Group ID="CommonParameters">
@@ -10,7 +10,7 @@
               <Property ID="AxisReference" Value="axisConv" />
               <Property ID="MaxVelocity" Value="10" />
             </Selector>
-            <Property ID="StartPosition" Value="0" />
+            <Property ID="StartPosition" Value="0.0" />
             <Selector ID="StartInterval" Value="MasterAxisPeriod" />
           </Group>
           <Group ID="AdvancedParameters">
@@ -51,12 +51,6 @@
                 <Property ID="SynchronousUpdate" Value="NotUsed" />
                 <Property ID="NextState" Value="1" />
               </Group>
-              <Group ID="Event[1]">
-                <Property ID="Type" Value="Signal2FromPLC" />
-                <Property ID="Transition" Value="Immediately" />
-                <Property ID="SynchronousUpdate" Value="Used" />
-                <Property ID="NextState" Value="1" />
-              </Group>
             </Group>
           </Selector>
           <Group ID="State[1]">
@@ -67,10 +61,10 @@
             <Property ID="SlaveFactor" Value="100" />
             <Selector ID="CompensationMode" Value="MasterSlaveAbsolutePosition">
               <Property ID="MasterPosition" Value="90" />
-              <Property ID="SlavePosition" Value="-85" />
+              <Property ID="SlavePosition" Value="200" />
               <Property ID="MaxSlaveVelocity" Value="45" />
               <Property ID="MaxSlaveAcceleration1" Value="45" />
-              <Property ID="MaxSlaveAcceleration2" Value="10" />
+              <Property ID="MaxSlaveAcceleration2" Value="0.0" />
               <Selector ID="AdvancedParameters" Value="NotUsed" />
             </Selector>
             <Group ID="AdvancedParameters">
@@ -88,10 +82,10 @@
           </Group>
           <Group ID="State[2]">
             <Selector ID="Cam" Value="Predefined">
-              <Property ID="PredefinedCam" Value="OneToOne" />
+              <Property ID="PredefinedCam" Value="ZeroPoint" />
             </Selector>
-            <Property ID="MasterFactor" Value="45000" />
-            <Property ID="SlaveFactor" Value="45000" />
+            <Property ID="MasterFactor" Value="22500" />
+            <Property ID="SlaveFactor" Value="-20000" />
             <Selector ID="CompensationMode" Value="NoCompensation" />
             <Group ID="AdvancedParameters">
               <Property ID="RepeatCounterInit" Value="0" />
@@ -108,15 +102,11 @@
           </Group>
           <Group ID="State[3]">
             <Selector ID="Cam" Value="Predefined">
-              <Property ID="PredefinedCam" Value="OneToOne" />
+              <Property ID="PredefinedCam" Value="ZeroPoint" />
             </Selector>
-            <Property ID="MasterFactor" Value="100" />
-            <Property ID="SlaveFactor" Value="100" />
-            <Selector ID="CompensationMode" Value="SlaveCompensationAbsSlPos">
-              <Property ID="MasterDistance" Value="50" />
-              <Property ID="SlavePosition" Value="-85" />
-              <Selector ID="AdvancedParameters" Value="NotUsed" />
-            </Selector>
+            <Property ID="MasterFactor" Value="22500" />
+            <Property ID="SlaveFactor" Value="20000" />
+            <Selector ID="CompensationMode" Value="NoCompensation" />
             <Group ID="AdvancedParameters">
               <Property ID="RepeatCounterInit" Value="0" />
               <Selector ID="MasterValueSource" Value="CommonMaster" />

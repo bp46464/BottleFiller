@@ -35,28 +35,6 @@
   </Aliases>
   <DefaultView AclId="2">
     <Module Name="&lt;Default&gt;">
-      <GlobalVariables Name="Global Variables">
-        <Variable Name="role">
-          <Variable Name="Roles" />
-          <Variable Name="UserName" />
-          <Variable Name="FullName" />
-          <Variable Name="Locked" />
-          <Variable Name="Expired" />
-          <Variable Name="RemainingAttempts" />
-          <Variable Name="Language" />
-          <Variable Name="DisplayUnit" />
-          <Variable Name="Creation" />
-          <Variable Name="FirstLogin" />
-          <Variable Name="LastLogin" />
-          <Variable Name="PasswordExpired" />
-          <Variable Name="AdditionalData" />
-          <Variable Name="UserType" />
-        </Variable>
-        <Variable Name="roleInfo">
-          <Variable Name="Name" />
-          <Variable Name="Index" />
-        </Variable>
-      </GlobalVariables>
       <Task Name="BootleFill">
         <Variable Name="roleInfo">
           <Variable Name="Name" />
@@ -73,6 +51,15 @@
         <Variable AclId="20" AclInherit="2" Name="diStart" />
         <Variable AclId="20" AclInherit="2" Name="diStop" />
         <Variable AclId="4" AclInherit="2" Name="diManual" />
+        <Variable Name="MpAxisCart">
+          <Variable Name="Position" />
+        </Variable>
+        <Variable Name="MpAxisConv">
+          <Variable Name="Position" />
+        </Variable>
+        <Variable Name="MpAxisNozzle">
+          <Variable Name="Position" />
+        </Variable>
       </Task>
     </Module>
   </DefaultView>
