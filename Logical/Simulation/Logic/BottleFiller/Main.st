@@ -21,6 +21,8 @@ PROGRAM _CYCLIC
 //	coupCartConv(MpLink := ADR(axisCart), Enable := 1, Parameters := ADR(coupParams) , MpLinkMaster := ADR(axisConv));
 	
 	camSeq(MpLink := ADR(axisCart), Enable := 1, Parameters := ADR(camParameters), MpLinkMaster := ADR(axisConv));
+	camSeqNozzle(MpLink := ADR(axisNozzle), Enable := 1, Parameters := ADR(camParameters), MpLinkMaster := ADR(axisConv));
+	
 	
 	SimulationAxisPosition.Cart := LREAL_TO_REAL(MpAxisCart.Position);
 	SimulationAxisPosition.Conveyor := LREAL_TO_REAL(MpAxisConv.Position);
