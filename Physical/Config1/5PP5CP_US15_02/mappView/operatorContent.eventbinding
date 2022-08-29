@@ -24,25 +24,36 @@
     <EventBinding id="operatorContent.Button1.Click">
       <Source xsi:type="widgets.brease.Button.Event" contentRefId="operatorContent" widgetRefId="Button1" event="Click" />
       <EventHandler>
-        <Action>
-          <Target xsi:type="opcUa.NodeAction" refId="::BootleFill:diStart">
-            <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
-          </Target>
-        </Action>
+        <Sequence>
+          <Step order="0">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::BootleFill:diStop">
+                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="false" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="1">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::BootleFill:diStart">
+                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+              </Target>
+            </Action>
+          </Step>
+        </Sequence>
       </EventHandler>
     </EventBinding>
     <EventBinding id="operatorContent.Button2.Click">
       <Source xsi:type="widgets.brease.Button.Event" contentRefId="operatorContent" widgetRefId="Button2" event="Click" />
       <EventHandler>
         <Sequence>
-          <Step order="0">
+          <Step order="1">
             <Action>
               <Target xsi:type="opcUa.NodeAction" refId="::BootleFill:diStart">
                 <Method xsi:type="opcUa.NodeAction.SetValueBool" value="false" />
               </Target>
             </Action>
           </Step>
-          <Step order="1">
+          <Step order="2">
             <Action>
               <Target xsi:type="opcUa.NodeAction" refId="::BootleFill:diStop">
                 <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
@@ -58,6 +69,16 @@
         <Action>
           <Target xsi:type="opcUa.NodeAction" refId="::BootleFill:diPowerSwitch">
             <Method xsi:type="opcUa.NodeAction.SetValueBool" value="false" />
+          </Target>
+        </Action>
+      </EventHandler>
+    </EventBinding>
+    <EventBinding id="operatorContent.Button3.Click">
+      <Source xsi:type="widgets.brease.Button.Event" contentRefId="operatorContent" widgetRefId="Button3" event="Click" />
+      <EventHandler>
+        <Action>
+          <Target xsi:type="opcUa.NodeAction" refId="::BootleFill:MpAxisConv.Update">
+            <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
           </Target>
         </Action>
       </EventHandler>

@@ -24,7 +24,7 @@
       <Property ID="VelocityIsReadOnly" Value="0" />
       <Selector ID="Velocity">
         <Property ID="VelocityMax" Value="3.4E38" />
-        <Property ID="Velocity" Value="10.0" />
+        <Property ID="Velocity" Value="30" />
       </Selector>
       <Property ID="AccelerationIsReadOnly" Value="0" />
       <Selector ID="Acceleration">
@@ -59,7 +59,7 @@
       <Property ID="VelocityIsReadOnly" Value="0" />
       <Selector ID="Velocity">
         <Property ID="VelocityMax" Value="3.4E38" />
-        <Property ID="Velocity" Value="10.0" />
+        <Property ID="Velocity" Value="30" />
       </Selector>
       <Property ID="AccelerationIsReadOnly" Value="0" />
       <Selector ID="Acceleration">
@@ -69,7 +69,7 @@
       <Property ID="DecelerationIsReadOnly" Value="0" />
       <Selector ID="Deceleration">
         <Property ID="DecelerationMax" Value="3.4E38" />
-        <Property ID="Deceleration" Value="50.0" />
+        <Property ID="Deceleration" Value="300" />
       </Selector>
     </Selector>
     <Selector ID="Alarms" Value="None" />
@@ -88,23 +88,23 @@
       <Group ID="Position">
         <Property ID="LowerLimitMin" Value="-1.79769313486231E308" />
         <Property ID="UpperLimitMax" Value="1.79769313486231E308" />
-        <Property ID="LowerLimit" Value="0" />
-        <Property ID="UpperLimit" Value="200" />
+        <Property ID="LowerLimit" Value="-10" />
+        <Property ID="UpperLimit" Value="210" />
       </Group>
       <Property ID="VelocityIsReadOnly" Value="0" />
       <Selector ID="Velocity">
         <Property ID="VelocityMax" Value="3.4E38" />
-        <Property ID="Velocity" Value="10.0" />
+        <Property ID="Velocity" Value="30" />
       </Selector>
       <Property ID="AccelerationIsReadOnly" Value="0" />
       <Selector ID="Acceleration">
         <Property ID="AccelerationMax" Value="3.4E38" />
-        <Property ID="Acceleration" Value="50.0" />
+        <Property ID="Acceleration" Value="20" />
       </Selector>
       <Property ID="DecelerationIsReadOnly" Value="0" />
       <Selector ID="Deceleration">
         <Property ID="DecelerationMax" Value="3.4E38" />
-        <Property ID="Deceleration" Value="50.0" />
+        <Property ID="Deceleration" Value="300" />
       </Selector>
     </Selector>
     <Selector ID="Alarms" Value="None" />

@@ -7,7 +7,7 @@ TYPE
 	END_STRUCT;
 	bottleFillerRecipeEnum : 	STRUCT 
 		diPumpSpeedFlow : INT := 0;
-		diVelocity : INT := 0;
+		diVelocity : REAL := 0.0;
 		diSpeedProfile : INT := 0;
 		diBottleShape : INT := 0;
 	END_STRUCT;

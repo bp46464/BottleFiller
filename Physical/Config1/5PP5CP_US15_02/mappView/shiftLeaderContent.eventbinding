@@ -21,7 +21,7 @@
       </EventHandler>
       <EventHandler>
         <Action>
-          <ReadTarget xsi:type="opcUa.NodeAction.Read" refId="::BootleFill:bottleFillerRecipeTyp.diVelocity">
+          <ReadTarget xsi:type="opcUa.NodeAction.Read" refId="::BootleFill:MpAxisCartParType.Velocity">
             <Method xsi:type="opcUa.NodeAction.GetValue" />
           </ReadTarget>
           <Result>
@@ -72,61 +72,13 @@
       <Source xsi:type="widgets.brease.Button.Event" contentRefId="shiftLeaderContent" widgetRefId="Button2" event="Click" />
       <EventHandler>
         <Action>
-          <ReadTarget xsi:type="widgets.brease.NumericInput.ReadAction" contentRefId="shiftLeaderContent" widgetRefId="NumericInput1">
-            <Method xsi:type="widgets.brease.NumericInput.Action.GetValue" />
-          </ReadTarget>
-          <Result>
-            <ResultHandler>
-              <Action>
-                <Target xsi:type="opcUa.NodeAction" refId="::BootleFill:bottleFillerRecipeTyp.diPumpSpeedFlow">
-                  <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=result" />
-                </Target>
-              </Action>
-            </ResultHandler>
-          </Result>
-        </Action>
-      </EventHandler>
-      <EventHandler>
-        <Action>
           <ReadTarget xsi:type="widgets.brease.NumericInput.ReadAction" contentRefId="shiftLeaderContent" widgetRefId="NumericInput2">
             <Method xsi:type="widgets.brease.NumericInput.Action.GetValue" />
           </ReadTarget>
           <Result>
             <ResultHandler>
               <Action>
-                <Target xsi:type="opcUa.NodeAction" refId="::BootleFill:bottleFillerRecipeTyp.diVelocity">
-                  <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=result" />
-                </Target>
-              </Action>
-            </ResultHandler>
-          </Result>
-        </Action>
-      </EventHandler>
-      <EventHandler>
-        <Action>
-          <ReadTarget xsi:type="widgets.brease.NumericInput.ReadAction" contentRefId="shiftLeaderContent" widgetRefId="NumericInput3">
-            <Method xsi:type="widgets.brease.NumericInput.Action.GetValue" />
-          </ReadTarget>
-          <Result>
-            <ResultHandler>
-              <Action>
-                <Target xsi:type="opcUa.NodeAction" refId="::BootleFill:bottleFillerRecipeTyp.diSpeedProfile">
-                  <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=result" />
-                </Target>
-              </Action>
-            </ResultHandler>
-          </Result>
-        </Action>
-      </EventHandler>
-      <EventHandler>
-        <Action>
-          <ReadTarget xsi:type="widgets.brease.NumericInput.ReadAction" contentRefId="shiftLeaderContent" widgetRefId="NumericInput4">
-            <Method xsi:type="widgets.brease.NumericInput.Action.GetValue" />
-          </ReadTarget>
-          <Result>
-            <ResultHandler>
-              <Action>
-                <Target xsi:type="opcUa.NodeAction" refId="::BootleFill:bottleFillerRecipeTyp.diBottleShape">
+                <Target xsi:type="opcUa.NodeAction" refId="::BootleFill:MpAxisConvParType.Velocity">
                   <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=result" />
                 </Target>
               </Action>
