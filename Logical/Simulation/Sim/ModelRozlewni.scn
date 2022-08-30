@@ -70,7 +70,7 @@
 			<ParID parid="106" val="1"/>
 			<ParID parid="107" val="1"/>
 			<ParID parid="108" val="1"/>
-			<ParID parid="120" val="5: Green Matte"/>
+			<ParID parid="120" val="11: Red Metal Shine"/>
 			<ParID parid="121" val="18"/>
 			<ParID parid="122" val="FALSE"/>
 			<ParID parid="123" val="FALSE"/>
@@ -102,7 +102,7 @@
 			<ParID parid="143" val="5000"/>
 			<ParID parid="144" val="1"/>
 			<ParID parid="145" val="0"/>
-			<ParID parid="150" val="90.95"/>
+			<ParID parid="150" val="0"/>
 			<ParID parid="160" val="FALSE"/>
 			<Object objecttypeid="110" name="Butelka" visible="1" mask="" binding="" jointoparent="0">
 				<ParID parid="100" val="25"/>
@@ -555,12 +555,12 @@
 					<ParID parid="143" val="200"/>
 					<ParID parid="144" val="1"/>
 					<ParID parid="145" val="0"/>
-					<ParID parid="150" val="220"/>
+					<ParID parid="150" val="0"/>
 					<ParID parid="160" val="FALSE"/>
 					<Object objecttypeid="110" name="Nalewak.STL" visible="1" mask="#102:8" binding="" jointoparent="0">
-						<ParID parid="100" val="0"/>
-						<ParID parid="101" val="0"/>
-						<ParID parid="102" val="0"/>
+						<ParID parid="100" val="-19.7018"/>
+						<ParID parid="101" val="-2.15206e-12"/>
+						<ParID parid="102" val="1.71317"/>
 						<ParID parid="103" val="0"/>
 						<ParID parid="104" val="0"/>
 						<ParID parid="105" val="0"/>

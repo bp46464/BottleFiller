@@ -1,11 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <?AutomationStudio FileVersion="4.9"?>
 <SwConfiguration CpuAddress="SL1" xmlns="http://br-automation.co.at/AS/SwConfiguration">
-  <TaskClass Name="Cyclic#1" />
+  <TaskClass Name="Cyclic#1">
+    <Task Name="BootleFill" Source="Simulation.Logic.BottleFiller.prg" Memory="UserROM" Language="IEC" Debugging="true" />
+  </TaskClass>
   <TaskClass Name="Cyclic#2" />
   <TaskClass Name="Cyclic#3" />
   <TaskClass Name="Cyclic#4">
-    <Task Name="BootleFill" Source="Simulation.Logic.BottleFiller.prg" Memory="UserROM" Language="IEC" Debugging="true" />
     <Task Name="test" Source="Package.test.prg" Memory="UserROM" Language="IEC" Debugging="true" Disabled="true" />
     <Task Name="RobVis" Source="Simulation.Logic.RobVis.prg" Memory="UserROM" Language="IEC" Debugging="true" />
   </TaskClass>
@@ -45,6 +46,7 @@
     <BinaryObject Name="alarm" Source="" Memory="UserROM" Language="Binary" />
     <BinaryObject Name="configAxis" Source="" Memory="UserROM" Language="Binary" />
     <BinaryObject Name="configCam" Source="" Memory="UserROM" Language="Binary" />
+    <BinaryObject Name="configNozz" Source="" Memory="UserROM" Language="Binary" />
     <BinaryObject Name="Config_1" Source="" Memory="UserROM" Language="Binary" />
   </Binaries>
   <Libraries>

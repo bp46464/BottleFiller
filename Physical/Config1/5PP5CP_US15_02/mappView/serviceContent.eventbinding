@@ -21,5 +21,135 @@
         </Action>
       </EventHandler>
     </EventBinding>
+    <EventBinding id="serviceContent.conveyorSlider.ValueChanged">
+      <Source xsi:type="widgets.brease.BasicSlider.Event" contentRefId="serviceContent" widgetRefId="conveyorSlider" event="ValueChanged" />
+      <Operand datatype="ANY_REAL" name="convPosiotion">
+        <ReadTarget xsi:type="widgets.brease.BasicSlider.ReadAction" contentRefId="serviceContent" widgetRefId="conveyorSlider">
+          <Method xsi:type="widgets.brease.BasicSlider.Action.GetValue" />
+        </ReadTarget>
+      </Operand>
+      <Operand datatype="ANY_REAL" name="currentPosition">
+        <ReadTarget xsi:type="opcUa.NodeAction.Read" refId="::BootleFill:MpAxisConv.Position">
+          <Method xsi:type="opcUa.NodeAction.GetValue" />
+        </ReadTarget>
+      </Operand>
+      <Operand datatype="BOOL" name="updateDone">
+        <ReadTarget xsi:type="opcUa.NodeAction.Read" refId="::BootleFill:MpAxisConv.UpdateDone">
+          <Method xsi:type="opcUa.NodeAction.GetValue" />
+        </ReadTarget>
+      </Operand>
+      <Operand datatype="BOOL" name="inPosition">
+        <ReadTarget xsi:type="opcUa.NodeAction.Read" refId="::BootleFill:MpAxisConv.InPosition">
+          <Method xsi:type="opcUa.NodeAction.GetValue" />
+        </ReadTarget>
+      </Operand>
+      <EventHandler>
+        <Action>
+          <Target xsi:type="opcUa.NodeAction" refId="::BootleFill:MpAxisConvParType.Position">
+            <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=convPosiotion" />
+          </Target>
+        </Action>
+      </EventHandler>
+    </EventBinding>
+    <EventBinding id="serviceContent.velocitySlider.ValueChanged">
+      <Source xsi:type="widgets.brease.BasicSlider.Event" contentRefId="serviceContent" widgetRefId="velocitySlider" event="ValueChanged" />
+      <Operand datatype="ANY_REAL" name="updateVelocity">
+        <ReadTarget xsi:type="widgets.brease.BasicSlider.ReadAction" contentRefId="serviceContent" widgetRefId="velocitySlider">
+          <Method xsi:type="widgets.brease.BasicSlider.Action.GetValue" />
+        </ReadTarget>
+      </Operand>
+      <Operand datatype="BOOL" name="updateDone">
+        <ReadTarget xsi:type="opcUa.NodeAction.Read" refId="::BootleFill:MpAxisConv.UpdateDone">
+          <Method xsi:type="opcUa.NodeAction.GetValue" />
+        </ReadTarget>
+      </Operand>
+      <EventHandler>
+        <Action>
+          <Target xsi:type="opcUa.NodeAction" refId="::BootleFill:MpAxisConvParType.Velocity">
+            <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=updateVelocity" />
+          </Target>
+        </Action>
+      </EventHandler>
+    </EventBinding>
+    <EventBinding id="serviceContent.Button3.Click">
+      <Source xsi:type="widgets.brease.Button.Event" contentRefId="serviceContent" widgetRefId="Button3" event="Click" />
+      <Operand datatype="BOOL" name="updateDone">
+        <ReadTarget xsi:type="opcUa.NodeAction.Read" refId="::BootleFill:MpAxisConv.Update">
+          <Method xsi:type="opcUa.NodeAction.GetValue" />
+        </ReadTarget>
+      </Operand>
+      <Operand datatype="BOOL" name="onMove">
+        <ReadTarget xsi:type="opcUa.NodeAction.Read" refId="::BootleFill:MpAxisConv.MoveAbsolute">
+          <Method xsi:type="opcUa.NodeAction.GetValue" />
+        </ReadTarget>
+      </Operand>
+      <Operand datatype="ANY_REAL" name="currentPosition">
+        <ReadTarget xsi:type="opcUa.NodeAction.Read" refId="::BootleFill:MpAxisConv.Position">
+          <Method xsi:type="opcUa.NodeAction.GetValue" />
+        </ReadTarget>
+      </Operand>
+      <Operand datatype="ANY_REAL" name="changePosition">
+        <ReadTarget xsi:type="opcUa.NodeAction.Read" refId="::BootleFill:MpAxisConvParType.Position">
+          <Method xsi:type="opcUa.NodeAction.GetValue" />
+        </ReadTarget>
+      </Operand>
+      <EventHandler condition="currentPosition &lt; changePosition">
+        <Action>
+          <Target xsi:type="opcUa.NodeAction" refId="::BootleFill:MpAxisConvParType.Direction">
+            <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=mpAXIS_DIR_POSITIVE" />
+          </Target>
+        </Action>
+      </EventHandler>
+      <EventHandler condition="currentPosition &gt; changePosition">
+        <Action>
+          <Target xsi:type="opcUa.NodeAction" refId="::BootleFill:MpAxisConvParType.Direction">
+            <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=mpAXIS_DIR_NEGATIVE" />
+          </Target>
+        </Action>
+      </EventHandler>
+      <EventHandler condition="onMove">
+        <Sequence>
+          <Step order="0">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::BootleFill:MpAxisConv.MoveAbsolute">
+                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="false" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="1">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::BootleFill:MpAxisConv.Update">
+                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="2">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::BootleFill:MpAxisConv.MoveAbsolute">
+                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+              </Target>
+            </Action>
+          </Step>
+        </Sequence>
+      </EventHandler>
+      <EventHandler condition="NOT onMove">
+        <Sequence>
+          <Step order="0">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::BootleFill:MpAxisConv.Update">
+                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="1">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::BootleFill:MpAxisConv.MoveAbsolute">
+                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+              </Target>
+            </Action>
+          </Step>
+        </Sequence>
+      </EventHandler>
+    </EventBinding>
   </Bindings>
 </EventBindingSet>

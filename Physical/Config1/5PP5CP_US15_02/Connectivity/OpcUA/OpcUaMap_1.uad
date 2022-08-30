@@ -18,19 +18,58 @@
         <ACE RoleName="Operator" Access="0x0008" />
         <ACE RoleName="Service" Access="0x01FF" />
       </ACL>
-      <ACL Id="20">
-        <ACE RoleName="Shift Leader" Access="0x0008" />
-        <ACE RoleName="Operator" Access="0x01FF" />
-        <ACE RoleName="Service" Access="0x0008" />
-      </ACL>
       <ACL Id="21">
         <ACE RoleName="Shift Leader" Access="0x01FF" />
         <ACE RoleName="Operator" Access="0x01FF" />
         <ACE RoleName="Service" Access="0x0008" />
       </ACL>
+      <ACL Id="29">
+        <ACE RoleName="Shift Leader" Access="0x0008" />
+        <ACE RoleName="Operator" Access="0x01FF" />
+        <ACE RoleName="Service" Access="0x01FF" />
+      </ACL>
     </ACLAliases>
     <EURangeViolationAliases />
-    <EURangesAliases />
+    <EURangesAliases>
+      <EURanges Id="2">
+        <EURange>
+          <Low ValueProvider="Const">0</Low>
+          <High ValueProvider="Const">50</High>
+        </EURange>
+        <EURange Priority="1" RoleName="Operator">
+          <Low ValueProvider="Const">0</Low>
+          <High ValueProvider="Const">100</High>
+        </EURange>
+      </EURanges>
+      <EURanges Id="3">
+        <EURange>
+          <Low ValueProvider="Const">50</Low>
+          <High ValueProvider="Const">400</High>
+        </EURange>
+        <EURange Priority="1" RoleName="Operator">
+          <Low ValueProvider="Const">0</Low>
+          <High ValueProvider="Const">600</High>
+        </EURange>
+      </EURanges>
+      <EURanges Id="4">
+        <EURange>
+          <Low ValueProvider="Const">0</Low>
+          <High ValueProvider="Const">10</High>
+        </EURange>
+        <EURange Priority="1" RoleName="Service">
+          <Low ValueProvider="Const">0</Low>
+          <High ValueProvider="Const">60</High>
+        </EURange>
+        <EURange Priority="2" RoleName="Shift Leader">
+          <Low ValueProvider="Const">0</Low>
+          <High ValueProvider="Const">30</High>
+        </EURange>
+        <EURange Priority="3" RoleName="Operator">
+          <Low ValueProvider="Const">0</Low>
+          <High ValueProvider="Const">30</High>
+        </EURange>
+      </EURanges>
+    </EURangesAliases>
     <EngineeringUnitAliases />
   </Aliases>
   <DefaultView AclId="2">
@@ -47,9 +86,9 @@
           <Variable Name="diBottleShape" />
         </Variable>
         <Variable Name="doPumpRelay" />
-        <Variable AclId="20" AclInherit="2" Name="diPowerSwitch" />
-        <Variable AclId="20" AclInherit="2" Name="diStart" />
-        <Variable AclId="20" AclInherit="2" Name="diStop" />
+        <Variable AclId="29" AclInherit="2" Name="diPowerSwitch" />
+        <Variable AclId="29" AclInherit="2" Name="diStart" />
+        <Variable AclId="29" AclInherit="2" Name="diStop" />
         <Variable AclId="4" AclInherit="2" Name="diManual" />
         <Variable Name="MpAxisCart">
           <Variable Name="Position" />
@@ -57,6 +96,9 @@
         <Variable Name="MpAxisConv">
           <Variable Name="Position" />
           <Variable Name="Update" />
+          <Variable Name="MoveAbsolute" />
+          <Variable Name="UpdateDone" />
+          <Variable Name="InPosition" />
         </Variable>
         <Variable Name="MpAxisNozzle">
           <Variable Name="Position" />
@@ -64,9 +106,9 @@
         <Variable Name="MpAxisCartParType">
           <Variable Name="Position" />
           <Variable Name="Distance" />
-          <Variable Name="Velocity" />
-          <Variable Name="Acceleration" />
-          <Variable Name="Deceleration" />
+          <Variable Name="Velocity" EURangesId="4" />
+          <Variable Name="Acceleration" EURangesId="2" />
+          <Variable Name="Deceleration" EURangesId="3" />
           <Variable Name="Direction" />
           <Variable Name="Homing">
             <Variable Name="Mode" />
@@ -136,6 +178,11 @@
           <Variable Name="Stop" />
           <Variable Name="LimitLoad" />
           <Variable Name="AutoTune" />
+        </Variable>
+        <Variable Name="SimulationAxisPosition">
+          <Variable Name="Conveyor" />
+          <Variable Name="Cart" />
+          <Variable Name="Nozzle" />
         </Variable>
       </Task>
     </Module>

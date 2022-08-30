@@ -3,5 +3,8 @@
   <Widgets>
     <Widget xsi:type="widgets.brease.Button" id="Button1" top="100" left="180" width="200" zIndex="0" text="Enable manual control" />
     <Widget xsi:type="widgets.brease.Button" id="Button2" top="140" left="180" width="200" zIndex="1" text="Disable manual control" />
+    <Widget xsi:type="widgets.brease.BasicSlider" id="conveyorSlider" top="240" left="580" width="480" zIndex="2" largeChange="1" maxValue="5000" showUnit="true" showValueDisplay="true" />
+    <Widget xsi:type="widgets.brease.BasicSlider" id="velocitySlider" top="100" left="580" width="480" zIndex="3" maxValue="60" minValue="5" showUnit="true" showValueDisplay="true" />
+    <Widget xsi:type="widgets.brease.Button" id="Button3" top="220" left="1120" zIndex="4" text="Move" />
   </Widgets>
 </Content>

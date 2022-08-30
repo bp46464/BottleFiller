@@ -40,8 +40,9 @@
 <Target xsi:type="brease" contentRefId="shiftLeaderContent" widgetRefId="NumericOutput4" attribute="value" />
 </Binding>
 
+
 <Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::BootleFill:MpAxisCartParType.Velocity" attribute="value" />
+<Source xsi:type="opcUa" refId="::BootleFill:MpAxisConvParType.Velocity" attribute="value" />
 <Target xsi:type="brease" contentRefId="shiftLeaderContent" widgetRefId="NumericOutput2" attribute="value" />
 </Binding>
 </Bindings>

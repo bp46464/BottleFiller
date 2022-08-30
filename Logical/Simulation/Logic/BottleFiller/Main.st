@@ -87,6 +87,35 @@ PROGRAM _CYCLIC
 			END_IF;
 			
 		SERVICE:
+			IF camSeq.InCam AND camSeqNozzle.InCam THEN
+				
+				camSeq.Signal1:=1;
+				camSeqNozzle.Signal1:=1;
+				
+			END_IF;
+			
+			IF EDGEPOS(MpAxisConv.MoveAbsolute) THEN
+				
+				IF MpAxisConv.Position > MpAxisConvParType.Position THEN
+					MpAxisConvParType.Direction:=mcDIR_NEGATIVE;
+					MpAxisConv.Update:=1;
+				ELSIF MpAxisConv.Position < MpAxisConvParType.Position THEN
+					MpAxisConvParType.Direction:=mcDIR_POSITIVE;
+					MpAxisConv.Update:=1;
+				END_IF;
+			END_IF;
+			
+			
+			IF MpAxisConv.UpdateDone THEN
+				MpAxisConv.Update:=0;
+			END_IF;
+			IF MpAxisConv.InPosition THEN
+				MpAxisConv.MoveAbsolute:=0;
+			END_IF;
+			
+			IF NOT diManual THEN
+				FillerTyp:=AUTOMAT;
+			END_IF;
 			
 		ERROR:
 		

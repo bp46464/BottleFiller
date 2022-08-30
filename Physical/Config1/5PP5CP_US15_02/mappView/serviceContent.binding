@@ -1,6 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BindingsSet id="serviceContent_binding" xmlns="http://www.br-automation.com/iat2015/binding/engineering/v2" xmlns:bt="http://www.br-automation.com/iat2015/bindingListTypes/engineering/v2" xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <Bindings>
+	<Bindings>
 
+
+
+
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::BootleFill:MpAxisCartParType.Velocity" attribute="value" />
+<Target xsi:type="brease" contentRefId="serviceContent" widgetRefId="velocitySlider" attribute="value" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::BootleFill:MpAxisConvParType.Position" attribute="value" />
+<Target xsi:type="brease" contentRefId="serviceContent" widgetRefId="conveyorSlider" attribute="value" />
+</Binding>
 </Bindings>
 </BindingsSet>
