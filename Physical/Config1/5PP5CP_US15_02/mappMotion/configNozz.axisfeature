@@ -8,7 +8,7 @@
           <Group ID="Master">
             <Selector ID="ValueSource" Value="SetPosition">
               <Property ID="AxisReference" Value="axisConv" />
-              <Property ID="MaxVelocity" Value="10" />
+              <Property ID="MaxVelocity" Value="50" />
             </Selector>
             <Property ID="StartPosition" Value="0.0" />
             <Selector ID="StartInterval" Value="MasterAxisPeriod" />

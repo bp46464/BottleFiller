@@ -34,6 +34,7 @@ VAR
 	MpRecipeUIConnectType : MpRecipeUIConnectType;*)
 	MpAxisConvParType : MpAxisBasicParType;
 	camSeq : MpAxisCamSequencer;
+	inCam : BOOL;
 	camSeqNozzle : MpAxisCamSequencer;
 	camParameters : MpAxisCamSequencerParType;
 	MpAxisConv : MpAxisBasic;

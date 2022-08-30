@@ -68,11 +68,12 @@ PROGRAM _CYCLIC
 				
 				IF diStart AND MpAxisNozzle.IsHomed AND MpAxisConv.IsHomed AND MpAxisCart.IsHomed AND MpAxisCart.PowerOn AND MpAxisNozzle.PowerOn AND MpAxisConv.PowerOn THEN
 					//power on camSeq
-					camSeq.StartSequence:=1;
-					camSeqNozzle.StartSequence:=1;
+					
 					IF diManual THEN
 						FillerTyp:=SERVICE;
 					ELSE
+						camSeq.StartSequence:=1;
+						camSeqNozzle.StartSequence:=1;
 						FillerTyp:= AUTOMAT;
 					END_IF;
 				END_IF;
@@ -84,18 +85,30 @@ PROGRAM _CYCLIC
 				camSeq.Signal1:=1;
 				camSeqNozzle.Signal1:=1;
 				MpAxisConv.MoveVelocity := (diStart AND NOT diStop);
+				
 			END_IF;
 			
 		SERVICE:
-			IF camSeq.InCam AND camSeqNozzle.InCam THEN
-				
-				camSeq.Signal1:=1;
-				camSeqNozzle.Signal1:=1;
-				
+			//odpalenie cam-ów
+			IF EDGEPOS(inCam) THEN
+				camSeq.StartSequence:=1;
+				camSeqNozzle.StartSequence:=1;
+				IF camSeq.InCam AND camSeqNozzle.InCam THEN
+					camSeq.Signal1:=1;
+					camSeqNozzle.Signal1:=1;
+				END_IF;
 			END_IF;
 			
+			//wy³¹czenie cam-ów
+			IF EDGENEG(inCam) THEN
+				camSeq.StartSequence:=0;
+				camSeqNozzle.StartSequence:=0;
+				camSeq.Signal1:=0;
+				camSeqNozzle.Signal1:=0;	
+			END_IF;
+			
+			//obs³uga zmiany kierunków ruchu urz¹dzeñ przy obs³udze manualnej
 			IF EDGEPOS(MpAxisConv.MoveAbsolute) THEN
-				
 				IF MpAxisConv.Position > MpAxisConvParType.Position THEN
 					MpAxisConvParType.Direction:=mcDIR_NEGATIVE;
 					MpAxisConv.Update:=1;
@@ -106,11 +119,41 @@ PROGRAM _CYCLIC
 			END_IF;
 			
 			
-			IF MpAxisConv.UpdateDone THEN
-				MpAxisConv.Update:=0;
+			
+			//wy³¹czanie ruchu taœmy
+			IF MpAxisConv.Info.JogLimitReached THEN
+				MpAxisConv.JogNegative:=0;
+				MpAxisConv.JogPositive:=0;
 			END_IF;
 			IF MpAxisConv.InPosition THEN
 				MpAxisConv.MoveAbsolute:=0;
+				MpAxisConv.MoveAdditive:=0;
+				MpAxisConv.MoveVelocity:=0;
+			END_IF;
+			//switch update taœmy
+			IF MpAxisConv.UpdateDone THEN
+				MpAxisConv.Update:=0;
+			END_IF;
+			
+			//wy³¹czanie jog-ów karetki po dojechaniu na miejsce
+			IF MpAxisCart.Info.JogLimitReached THEN
+				MpAxisCart.JogNegative:=0;
+				MpAxisCart.JogPositive:=0;
+			END_IF;
+			//switch update karetki
+			IF MpAxisCart.UpdateDone THEN
+				MpAxisCart.Update:=0;
+			END_IF;
+			
+			
+			//wy³¹czanie jog-ów dyszy po dojechaniu na miejsce
+			IF MpAxisNozzle.Info.JogLimitReached THEN
+				MpAxisNozzle.JogNegative:=0;
+				MpAxisNozzle.JogPositive:=0;
+			END_IF;
+			//switch update karetki
+			IF MpAxisNozzle.UpdateDone THEN
+				MpAxisNozzle.Update:=0;
 			END_IF;
 			
 			IF NOT diManual THEN

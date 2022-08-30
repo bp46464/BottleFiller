@@ -13,5 +13,19 @@
 <Source xsi:type="opcUa" refId="::BootleFill:MpAxisConvParType.Position" attribute="value" />
 <Target xsi:type="brease" contentRefId="serviceContent" widgetRefId="conveyorSlider" attribute="value" />
 </Binding>
+
+
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::BootleFill:inCam" attribute="value" />
+<Target xsi:type="brease" contentRefId="serviceContent" widgetRefId="CheckBox1" attribute="value" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::BootleFill:MpAxisNozzleParType.Position" attribute="value" />
+<Target xsi:type="brease" contentRefId="serviceContent" widgetRefId="nozzleSlider" attribute="value" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::BootleFill:MpAxisCartParType.Position" attribute="value" />
+<Target xsi:type="brease" contentRefId="serviceContent" widgetRefId="cartSlider" attribute="value" />
+</Binding>
 </Bindings>
 </BindingsSet>

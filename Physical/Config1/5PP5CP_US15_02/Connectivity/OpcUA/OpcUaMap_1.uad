@@ -92,6 +92,10 @@
         <Variable AclId="4" AclInherit="2" Name="diManual" />
         <Variable Name="MpAxisCart">
           <Variable Name="Position" />
+          <Variable Name="JogPositive" />
+          <Variable Name="JogNegative" />
+          <Variable Name="Update" />
+          <Variable Name="UpdateDone" />
         </Variable>
         <Variable Name="MpAxisConv">
           <Variable Name="Position" />
@@ -99,9 +103,17 @@
           <Variable Name="MoveAbsolute" />
           <Variable Name="UpdateDone" />
           <Variable Name="InPosition" />
+          <Variable Name="JogPositive" />
+          <Variable Name="JogNegative" />
+          <Variable Name="Stop" />
         </Variable>
         <Variable Name="MpAxisNozzle">
           <Variable Name="Position" />
+          <Variable Name="Update" />
+          <Variable Name="UpdateDone" />
+          <Variable Name="Stop" />
+          <Variable Name="JogPositive" />
+          <Variable Name="JogNegative" />
         </Variable>
         <Variable Name="MpAxisCartParType">
           <Variable Name="Position" />
@@ -119,7 +131,10 @@
             <Variable Name="Velocity" />
             <Variable Name="Acceleration" />
             <Variable Name="Deceleration" />
-            <Variable Name="LimitPosition" />
+            <Variable Name="LimitPosition">
+              <Variable Name="FirstPosition" />
+              <Variable Name="LastPosition" />
+            </Variable>
             <Variable Name="Jerk" />
           </Variable>
           <Variable Name="Stop">
@@ -174,7 +189,16 @@
               <Variable Name="SensorOffsetDirection" />
             </Variable>
           </Variable>
-          <Variable Name="Jog" />
+          <Variable Name="Jog">
+            <Variable Name="Velocity" />
+            <Variable Name="Acceleration" />
+            <Variable Name="Deceleration" />
+            <Variable Name="LimitPosition">
+              <Variable Name="FirstPosition" />
+              <Variable Name="LastPosition" />
+            </Variable>
+            <Variable Name="Jerk" />
+          </Variable>
           <Variable Name="Stop" />
           <Variable Name="LimitLoad" />
           <Variable Name="AutoTune" />
@@ -183,6 +207,73 @@
           <Variable Name="Conveyor" />
           <Variable Name="Cart" />
           <Variable Name="Nozzle" />
+        </Variable>
+        <Variable Name="inCam" />
+        <Variable Name="MpAxisNozzleParType">
+          <Variable Name="Position" />
+          <Variable Name="Distance" />
+          <Variable Name="Velocity" />
+          <Variable Name="Acceleration" />
+          <Variable Name="Deceleration" />
+          <Variable Name="Direction" />
+          <Variable Name="Homing">
+            <Variable Name="Mode" />
+            <Variable Name="Position" />
+            <Variable Name="Options">
+              <Variable Name="StartVelocity" />
+              <Variable Name="HomingVelocity" />
+              <Variable Name="Acceleration" />
+              <Variable Name="SwitchEdge" />
+              <Variable Name="StartDirection" />
+              <Variable Name="HomingDirection" />
+              <Variable Name="ReferencePulse" />
+              <Variable Name="KeepDirection" />
+              <Variable Name="ReferencePulseBlockingDistance" />
+              <Variable Name="TorqueLimit" />
+              <Variable Name="BlockDetectionPositionError" />
+              <Variable Name="PositionErrorStopLimit" />
+              <Variable Name="RestorePositionVariableAddress" />
+              <Variable Name="DriveSpecificHoming" />
+              <Variable Name="DriveSpecificHomingMode" />
+              <Variable Name="SensorOffset" />
+              <Variable Name="SensorOffsetDirection" />
+            </Variable>
+          </Variable>
+          <Variable Name="Jog">
+            <Variable Name="Velocity" />
+            <Variable Name="Acceleration" />
+            <Variable Name="Deceleration" />
+            <Variable Name="LimitPosition">
+              <Variable Name="FirstPosition" />
+              <Variable Name="LastPosition" />
+            </Variable>
+            <Variable Name="Jerk" />
+          </Variable>
+          <Variable Name="Stop">
+            <Variable Name="Deceleration" />
+            <Variable Name="Jerk" />
+            <Variable Name="StopAtPosition">
+              <Variable Name="Activate" />
+              <Variable Name="Deceleration" />
+              <Variable Name="Position" />
+            </Variable>
+          </Variable>
+          <Variable Name="LimitLoad">
+            <Variable Name="Load" />
+            <Variable Name="Direction" />
+          </Variable>
+          <Variable Name="AutoTune">
+            <Variable Name="Mode" />
+            <Variable Name="Orientation" />
+            <Variable Name="MaxCurrentPercent" />
+            <Variable Name="MaxDistance" />
+            <Variable Name="MaxPositionError" />
+            <Variable Name="SaveControllerSettings" />
+            <Variable Name="LoopFilterMode" />
+            <Variable Name="Options" />
+            <Variable Name="FeedForward" />
+          </Variable>
+          <Variable Name="Jerk" />
         </Variable>
       </Task>
     </Module>
