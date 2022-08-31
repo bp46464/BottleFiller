@@ -93,9 +93,23 @@ PROGRAM _CYCLIC
 			
 		SERVICE:
 			//odpalenie cam-ów
-			IF EDGEPOS(inCam) THEN
+			IF inCam THEN
 				camSeq.StartSequence:=1;
 				camSeqNozzle.StartSequence:=1;
+				MpAxisCart.Home:=1;
+				IF MpAxisCart.IsHomed THEN
+					MpAxisCart.Home:=0;
+				END_IF;
+				
+				MpAxisConv.Home:=1;
+				IF MpAxisConv.IsHomed THEN
+					MpAxisConv.Home:=0;
+				END_IF;
+				
+				MpAxisNozzle.Home:=1;
+				IF MpAxisNozzle.IsHomed THEN
+					MpAxisNozzle.Home:=0;
+				END_IF;
 				IF camSeq.InCam AND camSeqNozzle.InCam THEN
 					camSeq.Signal1:=1;
 					camSeqNozzle.Signal1:=1;
@@ -103,7 +117,7 @@ PROGRAM _CYCLIC
 			END_IF;
 			
 			//wy³¹czenie cam-ów
-			IF EDGENEG(inCam) THEN
+			IF NOT inCam THEN
 				camSeq.StartSequence:=0;
 				camSeqNozzle.StartSequence:=0;
 				camSeq.Signal1:=0;

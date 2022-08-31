@@ -337,12 +337,19 @@
           </Step>
           <Step order="2">
             <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::BootleFill:MpAxisNozzleParType.Jog.LimitPosition.LastPosition">
+                <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="200" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="3">
+            <Action>
               <Target xsi:type="opcUa.NodeAction" refId="::BootleFill:MpAxisNozzleParType.Jog.Velocity">
                 <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="50" />
               </Target>
             </Action>
           </Step>
-          <Step order="3">
+          <Step order="4">
             <Action>
               <Target xsi:type="opcUa.NodeAction" refId="::BootleFill:MpAxisNozzle.Update">
                 <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
@@ -375,6 +382,28 @@
         <Action>
           <Target xsi:type="opcUa.NodeAction" refId="::BootleFill:MpAxisNozzle.JogNegative">
             <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+          </Target>
+        </Action>
+      </EventHandler>
+    </EventBinding>
+    <EventBinding id="serviceContent.CheckBox1.ValueChanged">
+      <Source xsi:type="widgets.brease.CheckBox.Event" contentRefId="serviceContent" widgetRefId="CheckBox1" event="ValueChanged" />
+      <Operand datatype="BOOL" name="inCamValue">
+        <ReadTarget xsi:type="widgets.brease.CheckBox.ReadAction" contentRefId="serviceContent" widgetRefId="CheckBox1">
+          <Method xsi:type="widgets.brease.CheckBox.Action.GetValueBool" />
+        </ReadTarget>
+      </Operand>
+      <EventHandler condition="newValueBool">
+        <Action>
+          <Target xsi:type="opcUa.NodeAction" refId="::BootleFill:inCam">
+            <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+          </Target>
+        </Action>
+      </EventHandler>
+      <EventHandler condition="NOT newValueBool">
+        <Action>
+          <Target xsi:type="opcUa.NodeAction" refId="::BootleFill:inCam">
+            <Method xsi:type="opcUa.NodeAction.SetValueBool" value="false" />
           </Target>
         </Action>
       </EventHandler>

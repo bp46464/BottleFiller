@@ -18,11 +18,6 @@
         <ACE RoleName="Operator" Access="0x0008" />
         <ACE RoleName="Service" Access="0x01FF" />
       </ACL>
-      <ACL Id="21">
-        <ACE RoleName="Shift Leader" Access="0x01FF" />
-        <ACE RoleName="Operator" Access="0x01FF" />
-        <ACE RoleName="Service" Access="0x0008" />
-      </ACL>
       <ACL Id="29">
         <ACE RoleName="Shift Leader" Access="0x0008" />
         <ACE RoleName="Operator" Access="0x01FF" />
@@ -79,7 +74,7 @@
           <Variable Name="Name" />
           <Variable Name="Index" />
         </Variable>
-        <Variable AclId="21" AclInherit="2" Name="bottleFillerRecipeTyp" AutomaticEnable="True">
+        <Variable AclId="2" AclInherit="2" Name="bottleFillerRecipeTyp" AutomaticEnable="True">
           <Variable Name="diPumpSpeedFlow" />
           <Variable Name="diVelocity" />
           <Variable Name="diSpeedProfile" />
