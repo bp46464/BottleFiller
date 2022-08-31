@@ -12,7 +12,7 @@
         <Widget xsi:type="widgets.brease.NumericOutput" id="NumericOutput4" top="163" left="339" zIndex="6" />
         <Widget xsi:type="widgets.brease.TextOutput" id="TextOutput4" top="143" left="19" width="321" height="77" zIndex="7" breakWord="true" multiLine="true" value="Bottle shape related velocity profile for moving up the nozzle" />
         <Widget xsi:type="widgets.brease.NumericInput" id="NumericInput1" top="23" left="479" zIndex="8" />
-        <Widget xsi:type="widgets.brease.NumericInput" id="NumericInput2" top="63" left="479" zIndex="9" />
+        <Widget xsi:type="widgets.brease.NumericInput" id="NumericInput2" top="63" left="479" zIndex="9" maxValue="300" />
         <Widget xsi:type="widgets.brease.NumericInput" id="NumericInput3" top="103" left="479" zIndex="10" />
         <Widget xsi:type="widgets.brease.NumericInput" id="NumericInput4" top="163" left="479" zIndex="11" />
       </Widgets>

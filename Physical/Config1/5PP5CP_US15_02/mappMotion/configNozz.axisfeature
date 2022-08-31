@@ -8,7 +8,7 @@
           <Group ID="Master">
             <Selector ID="ValueSource" Value="SetPosition">
               <Property ID="AxisReference" Value="axisConv" />
-              <Property ID="MaxVelocity" Value="50" />
+              <Property ID="MaxVelocity" Value="600" />
             </Selector>
             <Property ID="StartPosition" Value="0.0" />
             <Selector ID="StartInterval" Value="MasterAxisPeriod" />
@@ -62,9 +62,9 @@
             <Selector ID="CompensationMode" Value="MasterSlaveAbsolutePosition">
               <Property ID="MasterPosition" Value="90" />
               <Property ID="SlavePosition" Value="200" />
-              <Property ID="MaxSlaveVelocity" Value="30" />
-              <Property ID="MaxSlaveAcceleration1" Value="30" />
-              <Property ID="MaxSlaveAcceleration2" Value="0.0" />
+              <Property ID="MaxSlaveVelocity" Value="1000" />
+              <Property ID="MaxSlaveAcceleration1" Value="2000" />
+              <Property ID="MaxSlaveAcceleration2" Value="2250" />
               <Selector ID="AdvancedParameters" Value="NotUsed" />
             </Selector>
             <Group ID="AdvancedParameters">

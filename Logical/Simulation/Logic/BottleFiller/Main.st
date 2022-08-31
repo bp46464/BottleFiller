@@ -85,6 +85,9 @@ PROGRAM _CYCLIC
 				camSeq.Signal1:=1;
 				camSeqNozzle.Signal1:=1;
 				MpAxisConv.MoveVelocity := (diStart AND NOT diStop);
+				IF MpAxisConv.UpdateDone THEN
+					MpAxisConv.Update:=0;
+				END_IF;
 				
 			END_IF;
 			

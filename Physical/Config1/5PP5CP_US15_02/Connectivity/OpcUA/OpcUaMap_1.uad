@@ -31,26 +31,6 @@
     </ACLAliases>
     <EURangeViolationAliases />
     <EURangesAliases>
-      <EURanges Id="2">
-        <EURange>
-          <Low ValueProvider="Const">0</Low>
-          <High ValueProvider="Const">50</High>
-        </EURange>
-        <EURange Priority="1" RoleName="Operator">
-          <Low ValueProvider="Const">0</Low>
-          <High ValueProvider="Const">100</High>
-        </EURange>
-      </EURanges>
-      <EURanges Id="3">
-        <EURange>
-          <Low ValueProvider="Const">50</Low>
-          <High ValueProvider="Const">400</High>
-        </EURange>
-        <EURange Priority="1" RoleName="Operator">
-          <Low ValueProvider="Const">0</Low>
-          <High ValueProvider="Const">600</High>
-        </EURange>
-      </EURanges>
       <EURanges Id="4">
         <EURange>
           <Low ValueProvider="Const">0</Low>
@@ -58,15 +38,35 @@
         </EURange>
         <EURange Priority="1" RoleName="Service">
           <Low ValueProvider="Const">0</Low>
-          <High ValueProvider="Const">60</High>
+          <High ValueProvider="Const">800</High>
         </EURange>
         <EURange Priority="2" RoleName="Shift Leader">
           <Low ValueProvider="Const">0</Low>
-          <High ValueProvider="Const">30</High>
+          <High ValueProvider="Const">700</High>
         </EURange>
         <EURange Priority="3" RoleName="Operator">
           <Low ValueProvider="Const">0</Low>
-          <High ValueProvider="Const">30</High>
+          <High ValueProvider="Const">700</High>
+        </EURange>
+      </EURanges>
+      <EURanges Id="5">
+        <EURange>
+          <Low ValueProvider="Const">0</Low>
+          <High ValueProvider="Const">1000</High>
+        </EURange>
+        <EURange Priority="1" RoleName="Operator">
+          <Low ValueProvider="Const">0</Low>
+          <High ValueProvider="Const">1200</High>
+        </EURange>
+      </EURanges>
+      <EURanges Id="6">
+        <EURange>
+          <Low ValueProvider="Const">50</Low>
+          <High ValueProvider="Const">1500</High>
+        </EURange>
+        <EURange Priority="1" RoleName="Operator">
+          <Low ValueProvider="Const">0</Low>
+          <High ValueProvider="Const">1600</High>
         </EURange>
       </EURanges>
     </EURangesAliases>
@@ -119,8 +119,8 @@
           <Variable Name="Position" />
           <Variable Name="Distance" />
           <Variable Name="Velocity" EURangesId="4" />
-          <Variable Name="Acceleration" EURangesId="2" />
-          <Variable Name="Deceleration" EURangesId="3" />
+          <Variable Name="Acceleration" EURangesId="5" />
+          <Variable Name="Deceleration" EURangesId="6" />
           <Variable Name="Direction" />
           <Variable Name="Homing">
             <Variable Name="Mode" />

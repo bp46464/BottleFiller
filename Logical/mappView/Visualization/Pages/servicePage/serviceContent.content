@@ -4,7 +4,7 @@
     <Widget xsi:type="widgets.brease.Button" id="Button1" top="100" left="180" width="200" zIndex="0" text="Enable manual control" />
     <Widget xsi:type="widgets.brease.Button" id="Button2" top="140" left="180" width="200" zIndex="1" text="Disable manual control" />
     <Widget xsi:type="widgets.brease.BasicSlider" id="conveyorSlider" top="240" left="580" width="480" zIndex="2" largeChange="1" maxValue="5000" showUnit="true" showValueDisplay="true" />
-    <Widget xsi:type="widgets.brease.BasicSlider" id="velocitySlider" top="100" left="580" width="480" zIndex="3" maxValue="60" minValue="5" showUnit="true" showValueDisplay="true" />
+    <Widget xsi:type="widgets.brease.BasicSlider" id="velocitySlider" top="100" left="580" width="480" zIndex="3" maxValue="600" minValue="5" showUnit="true" showValueDisplay="true" />
     <Widget xsi:type="widgets.brease.Button" id="Button3" top="260" left="180" width="140" zIndex="4" text="Move in cam" />
     <Widget xsi:type="widgets.brease.Button" id="Button4" top="300" left="180" width="140" zIndex="5" text="Stop in cam" />
     <Widget xsi:type="widgets.brease.Label" id="Label1" top="80" left="760" width="500" zIndex="6" text="Velocity" />
