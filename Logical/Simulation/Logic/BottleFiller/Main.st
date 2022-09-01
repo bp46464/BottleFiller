@@ -94,30 +94,63 @@ PROGRAM _CYCLIC
 		SERVICE:
 			//odpalenie cam-ów
 			IF inCam THEN
-				camSeq.StartSequence:=1;
-				camSeqNozzle.StartSequence:=1;
-				MpAxisCart.Home:=1;
-				IF MpAxisCart.IsHomed THEN
-					MpAxisCart.Home:=0;
+				IF changedPosition THEN
+					
+					MpAxisCartParType.Homing.Mode:=141;
+					MpAxisCartParType.Homing.Options.HomingVelocity:=50;
+					MpAxisCart.Update:=1;
+					
+					
+					MpAxisConvParType.Homing.Mode:=141;
+					MpAxisConvParType.Homing.Options.HomingVelocity:=50;
+					MpAxisConv.Update:=1;
+					
+					
+					
+					MpAxisNozzleParType.Homing.Mode:=141;
+					MpAxisNozzleParType.Homing.Options.HomingVelocity:=50;
+					MpAxisNozzle.Update:=1;
+					
+					IF MpAxisCart.UpdateDone THEN
+						MpAxisCart.Home:=1;
+						MpAxisCart.Update:=0;
+					END_IF;
+					IF MpAxisConv.UpdateDone THEN
+						MpAxisConv.Home:=1;
+						
+						MpAxisConv.Update:=0;
+					END_IF;
+					IF MpAxisNozzle.UpdateDone THEN
+						MpAxisNozzle.Home:=1;
+						
+						MpAxisNozzle.Update:=0;
+					END_IF;
+					changedPosition:=0;
 				END_IF;
 				
-				MpAxisConv.Home:=1;
-				IF MpAxisConv.IsHomed THEN
-					MpAxisConv.Home:=0;
-				END_IF;
-				
-				MpAxisNozzle.Home:=1;
-				IF MpAxisNozzle.IsHomed THEN
-					MpAxisNozzle.Home:=0;
-				END_IF;
 				IF camSeq.InCam AND camSeqNozzle.InCam THEN
 					camSeq.Signal1:=1;
-					camSeqNozzle.Signal1:=1;
+					camSeqNozzle.Signal1:=1;			
 				END_IF;
+				
+				IF camSeq.Signal1 AND camSeqNozzle.Signal1 THEN
+					
+					IF MpAxisConv.InPosition THEN
+						MpAxisConv.MoveAbsolute:=0;
+						MpAxisConv.MoveAdditive:=0;
+						MpAxisConv.MoveVelocity:=0;
+					END_IF;
+					//switch update taœmy
+					
+					IF MpAxisConv.UpdateDone THEN
+						MpAxisConv.Update:=0;
+					END_IF;
+				END_IF;
+					
 			END_IF;
 			
 			//wy³¹czenie cam-ów
-			IF NOT inCam THEN
+			IF EDGENEG(inCam) THEN
 				camSeq.StartSequence:=0;
 				camSeqNozzle.StartSequence:=0;
 				camSeq.Signal1:=0;
@@ -141,11 +174,6 @@ PROGRAM _CYCLIC
 			IF MpAxisConv.Info.JogLimitReached THEN
 				MpAxisConv.JogNegative:=0;
 				MpAxisConv.JogPositive:=0;
-			END_IF;
-			IF MpAxisConv.InPosition THEN
-				MpAxisConv.MoveAbsolute:=0;
-				MpAxisConv.MoveAdditive:=0;
-				MpAxisConv.MoveVelocity:=0;
 			END_IF;
 			//switch update taœmy
 			IF MpAxisConv.UpdateDone THEN

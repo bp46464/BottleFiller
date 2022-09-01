@@ -44,11 +44,29 @@
         </ReadTarget>
       </Operand>
       <EventHandler condition="inCam">
-        <Action>
-          <Target xsi:type="opcUa.NodeAction" refId="::BootleFill:MpAxisConvParType.Position">
-            <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=convPosiotion" />
-          </Target>
-        </Action>
+        <Sequence>
+          <Step order="0">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::BootleFill:MpAxisConvParType.Position">
+                <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=convPosition" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="1">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::BootleFill:MpAxisConvParType.Direction">
+                <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="3" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="2">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::BootleFill:MpAxisConv.Update">
+                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+              </Target>
+            </Action>
+          </Step>
+        </Sequence>
       </EventHandler>
       <EventHandler condition="(NOT inCam) AND ( currentPosition &gt; convPosition )">
         <Sequence>
@@ -61,12 +79,19 @@
           </Step>
           <Step order="1">
             <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::BootleFill:MpAxisConvParType.Jog.LimitPosition.LastPosition">
+                <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="5000" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="2">
+            <Action>
               <Target xsi:type="opcUa.NodeAction" refId="::BootleFill:MpAxisConvParType.Jog.Velocity">
                 <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="50" />
               </Target>
             </Action>
           </Step>
-          <Step order="2">
+          <Step order="3">
             <Action>
               <Target xsi:type="opcUa.NodeAction" refId="::BootleFill:MpAxisConv.Update">
                 <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
@@ -135,17 +160,23 @@
           <Method xsi:type="widgets.brease.BasicSlider.Action.GetValue" />
         </ReadTarget>
       </Operand>
-      <Operand datatype="BOOL" name="updateDone">
-        <ReadTarget xsi:type="opcUa.NodeAction.Read" refId="::BootleFill:MpAxisConv.UpdateDone">
-          <Method xsi:type="opcUa.NodeAction.GetValue" />
-        </ReadTarget>
-      </Operand>
       <EventHandler>
-        <Action>
-          <Target xsi:type="opcUa.NodeAction" refId="::BootleFill:MpAxisConvParType.Velocity">
-            <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=updateVelocity" />
-          </Target>
-        </Action>
+        <Sequence>
+          <Step order="0">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::BootleFill:MpAxisConvParType.Velocity">
+                <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=updateVelocity" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="1">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::BootleFill:MpAxisConv.Update">
+                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+              </Target>
+            </Action>
+          </Step>
+        </Sequence>
       </EventHandler>
     </EventBinding>
     <EventBinding id="serviceContent.Button3.Click">
@@ -165,9 +196,9 @@
           <Method xsi:type="opcUa.NodeAction.GetValue" />
         </ReadTarget>
       </Operand>
-      <Operand datatype="ANY_REAL" name="changePosition">
-        <ReadTarget xsi:type="opcUa.NodeAction.Read" refId="::BootleFill:MpAxisConvParType.Position">
-          <Method xsi:type="opcUa.NodeAction.GetValue" />
+      <Operand datatype="ANY_REAL" name="inCamConvPosition">
+        <ReadTarget xsi:type="widgets.brease.BasicSlider.ReadAction" contentRefId="serviceContent" widgetRefId="conveyorSlider">
+          <Method xsi:type="widgets.brease.BasicSlider.Action.GetValue" />
         </ReadTarget>
       </Operand>
       <EventHandler condition="">
@@ -182,6 +213,13 @@
           <Step order="1">
             <Action>
               <Target xsi:type="opcUa.NodeAction" refId="::BootleFill:MpAxisConv.MoveAbsolute">
+                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="2">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::BootleFill:changedPosition">
                 <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
               </Target>
             </Action>
@@ -247,12 +285,19 @@
           </Step>
           <Step order="2">
             <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::BootleFill:MpAxisCartParType.Jog.LimitPosition.LastPosition">
+                <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="1100" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="3">
+            <Action>
               <Target xsi:type="opcUa.NodeAction" refId="::BootleFill:MpAxisCartParType.Jog.Velocity">
                 <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="50" />
               </Target>
             </Action>
           </Step>
-          <Step order="3">
+          <Step order="4">
             <Action>
               <Target xsi:type="opcUa.NodeAction" refId="::BootleFill:MpAxisCart.Update">
                 <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
@@ -275,18 +320,40 @@
         </ReadTarget>
       </Operand>
       <EventHandler condition="currentPosition &lt; newPosition">
-        <Action>
-          <Target xsi:type="opcUa.NodeAction" refId="::BootleFill:MpAxisCart.JogPositive">
-            <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
-          </Target>
-        </Action>
+        <Sequence>
+          <Step order="0">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::BootleFill:MpAxisCart.JogPositive">
+                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="1">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::BootleFill:changedPosition">
+                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+              </Target>
+            </Action>
+          </Step>
+        </Sequence>
       </EventHandler>
       <EventHandler condition="currentPosition &gt; newPosition">
-        <Action>
-          <Target xsi:type="opcUa.NodeAction" refId="::BootleFill:MpAxisCart.JogNegative">
-            <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
-          </Target>
-        </Action>
+        <Sequence>
+          <Step order="0">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::BootleFill:MpAxisCart.JogNegative">
+                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="1">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::BootleFill:changedPosition">
+                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+              </Target>
+            </Action>
+          </Step>
+        </Sequence>
       </EventHandler>
     </EventBinding>
     <EventBinding id="serviceContent.nozzleSlider.ValueChanged">
@@ -372,18 +439,40 @@
         </ReadTarget>
       </Operand>
       <EventHandler condition="currentPosition &lt; newPosition">
-        <Action>
-          <Target xsi:type="opcUa.NodeAction" refId="::BootleFill:MpAxisNozzle.JogPositive">
-            <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
-          </Target>
-        </Action>
+        <Sequence>
+          <Step order="0">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::BootleFill:MpAxisNozzle.JogPositive">
+                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="1">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::BootleFill:changedPosition">
+                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+              </Target>
+            </Action>
+          </Step>
+        </Sequence>
       </EventHandler>
       <EventHandler condition="currentPosition &gt; newPosition">
-        <Action>
-          <Target xsi:type="opcUa.NodeAction" refId="::BootleFill:MpAxisNozzle.JogNegative">
-            <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
-          </Target>
-        </Action>
+        <Sequence>
+          <Step order="0">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::BootleFill:MpAxisNozzle.JogNegative">
+                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="1">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::BootleFill:changedPosition">
+                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+              </Target>
+            </Action>
+          </Step>
+        </Sequence>
       </EventHandler>
     </EventBinding>
     <EventBinding id="serviceContent.CheckBox1.ValueChanged">

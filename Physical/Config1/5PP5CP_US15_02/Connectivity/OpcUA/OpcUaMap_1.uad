@@ -270,6 +270,7 @@
           </Variable>
           <Variable Name="Jerk" />
         </Variable>
+        <Variable Name="changedPosition" />
       </Task>
     </Module>
   </DefaultView>

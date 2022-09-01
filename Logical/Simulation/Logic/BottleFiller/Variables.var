@@ -41,6 +41,7 @@ VAR
 	MpAxisCart : MpAxisBasic;
 	MpAxisNozzle : MpAxisBasic;
 	SimulationAxisPosition : SimulationAxisPositionEnum;
+	changedPosition : BOOL;
 	MpAxisCartParType : MpAxisBasicParType;
 	MpAxisNozzleParType : MpAxisBasicParType;
 END_VAR
