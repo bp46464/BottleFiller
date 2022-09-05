@@ -1,0 +1,30 @@
+(*Axises*)
+VAR
+	MpAxisConv : MpAxisBasic;
+	MpAxisCart : MpAxisBasic;
+	MpAxisNozzle : MpAxisBasic;
+END_VAR
+(*Axis Parameters*)
+VAR
+	MpAxisCartParType : MpAxisBasicParType;
+	MpAxisNozzleParType : MpAxisBasicParType;
+	MpAxisConvParType : MpAxisBasicParType;
+END_VAR
+(*Cam Variables*)
+VAR
+	camSeq : MpAxisCamSequencer;
+	camSeqNozzle : MpAxisCamSequencer;
+	camParameters : MpAxisCamSequencerParType;
+END_VAR
+(*Other Variables*)
+VAR
+	axisCase : axisCaseEnum;
+	needUpdate : BOOL := FALSE;
+	homed : BOOL := FALSE; (*defines if all the axises are homed*)
+END_VAR
+(*global used variables*)
+VAR
+	axisMgmt : axisesManagementType;
+	controlInfo : InfosTyp;
+	BF_MGMT : managementTyp;
+END_VAR

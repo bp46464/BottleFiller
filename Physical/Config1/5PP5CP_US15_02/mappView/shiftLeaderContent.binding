@@ -41,8 +41,9 @@
 </Binding>
 
 
+
 <Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::BootleFill:MpAxisConvParType.Velocity" attribute="value" />
+<Source xsi:type="opcUa" refId="::AsGlobalPV:gAxisUpdate.Conveyor.Velocity" attribute="value" />
 <Target xsi:type="brease" contentRefId="shiftLeaderContent" widgetRefId="NumericOutput2" attribute="value" />
 </Binding>
 </Bindings>

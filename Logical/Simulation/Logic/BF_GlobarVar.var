@@ -1,0 +1,4 @@
+VAR
+	gControl : gControlTyp;
+	gAxisUpdate : axisUpdateParType;
+END_VAR

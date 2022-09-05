@@ -2,9 +2,13 @@
 <?AutomationStudio FileVersion="4.9"?>
 <Package xmlns="http://br-automation.co.at/AS/Package">
   <Objects>
+    <Object Type="File" Private="true">BF_GlobarVar.var</Object>
+    <Object Type="File" Private="true">BF_GlobalTyp.typ</Object>
     <Object Type="File" Description="Global data types">GlobalRobVis.typ</Object>
     <Object Type="File" Description="Global variables">GlobalRobVis.var</Object>
     <Object Type="Program" Language="IEC">RobVis</Object>
-    <Object Type="Program" Language="IEC">BottleFiller</Object>
+    <Object Type="Program" Language="IEC">BF_Main</Object>
+    <Object Type="Program" Language="IEC">BF_Work</Object>
+    <Object Type="Program" Language="IEC">BF_Axis</Object>
   </Objects>
 </Package>

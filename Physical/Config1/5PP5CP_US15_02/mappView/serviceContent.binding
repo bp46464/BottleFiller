@@ -5,27 +5,31 @@
 
 
 
-<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::BootleFill:MpAxisCartParType.Velocity" attribute="value" />
-<Target xsi:type="brease" contentRefId="serviceContent" widgetRefId="velocitySlider" attribute="value" />
-</Binding>
-<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::BootleFill:MpAxisConvParType.Position" attribute="value" />
-<Target xsi:type="brease" contentRefId="serviceContent" widgetRefId="conveyorSlider" attribute="value" />
-</Binding>
+
+
 
 
 <Binding mode="twoWay">
 <Source xsi:type="opcUa" refId="::BootleFill:inCam" attribute="value" />
 <Target xsi:type="brease" contentRefId="serviceContent" widgetRefId="CheckBox1" attribute="value" />
 </Binding>
+
+
 <Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::BootleFill:MpAxisNozzleParType.Position" attribute="value" />
-<Target xsi:type="brease" contentRefId="serviceContent" widgetRefId="nozzleSlider" attribute="value" />
+<Source xsi:type="opcUa" refId="::AsGlobalPV:gAxisUpdate.Conveyor.Velocity" attribute="value" />
+<Target xsi:type="brease" contentRefId="serviceContent" widgetRefId="velocitySlider" attribute="value" />
 </Binding>
 <Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::BootleFill:MpAxisCartParType.Position" attribute="value" />
+<Source xsi:type="opcUa" refId="::AsGlobalPV:gAxisUpdate.Conveyor.Position" attribute="value" />
+<Target xsi:type="brease" contentRefId="serviceContent" widgetRefId="conveyorSlider" attribute="value" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::AsGlobalPV:gAxisUpdate.Cart.Position" attribute="value" />
 <Target xsi:type="brease" contentRefId="serviceContent" widgetRefId="cartSlider" attribute="value" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::AsGlobalPV:gAxisUpdate.Nozzle.Position" attribute="value" />
+<Target xsi:type="brease" contentRefId="serviceContent" widgetRefId="nozzleSlider" attribute="value" />
 </Binding>
 </Bindings>
 </BindingsSet>

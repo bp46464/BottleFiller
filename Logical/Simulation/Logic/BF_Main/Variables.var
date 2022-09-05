@@ -32,16 +32,7 @@ VAR
 	MpBFRecipeRegPar : MpRecipeRegPar; (*MpBFRecipeHMI : MpRecipeUI;
 	UISetup : MpRecipeUISetupType;
 	MpRecipeUIConnectType : MpRecipeUIConnectType;*)
-	MpAxisConvParType : MpAxisBasicParType;
-	camSeq : MpAxisCamSequencer;
 	inCam : BOOL;
-	camSeqNozzle : MpAxisCamSequencer;
-	camParameters : MpAxisCamSequencerParType;
-	MpAxisConv : MpAxisBasic;
-	MpAxisCart : MpAxisBasic;
-	MpAxisNozzle : MpAxisBasic;
 	SimulationAxisPosition : SimulationAxisPositionEnum;
 	changedPosition : BOOL;
-	MpAxisCartParType : MpAxisBasicParType;
-	MpAxisNozzleParType : MpAxisBasicParType;
 END_VAR
