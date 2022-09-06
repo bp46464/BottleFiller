@@ -71,16 +71,41 @@
     <Module Name="&lt;Default&gt;">
       <GlobalVariables Name="Global Variables">
         <Variable Name="gControl">
-          <Variable Name="errorReset" />
+          <Variable Name="Conveyor">
+            <Variable Name="power" />
+            <Variable Name="errorReset" />
+            <Variable Name="home" />
+            <Variable Name="jogNegative" />
+            <Variable Name="jogPositive" />
+            <Variable Name="stop" />
+            <Variable Name="moveVelocity" />
+          </Variable>
+          <Variable Name="Cart">
+            <Variable Name="power" />
+            <Variable Name="errorReset" />
+            <Variable Name="home" />
+            <Variable Name="jogNegative" />
+            <Variable Name="jogPositive" />
+            <Variable Name="stop" />
+            <Variable Name="moveVelocity" />
+          </Variable>
+          <Variable Name="Nozzle">
+            <Variable Name="power" />
+            <Variable Name="errorReset" />
+            <Variable Name="home" />
+            <Variable Name="jogNegative" />
+            <Variable Name="jogPositive" />
+            <Variable Name="stop" />
+            <Variable Name="moveVelocity" />
+          </Variable>
           <Variable Name="start" />
-          <Variable Name="home" />
-          <Variable Name="jogNegative" />
-          <Variable Name="jogPositive" />
           <Variable Name="stop" />
-          <Variable Name="moveAbsolute" />
           <Variable Name="manual" />
-          <Variable Name="needUpdate" />
           <Variable Name="inCam" />
+          <Variable Name="needUpdate" />
+          <Variable Name="power" />
+          <Variable Name="moveVelocity" />
+          <Variable Name="disconnect" />
         </Variable>
         <Variable Name="gMachineInterface">
           <Variable Name="DigitalInputs">
@@ -98,9 +123,6 @@
             <Variable Name="Position" />
             <Variable Name="Homing" />
             <Variable Name="Direction" />
-            <Variable Name="JogN" />
-            <Variable Name="JogP" />
-            <Variable Name="Update" />
           </Variable>
           <Variable Name="Cart">
             <Variable Name="Velocity" />
@@ -109,9 +131,6 @@
             <Variable Name="Position" />
             <Variable Name="Homing" />
             <Variable Name="Direction" />
-            <Variable Name="JogN" />
-            <Variable Name="JogP" />
-            <Variable Name="Update" />
           </Variable>
           <Variable Name="Nozzle">
             <Variable Name="Velocity" />
@@ -120,9 +139,29 @@
             <Variable Name="Position" />
             <Variable Name="Homing" />
             <Variable Name="Direction" />
-            <Variable Name="JogN" />
-            <Variable Name="JogP" />
-            <Variable Name="Update" />
+          </Variable>
+        </Variable>
+        <Variable Name="gAxisOutputs">
+          <Variable Name="Conveyor">
+            <Variable Name="error" />
+            <Variable Name="isPowered" />
+            <Variable Name="isHomed" />
+            <Variable Name="position" />
+            <Variable Name="velocity" />
+          </Variable>
+          <Variable Name="Cart">
+            <Variable Name="error" />
+            <Variable Name="isPowered" />
+            <Variable Name="isHomed" />
+            <Variable Name="position" />
+            <Variable Name="velocity" />
+          </Variable>
+          <Variable Name="Nozzle">
+            <Variable Name="error" />
+            <Variable Name="isPowered" />
+            <Variable Name="isHomed" />
+            <Variable Name="position" />
+            <Variable Name="velocity" />
           </Variable>
         </Variable>
       </GlobalVariables>
@@ -151,7 +190,6 @@
         <Variable Name="changedPosition" />
       </Task>
       <Task Name="BF_Axis">
-        <Variable Name="axisCase" />
         <Variable Name="axisMgmt" />
         <Variable Name="camParameters" />
         <Variable Name="camSeq" />
@@ -164,32 +202,6 @@
         <Variable Name="MpAxisNozzle" />
         <Variable Name="MpAxisNozzleParType" />
         <Variable Name="needUpdate" />
-        <Variable Name="BF_MGMT">
-          <Variable Name="Conveyor">
-            <Variable Name="errorReset" />
-            <Variable Name="start" />
-            <Variable Name="home" />
-            <Variable Name="jogNegative" />
-            <Variable Name="jogPositive" />
-            <Variable Name="stop" />
-          </Variable>
-          <Variable Name="Cart">
-            <Variable Name="errorReset" />
-            <Variable Name="start" />
-            <Variable Name="home" />
-            <Variable Name="jogNegative" />
-            <Variable Name="jogPositive" />
-            <Variable Name="stop" />
-          </Variable>
-          <Variable Name="Nozzle">
-            <Variable Name="errorReset" />
-            <Variable Name="start" />
-            <Variable Name="home" />
-            <Variable Name="jogNegative" />
-            <Variable Name="jogPositive" />
-            <Variable Name="stop" />
-          </Variable>
-        </Variable>
         <Variable Name="controlInfo">
           <Variable Name="Conveyor">
             <Variable Name="error" />

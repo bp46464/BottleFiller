@@ -15,7 +15,7 @@
       <Source xsi:type="widgets.brease.Button.Event" contentRefId="operatorContent" widgetRefId="Button4" event="Click" />
       <EventHandler>
         <Action>
-          <Target xsi:type="opcUa.NodeAction" refId="::BootleFill:diPowerSwitch">
+          <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.power">
             <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
           </Target>
         </Action>
@@ -27,14 +27,14 @@
         <Sequence>
           <Step order="0">
             <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::BootleFill:diStop">
+              <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.stop">
                 <Method xsi:type="opcUa.NodeAction.SetValueBool" value="false" />
               </Target>
             </Action>
           </Step>
           <Step order="1">
             <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::BootleFill:diStart">
+              <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.start">
                 <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
               </Target>
             </Action>
@@ -48,14 +48,14 @@
         <Sequence>
           <Step order="1">
             <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::BootleFill:diStart">
+              <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.start">
                 <Method xsi:type="opcUa.NodeAction.SetValueBool" value="false" />
               </Target>
             </Action>
           </Step>
           <Step order="2">
             <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::BootleFill:diStop">
+              <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.stop">
                 <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
               </Target>
             </Action>
@@ -67,7 +67,7 @@
       <Source xsi:type="widgets.brease.Button.Event" contentRefId="operatorContent" widgetRefId="Button6" event="Click" />
       <EventHandler>
         <Action>
-          <Target xsi:type="opcUa.NodeAction" refId="::BootleFill:diPowerSwitch">
+          <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.power">
             <Method xsi:type="opcUa.NodeAction.SetValueBool" value="false" />
           </Target>
         </Action>

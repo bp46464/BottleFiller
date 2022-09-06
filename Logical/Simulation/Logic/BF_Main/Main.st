@@ -20,24 +20,70 @@ PROGRAM _CYCLIC
 
 	
 	
-//	SimulationAxisPosition.Cart := LREAL_TO_REAL(MpAxisCart.Position);
-//	SimulationAxisPosition.Conveyor := LREAL_TO_REAL(MpAxisConv.Position);
-//	SimulationAxisPosition.Nozzle := LREAL_TO_REAL(MpAxisNozzle.Position);
-//	gAdrAxesPositions := ADR(SimulationAxisPosition);
+	SimulationAxisPosition.Cart := LREAL_TO_REAL(gAxisOutputs.Cart.position);
+	SimulationAxisPosition.Conveyor := LREAL_TO_REAL(gAxisOutputs.Conveyor.position);
+	SimulationAxisPosition.Nozzle := LREAL_TO_REAL(gAxisOutputs.Nozzle.position);
+	gAdrAxesPositions := ADR(SimulationAxisPosition);
 	//MpBFRecipeHMI();
 	CASE FillerTyp OF
 		DISABLED: 
 			diStart:=0;
 			diStop:=0;
 			
-			IF diPowerSwitch THEN
+			IF gControl.power THEN
 				FillerTyp:=INIT;
 			END_IF;
 			
 		INIT:
+			gAxisCase:=POWERED;
 			
+			IF gMainAction.powered THEN
+				gAxisCase:=HOMING;
+			END_IF;
+			
+			IF gMainAction.powered AND gMainAction.homed THEN
+				gAxisCase:=STANDSTILL;
+			END_IF;
+			
+			IF gMainAction.powered AND gMainAction.homed AND gControl.start AND NOT gControl.manual THEN
+				gAxisCase:=CONNECT;
+				IF gMainAction.connected THEN
+					gAxisCase:=onMOVE;
+					gFillerTyp:=AUTOMAT;
+				END_IF;	
+			END_IF;
+			
+			IF gMainAction.powered AND gMainAction.homed AND gControl.start AND gControl.manual THEN
+				gAxisCase:=onMOVE;
+				gFillerTyp:=MANUAL;
+				FillerTyp:=WORK;
+			END_IF;
+			
+			
+		WORK:
+			gMainAction.homed:=0;
+			
+			IF gControl.inCam THEN
+				gAxisCase:=CONNECT;
+				IF gMainAction.connected THEN
+					gAxisCase:=onMOVE;
+				END_IF;
+			END_IF;
+			
+			IF gControl.disconnect THEN
+				gControl.inCam:=0;
+				gAxisCase:=DISCONNECT;
+				IF gMainAction.disconnected THEN
+					gAxisCase:=HOMING; //<------------------------------
+					IF gMainAction.homed THEN
+						gAxisCase:=onMOVE;
+					END_IF;
 					
-		AUTOMAT:
+				END_IF;
+			END_IF;
+			
+			
+		//AUTOMAT:
 //			IF camSeq.InCam AND camSeqNozzle.InCam THEN
 //				
 //				camSeq.Signal1:=1;
@@ -49,7 +95,7 @@ PROGRAM _CYCLIC
 //				
 //			END_IF;
 			
-		SERVICE:
+		//SERVICE:
 			//odpalenie cam-ów
 //			IF inCam THEN
 //				IF changedPosition THEN

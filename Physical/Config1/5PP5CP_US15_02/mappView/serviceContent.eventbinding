@@ -29,17 +29,12 @@
         </ReadTarget>
       </Operand>
       <Operand datatype="ANY_REAL" name="currentPosition">
-        <ReadTarget xsi:type="opcUa.NodeAction.Read" refId="::BootleFill:MpAxisConv.Position">
+        <ReadTarget xsi:type="opcUa.NodeAction.Read" refId="::AsGlobalPV:gAxisOutputs.Conveyor.position">
           <Method xsi:type="opcUa.NodeAction.GetValue" />
         </ReadTarget>
       </Operand>
       <Operand datatype="BOOL" name="inCam">
-        <ReadTarget xsi:type="opcUa.NodeAction.Read" refId="::BootleFill:inCam">
-          <Method xsi:type="opcUa.NodeAction.GetValue" />
-        </ReadTarget>
-      </Operand>
-      <Operand datatype="BOOL" name="inPosition">
-        <ReadTarget xsi:type="opcUa.NodeAction.Read" refId="::BootleFill:MpAxisConv.InPosition">
+        <ReadTarget xsi:type="opcUa.NodeAction.Read" refId="::AsGlobalPV:gControl.inCam">
           <Method xsi:type="opcUa.NodeAction.GetValue" />
         </ReadTarget>
       </Operand>
@@ -104,21 +99,21 @@
         <Sequence>
           <Step order="0">
             <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::BootleFill:MpAxisConvParType.Jog.LimitPosition.LastPosition">
+              <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gAxisUpdate.Conveyor.LastPosition">
                 <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=convPosition" />
               </Target>
             </Action>
           </Step>
           <Step order="1">
             <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::BootleFill:MpAxisConvParType.Jog.Velocity">
+              <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gAxisUpdate.Conveyor.Velocity">
                 <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="50" />
               </Target>
             </Action>
           </Step>
           <Step order="2">
             <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::BootleFill:MpAxisConv.Update">
+              <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.needUpdate">
                 <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
               </Target>
             </Action>
@@ -134,20 +129,20 @@
         </ReadTarget>
       </Operand>
       <Operand datatype="ANY_REAL" name="currentPosition">
-        <ReadTarget xsi:type="opcUa.NodeAction.Read" refId="::BootleFill:MpAxisConv.Position">
+        <ReadTarget xsi:type="opcUa.NodeAction.Read" refId="::AsGlobalPV:gAxisOutputs.Conveyor.position">
           <Method xsi:type="opcUa.NodeAction.GetValue" />
         </ReadTarget>
       </Operand>
       <EventHandler condition="currentPosition &lt; newPosition">
         <Action>
-          <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gAxisUpdate.Conveyor.JogP">
+          <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.Conveyor.jogPositive">
             <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
           </Target>
         </Action>
       </EventHandler>
       <EventHandler condition="currentPosition &gt; newPosition">
         <Action>
-          <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gAxisUpdate.Conveyor.JogN">
+          <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.Conveyor.jogNegative">
             <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
           </Target>
         </Action>
@@ -181,18 +176,8 @@
     </EventBinding>
     <EventBinding id="serviceContent.Button3.Click">
       <Source xsi:type="widgets.brease.Button.Event" contentRefId="serviceContent" widgetRefId="Button3" event="Click" />
-      <Operand datatype="BOOL" name="updateDone">
-        <ReadTarget xsi:type="opcUa.NodeAction.Read" refId="::BootleFill:MpAxisConv.Update">
-          <Method xsi:type="opcUa.NodeAction.GetValue" />
-        </ReadTarget>
-      </Operand>
-      <Operand datatype="BOOL" name="onMove">
-        <ReadTarget xsi:type="opcUa.NodeAction.Read" refId="::BootleFill:MpAxisConv.MoveAbsolute">
-          <Method xsi:type="opcUa.NodeAction.GetValue" />
-        </ReadTarget>
-      </Operand>
       <Operand datatype="ANY_REAL" name="currentPosition">
-        <ReadTarget xsi:type="opcUa.NodeAction.Read" refId="::BootleFill:MpAxisConv.Position">
+        <ReadTarget xsi:type="opcUa.NodeAction.Read" refId="::AsGlobalPV:gAxisOutputs.Conveyor.position">
           <Method xsi:type="opcUa.NodeAction.GetValue" />
         </ReadTarget>
       </Operand>
@@ -201,9 +186,16 @@
           <Method xsi:type="widgets.brease.BasicSlider.Action.GetValue" />
         </ReadTarget>
       </Operand>
-      <EventHandler condition="">
+      <EventHandler condition="currentPosition &lt; inCamConvPosition">
         <Action>
-          <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.moveAbsolute">
+          <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.Conveyor.jogPositive">
+            <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+          </Target>
+        </Action>
+      </EventHandler>
+      <EventHandler condition="currentPosition &gt; inCamConvPosition">
+        <Action>
+          <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.Conveyor.jogNegative">
             <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
           </Target>
         </Action>
@@ -212,11 +204,22 @@
     <EventBinding id="serviceContent.Button4.Click">
       <Source xsi:type="widgets.brease.Button.Event" contentRefId="serviceContent" widgetRefId="Button4" event="Click" />
       <EventHandler condition="">
-        <Action>
-          <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.moveAbsolute">
-            <Method xsi:type="opcUa.NodeAction.SetValueBool" value="false" />
-          </Target>
-        </Action>
+        <Sequence>
+          <Step order="0">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.Conveyor.moveAbsolute">
+                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="false" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="1">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.needUpdate">
+                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+              </Target>
+            </Action>
+          </Step>
+        </Sequence>
       </EventHandler>
     </EventBinding>
     <EventBinding id="serviceContent.cartSlider.ValueChanged">
@@ -227,7 +230,7 @@
         </ReadTarget>
       </Operand>
       <Operand datatype="ANY_REAL" name="currentPosition">
-        <ReadTarget xsi:type="opcUa.NodeAction.Read" refId="::BootleFill:MpAxisCart.Position">
+        <ReadTarget xsi:type="opcUa.NodeAction.Read" refId="::AsGlobalPV:gAxisOutputs.Cart.position">
           <Method xsi:type="opcUa.NodeAction.GetValue" />
         </ReadTarget>
       </Operand>
@@ -240,6 +243,13 @@
               </Target>
             </Action>
           </Step>
+          <Step order="1">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gAxisUpdate.Cart.FirstPosition">
+                <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=currentPosition" />
+              </Target>
+            </Action>
+          </Step>
           <Step order="2">
             <Action>
               <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gAxisUpdate.Cart.Velocity">
@@ -249,7 +259,7 @@
           </Step>
           <Step order="3">
             <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::BootleFill:MpAxisCart.Update">
+              <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.needUpdate">
                 <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
               </Target>
             </Action>
@@ -281,7 +291,7 @@
           </Step>
           <Step order="4">
             <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::BootleFill:MpAxisCart.Update">
+              <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.needUpdate">
                 <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
               </Target>
             </Action>
@@ -297,20 +307,20 @@
         </ReadTarget>
       </Operand>
       <Operand datatype="ANY_REAL" name="currentPosition">
-        <ReadTarget xsi:type="opcUa.NodeAction.Read" refId="::BootleFill:MpAxisCart.Position">
+        <ReadTarget xsi:type="opcUa.NodeAction.Read" refId="::AsGlobalPV:gAxisOutputs.Cart.position">
           <Method xsi:type="opcUa.NodeAction.GetValue" />
         </ReadTarget>
       </Operand>
       <EventHandler condition="currentPosition &lt; newPosition">
         <Action>
-          <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gAxisUpdate.Cart.JogP">
+          <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.Cart.jogPositive">
             <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
           </Target>
         </Action>
       </EventHandler>
       <EventHandler condition="currentPosition &gt; newPosition">
         <Action>
-          <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gAxisUpdate.Cart.JogN">
+          <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.Cart.jogNegative">
             <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
           </Target>
         </Action>
@@ -324,7 +334,7 @@
         </ReadTarget>
       </Operand>
       <Operand datatype="ANY_REAL" name="currentPosition">
-        <ReadTarget xsi:type="opcUa.NodeAction.Read" refId="::BootleFill:MpAxisNozzle.Position">
+        <ReadTarget xsi:type="opcUa.NodeAction.Read" refId="::AsGlobalPV:gAxisOutputs.Nozzle.position">
           <Method xsi:type="opcUa.NodeAction.GetValue" />
         </ReadTarget>
       </Operand>
@@ -346,7 +356,7 @@
           </Step>
           <Step order="3">
             <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gAxisUpdate.Nozzle.Update">
+              <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.needUpdate">
                 <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
               </Target>
             </Action>
@@ -378,7 +388,7 @@
           </Step>
           <Step order="4">
             <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gAxisUpdate.Nozzle.Update">
+              <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.needUpdate">
                 <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
               </Target>
             </Action>
@@ -394,23 +404,45 @@
         </ReadTarget>
       </Operand>
       <Operand datatype="ANY_REAL" name="currentPosition">
-        <ReadTarget xsi:type="opcUa.NodeAction.Read" refId="::BootleFill:MpAxisNozzle.Position">
+        <ReadTarget xsi:type="opcUa.NodeAction.Read" refId="::AsGlobalPV:gAxisOutputs.Nozzle.position">
           <Method xsi:type="opcUa.NodeAction.GetValue" />
         </ReadTarget>
       </Operand>
       <EventHandler condition="currentPosition &lt; newPosition">
-        <Action>
-          <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gAxisUpdate.Nozzle.JogP">
-            <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
-          </Target>
-        </Action>
+        <Sequence>
+          <Step order="0">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.Nozzle.jogPositive">
+                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="1">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.needUpdate">
+                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+              </Target>
+            </Action>
+          </Step>
+        </Sequence>
       </EventHandler>
       <EventHandler condition="currentPosition &gt; newPosition">
-        <Action>
-          <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gAxisUpdate.Nozzle.JogN">
-            <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
-          </Target>
-        </Action>
+        <Sequence>
+          <Step order="0">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.Nozzle.jogNegative">
+                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="1">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.needUpdate">
+                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+              </Target>
+            </Action>
+          </Step>
+        </Sequence>
       </EventHandler>
     </EventBinding>
     <EventBinding id="serviceContent.CheckBox1.ValueChanged">
@@ -428,11 +460,22 @@
         </Action>
       </EventHandler>
       <EventHandler condition="NOT newValueBool">
-        <Action>
-          <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.inCam">
-            <Method xsi:type="opcUa.NodeAction.SetValueBool" value="false" />
-          </Target>
-        </Action>
+        <Sequence>
+          <Step order="0">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.inCam">
+                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="false" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="1">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.disconnect">
+                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+              </Target>
+            </Action>
+          </Step>
+        </Sequence>
       </EventHandler>
     </EventBinding>
   </Bindings>

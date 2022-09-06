@@ -1,31 +1,27 @@
 
 PROGRAM _INIT
 	(* Insert code here *)
-	//bez inicjalizacji fillerTyp, bedzie akcja z maina
 END_PROGRAM
 
 PROGRAM _CYCLIC
 	(* Insert code here *)
 	 
-	CASE fillerTyp OF
-		INIT:
-			IF gControl.start THEN
-				IF gControl.manual THEN
-					fillerTyp:=MANUAL;
-				ELSE
-					fillerTyp:=AUTOMATIC; // <----------------- przypadek jak by nie mialo byc home'owania, przejscie do work
-				END_IF;
-			END_IF;
-			
-		HOMING:
+	IF gAxisOutputs.Cart.updateDone THEN
+	END_IF;
+	
+	
+	CASE gFillerTyp OF
 			
 		MANUAL:
+
+				
+			
+		AUTOMAT:
+			gControl.moveVelocity:= gControl.start AND NOT gControl.stop;
 		
-		AUTOMATIC:
+	//	ERROR:
 		
-		ERROR:
-		
-		STOP:
+		//STOP:
 		
 	END_CASE;
 	

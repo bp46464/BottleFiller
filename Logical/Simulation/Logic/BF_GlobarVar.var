@@ -1,4 +1,8 @@
 VAR
-	gControl : gControlTyp;
-	gAxisUpdate : axisUpdateParType;
+	gFillerTyp : gBFWorkEnum;
+	gAxisCase : gBFCaseEnum;
+	gControl : gManagementTyp;
+	gAxisUpdate : gAxisUpdateParType;
+	gMainAction : gMainActionTyp;
+	gAxisOutputs : gAxisOutputsTyp;
 END_VAR

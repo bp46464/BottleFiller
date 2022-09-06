@@ -18,13 +18,11 @@ VAR
 END_VAR
 (*Other Variables*)
 VAR
-	axisCase : axisCaseEnum;
 	needUpdate : BOOL := FALSE;
 	homed : BOOL := FALSE; (*defines if all the axises are homed*)
 END_VAR
 (*global used variables*)
 VAR
 	axisMgmt : axisesManagementType;
-	controlInfo : InfosTyp;
-	BF_MGMT : managementTyp;
+	controlInfo : gAxisOutputsTyp;
 END_VAR

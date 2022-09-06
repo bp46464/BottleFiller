@@ -1,28 +1,9 @@
 
 TYPE
-	axisCaseEnum : 
-		(
-		POWERED,
-		HOMING,
-		onMOVE,
-		CONNECT,
-		STANDSTILL,
-		UPDATE
-		);
-	managementTyp : 	STRUCT 
-		Conveyor : manualControlTyp;
-		Cart : manualControlTyp;
-		Nozzle : manualControlTyp;
-	END_STRUCT;
 	InfosTyp : 	STRUCT 
-		Conveyor : manualControlInfoTyp;
-		Cart : manualControlInfoTyp;
-		Nozzle : manualControlInfoTyp;
-	END_STRUCT;
-	manualControlInfoTyp : 	STRUCT 
-		error : BOOL;
-		isPowered : BOOL;
-		isHomed : BOOL;
+		Conveyor : gControlInfoTyp;
+		Cart : gControlInfoTyp;
+		Nozzle : gControlInfoTyp;
 	END_STRUCT;
 	manualControlTyp : 	STRUCT 
 		errorReset : BOOL;

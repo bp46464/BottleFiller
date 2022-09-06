@@ -14,10 +14,9 @@ TYPE
 	FillerEnum : 
 		( (*Every possible case*)
 		DISABLED,
-		STOP,
-		SERVICE,
 		INIT,
-		AUTOMAT,
+		WORK,
+		STOP,
 		ERROR
 		);
 END_TYPE

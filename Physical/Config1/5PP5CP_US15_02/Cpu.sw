@@ -20,7 +20,6 @@
     <DataObject Name="McAcpSys" Source="" Memory="UserROM" Language="Binary" />
   </DataObjects>
   <NcDataObjects>
-    <NcDataObject Name="Cam" Source="Cam.dob" Memory="UserROM" Language="Cam" />
     <NcDataObject Name="mcdrivelog" Source="" Memory="UserROM" Language="Binary" />
   </NcDataObjects>
   <Binaries>
