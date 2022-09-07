@@ -53,7 +53,7 @@ PROGRAM _CYCLIC
 	MpAxisNozzle.JogPositive:=gControl.Nozzle.jogPositive;
 	
 	IF gControl.needUpdate THEN
-		gControl.needUpdate:=0;
+
 		//conveyor
 		MpAxisConvParType.Jog.LimitPosition.FirstPosition:=gAxisUpdate.Conveyor.FirstPosition;
 		MpAxisConvParType.Jog.LimitPosition.LastPosition:=gAxisUpdate.Conveyor.LastPosition;
@@ -67,7 +67,6 @@ PROGRAM _CYCLIC
 		MpAxisCartParType.Jog.LimitPosition.LastPosition:=gAxisUpdate.Cart.LastPosition;
 		MpAxisCartParType.Position:=gAxisUpdate.Cart.Position;
 		//	MpAxisCartParType.Homing.Mode:=gAxisUpdate.Cart.Homing;
-		MpAxisCartParType.Velocity:=gAxisUpdate.Cart.Velocity;
 		MpAxisCartParType.Jog.Velocity:=gAxisUpdate.Cart.Velocity;
 			
 		//nozzle
@@ -75,24 +74,25 @@ PROGRAM _CYCLIC
 		MpAxisNozzleParType.Jog.LimitPosition.LastPosition:=gAxisUpdate.Nozzle.LastPosition;
 		MpAxisNozzleParType.Position:=gAxisUpdate.Nozzle.Position;
 		//	MpAxisNozzleParType.Homing.Mode:=gAxisUpdate.Nozzle.Homing;
-		MpAxisNozzleParType.Velocity:=gAxisUpdate.Nozzle.Velocity;
 		MpAxisNozzleParType.Jog.Velocity:=gAxisUpdate.Nozzle.Velocity;
 		
 		MpAxisNozzle.Update:=1;
 		MpAxisConv.Update:=1;
 		MpAxisCart.Update:=1;
 		
+		IF MpAxisNozzle.UpdateDone THEN
+			MpAxisNozzle.Update:=0;
+		END_IF;
+		IF MpAxisCart.UpdateDone THEN
+			MpAxisCart.Update:=0;
+		END_IF;
+		IF MpAxisConv.UpdateDone THEN
+			MpAxisConv.Update:=0;
+		END_IF;
+		gControl.needUpdate:=0;
 	END_IF;
 	
-	IF MpAxisNozzle.UpdateDone THEN
-		MpAxisNozzle.Update:=0;
-	END_IF;
-	IF MpAxisCart.UpdateDone THEN
-		MpAxisCart.Update:=0;
-	END_IF;
-	IF MpAxisConv.UpdateDone THEN
-		MpAxisConv.Update:=0;
-	END_IF;
+	
 	
 		
 		
@@ -113,52 +113,45 @@ PROGRAM _CYCLIC
 			END_IF;
 			
 		HOMING:
-			
-			MpAxisCart.Home:=1;
-			MpAxisConv.Home:=1;
-			MpAxisNozzle.Home:=1;
-			
-			IF gControl.disconnect THEN
+			IF gControl.manual THEN
+				
 				MpAxisCartParType.Homing.Mode:=141;
+				MpAxisCartParType.Homing.Options.HomingDirection:=3;
 				MpAxisCartParType.Homing.Options.HomingVelocity:=50;
 				MpAxisCart.Update:=1;
 				
 				MpAxisConvParType.Homing.Mode:=141;
+				MpAxisConvParType.Homing.Options.HomingDirection:=3;
 				MpAxisConvParType.Homing.Options.HomingVelocity:=50;
 				MpAxisConv.Update:=1;
 				
 				MpAxisNozzleParType.Homing.Mode:=141;
+				MpAxisNozzleParType.Homing.Options.HomingDirection:=3;
 				MpAxisNozzleParType.Homing.Options.HomingVelocity:=50;
 				MpAxisNozzle.Update:=1;
 				
-				IF MpAxisCart.UpdateDone THEN
-					MpAxisCart.Home:=1;
+				IF MpAxisCart.UpdateDone AND MpAxisConv.UpdateDone AND MpAxisNozzle.UpdateDone THEN
 					MpAxisCart.Update:=0;
-				END_IF;
-				IF MpAxisConv.UpdateDone THEN
-					MpAxisConv.Home:=1;
+					MpAxisCart.Home:=1;
 					MpAxisConv.Update:=0;
-				END_IF;
-				IF MpAxisNozzle.UpdateDone THEN
-					MpAxisNozzle.Home:=1;
+					MpAxisConv.Home:=1;
 					MpAxisNozzle.Update:=0;
+					MpAxisNozzle.Home:=1;
+					gMainAction.homed:=1;
 				END_IF;
-
-			END_IF;
-			
-			IF MpAxisCart.IsHomed AND MpAxisConv.IsHomed AND MpAxisNozzle.IsHomed THEN
-				MpAxisCart.Home:=0;
-				MpAxisConv.Home:=0;
-				MpAxisNozzle.Home:=0;
+			ELSE
+				MpAxisCart.Home:=1;
+				MpAxisConv.Home:=1;
+				MpAxisNozzle.Home:=1;
 				gMainAction.homed:=1;
 			END_IF;
 			
+			
+			
 		STANDSTILL:
 			
-			IF axisMgmt.diStart THEN
-				camSeq.StartSequence:=1;
-				camSeqNozzle.StartSequence:=1;
-				IF axisMgmt.diManual THEN
+			IF gControl.start THEN
+				IF gControl.manual THEN
 					// manual operations
 					gAxisCase:=onMOVE; // ??????
 				ELSE
@@ -169,21 +162,29 @@ PROGRAM _CYCLIC
 			END_IF;
 			
 		CONNECT:
+			camSeq.EndSequence:=0;
+			camSeqNozzle.EndSequence:=0;
 			camSeq.StartSequence:=1;
 			camSeqNozzle.StartSequence:=1;
 
-			IF camSeq.InCam AND camSeqNozzle.InCam THEN
+			IF camSeq.Running AND camSeqNozzle.Running THEN
 				camSeq.Signal1:=1;
 				camSeqNozzle.Signal1:=1;
 				gMainAction.connected:=1;
 			END_IF;
 		
 		DISCONNECT:
+			MpAxisConv.MoveVelocity:=0;
 			camSeq.Signal1:=0;
 			camSeqNozzle.Signal1:=0;
 			camSeq.StartSequence:=0;
+			camSeq.EndSequence:=1;
 			camSeqNozzle.StartSequence:=0;
-			gMainAction.disconnected:=1;
+			camSeqNozzle.EndSequence:=1;
+			IF NOT (camSeq.Running AND camSeqNozzle.Running) THEN
+				gMainAction.disconnected:=1;
+			END_IF;
+				
 			
 		onMOVE:
 			MpAxisConv.MoveVelocity:=gControl.moveVelocity;
@@ -202,6 +203,7 @@ PROGRAM _CYCLIC
 	controlInfo.Conveyor.position:=LREAL_TO_REAL(MpAxisConv.Position);
 	controlInfo.Conveyor.velocity:=MpAxisConv.Velocity;
 	controlInfo.Conveyor.updateDone:=MpAxisConv.UpdateDone;
+	controlInfo.Conveyor.MoveActive:=MpAxisConv.Info.Jogging;
 	
 	controlInfo.Cart.error:=MpAxisCart.Error;
 	controlInfo.Cart.isHomed:=MpAxisCart.IsHomed;
@@ -209,6 +211,7 @@ PROGRAM _CYCLIC
 	controlInfo.Cart.position:=LREAL_TO_REAL(MpAxisCart.Position);
 	controlInfo.Cart.velocity:=MpAxisCart.Velocity;
 	controlInfo.Cart.updateDone:=MpAxisCart.UpdateDone;
+	controlInfo.Cart.MoveActive:=MpAxisCart.Info.Jogging;
 	
 	controlInfo.Nozzle.error:=MpAxisNozzle.Error;
 	controlInfo.Nozzle.isHomed:=MpAxisNozzle.IsHomed;
@@ -216,6 +219,7 @@ PROGRAM _CYCLIC
 	controlInfo.Nozzle.position:=LREAL_TO_REAL(MpAxisNozzle.Position);
 	controlInfo.Nozzle.velocity:=MpAxisNozzle.Velocity;
 	controlInfo.Nozzle.updateDone:=MpAxisNozzle.UpdateDone;
+	controlInfo.Nozzle.MoveActive:=MpAxisNozzle.Info.Jogging;
 	
 	gAxisOutputs:=controlInfo;
 END_PROGRAM

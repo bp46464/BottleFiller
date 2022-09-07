@@ -1,0 +1,3 @@
+VAR
+	switch : INT := 0;
+END_VAR

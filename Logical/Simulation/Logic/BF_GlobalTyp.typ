@@ -12,6 +12,7 @@ TYPE
 		position : REAL;
 		velocity : REAL;
 		updateDone : BOOL;
+		MoveActive : BOOL;
 	END_STRUCT;
 	gControlTyp : 	STRUCT  (*parameters, inputs*)
 		power : BOOL;

@@ -38,32 +38,7 @@
           <Method xsi:type="opcUa.NodeAction.GetValue" />
         </ReadTarget>
       </Operand>
-      <EventHandler condition="inCam">
-        <Sequence>
-          <Step order="0">
-            <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gAxisUpdate.Conveyor.Position">
-                <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=convPosition" />
-              </Target>
-            </Action>
-          </Step>
-          <Step order="1">
-            <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gAxisUpdate.Conveyor.Direction">
-                <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="3" />
-              </Target>
-            </Action>
-          </Step>
-          <Step order="2">
-            <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.needUpdate">
-                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
-              </Target>
-            </Action>
-          </Step>
-        </Sequence>
-      </EventHandler>
-      <EventHandler condition="(NOT inCam) AND ( currentPosition &gt; convPosition )">
+      <EventHandler condition="currentPosition &gt; convPosition">
         <Sequence>
           <Step order="0">
             <Action>
@@ -75,7 +50,7 @@
           <Step order="1">
             <Action>
               <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gAxisUpdate.Conveyor.LastPosition">
-                <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="5000" />
+                <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=currentPosition" />
               </Target>
             </Action>
           </Step>
@@ -95,7 +70,7 @@
           </Step>
         </Sequence>
       </EventHandler>
-      <EventHandler condition="(NOT inCam) AND ( currentPosition &lt; convPosition )">
+      <EventHandler condition="currentPosition &lt; convPosition">
         <Sequence>
           <Step order="0">
             <Action>
@@ -106,12 +81,19 @@
           </Step>
           <Step order="1">
             <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gAxisUpdate.Conveyor.FirstPosition">
+                <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=currentPosition" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="2">
+            <Action>
               <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gAxisUpdate.Conveyor.Velocity">
                 <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="50" />
               </Target>
             </Action>
           </Step>
-          <Step order="2">
+          <Step order="3">
             <Action>
               <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.needUpdate">
                 <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
@@ -134,18 +116,40 @@
         </ReadTarget>
       </Operand>
       <EventHandler condition="currentPosition &lt; newPosition">
-        <Action>
-          <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.Conveyor.jogPositive">
-            <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
-          </Target>
-        </Action>
+        <Sequence>
+          <Step order="0">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.Conveyor.jogNegative">
+                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="false" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="1">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.Conveyor.jogPositive">
+                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+              </Target>
+            </Action>
+          </Step>
+        </Sequence>
       </EventHandler>
       <EventHandler condition="currentPosition &gt; newPosition">
-        <Action>
-          <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.Conveyor.jogNegative">
-            <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
-          </Target>
-        </Action>
+        <Sequence>
+          <Step order="0">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.Conveyor.jogPositive">
+                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="false" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="1">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.Conveyor.jogNegative">
+                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+              </Target>
+            </Action>
+          </Step>
+        </Sequence>
       </EventHandler>
     </EventBinding>
     <EventBinding id="serviceContent.velocitySlider.ValueChanged">
@@ -312,18 +316,40 @@
         </ReadTarget>
       </Operand>
       <EventHandler condition="currentPosition &lt; newPosition">
-        <Action>
-          <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.Cart.jogPositive">
-            <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
-          </Target>
-        </Action>
+        <Sequence>
+          <Step order="0">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.Cart.jogNegative">
+                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="false" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="1">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.Cart.jogPositive">
+                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+              </Target>
+            </Action>
+          </Step>
+        </Sequence>
       </EventHandler>
       <EventHandler condition="currentPosition &gt; newPosition">
-        <Action>
-          <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.Cart.jogNegative">
-            <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
-          </Target>
-        </Action>
+        <Sequence>
+          <Step order="0">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.Cart.jogPositive">
+                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="false" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="1">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.Cart.jogNegative">
+                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+              </Target>
+            </Action>
+          </Step>
+        </Sequence>
       </EventHandler>
     </EventBinding>
     <EventBinding id="serviceContent.nozzleSlider.ValueChanged">
@@ -412,12 +438,19 @@
         <Sequence>
           <Step order="0">
             <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.Nozzle.jogNegative">
+                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="false" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="1">
+            <Action>
               <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.Nozzle.jogPositive">
                 <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
               </Target>
             </Action>
           </Step>
-          <Step order="1">
+          <Step order="2">
             <Action>
               <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.needUpdate">
                 <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
@@ -430,12 +463,19 @@
         <Sequence>
           <Step order="0">
             <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.Nozzle.jogPositive">
+                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="false" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="1">
+            <Action>
               <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.Nozzle.jogNegative">
                 <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
               </Target>
             </Action>
           </Step>
-          <Step order="1">
+          <Step order="2">
             <Action>
               <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.needUpdate">
                 <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
@@ -453,11 +493,22 @@
         </ReadTarget>
       </Operand>
       <EventHandler condition="newValueBool">
-        <Action>
-          <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.inCam">
-            <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
-          </Target>
-        </Action>
+        <Sequence>
+          <Step order="0">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.inCam">
+                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="1">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::BF_Work:switch">
+                <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="1" />
+              </Target>
+            </Action>
+          </Step>
+        </Sequence>
       </EventHandler>
       <EventHandler condition="NOT newValueBool">
         <Sequence>
@@ -468,10 +519,10 @@
               </Target>
             </Action>
           </Step>
-          <Step order="1">
+          <Step order="2">
             <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.disconnect">
-                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+              <Target xsi:type="opcUa.NodeAction" refId="::BF_Work:switch">
+                <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="2" />
               </Target>
             </Action>
           </Step>

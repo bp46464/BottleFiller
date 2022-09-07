@@ -42,6 +42,9 @@ PROGRAM _CYCLIC
 			END_IF;
 			
 			IF gMainAction.powered AND gMainAction.homed THEN
+				gControl.Cart.home:=0;
+				gControl.Conveyor.home:=0;
+				gControl.Nozzle.home:=0;
 				gAxisCase:=STANDSTILL;
 			END_IF;
 			
@@ -50,10 +53,12 @@ PROGRAM _CYCLIC
 				IF gMainAction.connected THEN
 					gAxisCase:=onMOVE;
 					gFillerTyp:=AUTOMAT;
+					FillerTyp:=WORK;
 				END_IF;	
 			END_IF;
 			
 			IF gMainAction.powered AND gMainAction.homed AND gControl.start AND gControl.manual THEN
+				gMainAction.homed:=0;
 				gAxisCase:=onMOVE;
 				gFillerTyp:=MANUAL;
 				FillerTyp:=WORK;
@@ -61,125 +66,9 @@ PROGRAM _CYCLIC
 			
 			
 		WORK:
-			gMainAction.homed:=0;
 			
-			IF gControl.inCam THEN
-				gAxisCase:=CONNECT;
-				IF gMainAction.connected THEN
-					gAxisCase:=onMOVE;
-				END_IF;
-			END_IF;
-			
-			IF gControl.disconnect THEN
-				gControl.inCam:=0;
-				gAxisCase:=DISCONNECT;
-				IF gMainAction.disconnected THEN
-					gAxisCase:=HOMING; //<------------------------------
-					IF gMainAction.homed THEN
-						gAxisCase:=onMOVE;
-					END_IF;
-					
-				END_IF;
-			END_IF;
-			
-			
-		//AUTOMAT:
-//			IF camSeq.InCam AND camSeqNozzle.InCam THEN
-//				
-//				camSeq.Signal1:=1;
-//				camSeqNozzle.Signal1:=1;
-//				MpAxisConv.MoveVelocity := (diStart AND NOT diStop);
-//				IF MpAxisConv.UpdateDone THEN
-//					MpAxisConv.Update:=0;
-//				END_IF;
-//				
-//			END_IF;
-			
-		//SERVICE:
-			//odpalenie cam-ów
-//			IF inCam THEN
-//				IF changedPosition THEN
-//					
-//					MpAxisCartParType.Homing.Mode:=141;
-//					MpAxisCartParType.Homing.Options.HomingVelocity:=50;
-//					MpAxisCart.Update:=1;
-//					
-//					
-//					MpAxisConvParType.Homing.Mode:=141;
-//					MpAxisConvParType.Homing.Options.HomingVelocity:=50;
-//					MpAxisConv.Update:=1;
-//					
-//					
-//					
-//					MpAxisNozzleParType.Homing.Mode:=141;
-//					MpAxisNozzleParType.Homing.Options.HomingVelocity:=50;
-//					MpAxisNozzle.Update:=1;
-//					
-//					IF MpAxisCart.UpdateDone THEN
-//						MpAxisCart.Home:=1;
-//						MpAxisCart.Update:=0;
-//					END_IF;
-//					IF MpAxisConv.UpdateDone THEN
-//						MpAxisConv.Home:=1;
-//						
-//						MpAxisConv.Update:=0;
-//					END_IF;
-//					IF MpAxisNozzle.UpdateDone THEN
-//						MpAxisNozzle.Home:=1;
-//						
-//						MpAxisNozzle.Update:=0;
-//					END_IF;
-//					changedPosition:=0;
-//				END_IF;
-//				
-//				IF camSeq.InCam AND camSeqNozzle.InCam THEN
-//					camSeq.Signal1:=1;
-//					camSeqNozzle.Signal1:=1;			
-//				END_IF;
-//				
-//				IF camSeq.Signal1 AND camSeqNozzle.Signal1 THEN
-//					
-//					IF MpAxisConv.InPosition THEN
-//						MpAxisConv.MoveAbsolute:=0;
-//						MpAxisConv.MoveAdditive:=0;
-//						MpAxisConv.MoveVelocity:=0;
-//					END_IF;
-//					//switch update taœmy
-//					
-//					IF MpAxisConv.UpdateDone THEN
-//						MpAxisConv.Update:=0;
-//					END_IF;
-//				END_IF;
-//					
-//			END_IF;
-//			
-//			//wy³¹czenie cam-ów
-//			IF EDGENEG(inCam) THEN
-//				camSeq.StartSequence:=0;
-//				camSeqNozzle.StartSequence:=0;
-//				camSeq.Signal1:=0;
-//				camSeqNozzle.Signal1:=0;	
-//			END_IF;
-//			
-//			//obs³uga zmiany kierunków ruchu urz¹dzeñ przy obs³udze manualnej
-//			IF EDGEPOS(MpAxisConv.MoveAbsolute) THEN
-//				IF MpAxisConv.Position > MpAxisConvParType.Position THEN
-//					MpAxisConvParType.Direction:=mcDIR_NEGATIVE;
-//					MpAxisConv.Update:=1;
-//				ELSIF MpAxisConv.Position < MpAxisConvParType.Position THEN
-//					MpAxisConvParType.Direction:=mcDIR_POSITIVE;
-//					MpAxisConv.Update:=1;
-//				END_IF;
-//			END_IF;
-//			
-//			
-//			
+	
 
-//			
-//			IF NOT diManual THEN
-//				FillerTyp:=AUTOMAT;
-//			END_IF;
-//			
 		ERROR:
 		
 		STOP:
