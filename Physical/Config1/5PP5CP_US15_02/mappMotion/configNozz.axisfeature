@@ -105,16 +105,12 @@
             </Group>
           </Group>
           <Group ID="State[3]">
-            <Selector ID="Cam" Value="Predefined">
-              <Property ID="PredefinedCam" Value="ZeroPoint" />
+            <Selector ID="Cam" Value="CamName">
+              <Property ID="CamName" Value="b1_Nozzle" />
             </Selector>
-            <Property ID="MasterFactor" Value="100" />
-            <Property ID="SlaveFactor" Value="100" />
-            <Selector ID="CompensationMode" Value="SlaveCompensationAbsSlPos">
-              <Property ID="MasterDistance" Value="350" />
-              <Property ID="SlavePosition" Value="200" />
-              <Selector ID="AdvancedParameters" Value="NotUsed" />
-            </Selector>
+            <Property ID="MasterFactor" Value="40000" />
+            <Property ID="SlaveFactor" Value="40000" />
+            <Selector ID="CompensationMode" Value="NoCompensation" />
             <Group ID="AdvancedParameters">
               <Property ID="RepeatCounterInit" Value="0" />
               <Selector ID="MasterValueSource" Value="CommonMaster" />

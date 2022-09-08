@@ -21,6 +21,7 @@
   </DataObjects>
   <NcDataObjects>
     <NcDataObject Name="mcdrivelog" Source="" Memory="UserROM" Language="Binary" />
+    <NcDataObject Name="b1_Nozzle" Source="b1_Nozzle.dob" Memory="UserROM" Language="Cam" />
   </NcDataObjects>
   <Binaries>
     <BinaryObject Name="McAcpDrv" Source="" Memory="UserROM" Language="Binary" />

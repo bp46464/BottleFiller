@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <?AutomationStudio Version="4.11.2.75" FileVersion="4.9"?>
 <CamProfile NcSwId="ACP10" MasterAxisVelocity="1" MasterAxisAcceleration="0" DefaultCurveType="Polynomial5" MathematicalNotation="true" >
-<FixPoint x="0" IsMathX="true" y="0" IsDefinedDy="true" Dy="0" IsMathDy="true" IsDefinedDdy="false" Ddy="0" IsMathDdy="true" IsDefinedDddy="false" Dddy="0" IsMathDddy="true" />
-<FixPoint x="1" IsMathX="true" y="1" IsDefinedDy="false" Dy="0" IsMathDy="true" IsDefinedDdy="false" Ddy="0" IsMathDdy="true" IsDefinedDddy="false" Dddy="0" IsMathDddy="true" />
+<FixPoint x="0" IsMathX="true" y="0" IsDefinedDy="false" Dy="0" IsMathDy="true" IsDefinedDdy="false" Ddy="0" IsMathDdy="true" IsDefinedDddy="false" Dddy="0" IsMathDddy="true" />
+<FixPoint x="1" IsMathX="true" y="1" IsDefinedDy="true" Dy="0" IsMathDy="true" IsDefinedDdy="true" Ddy="0" IsMathDdy="true" IsDefinedDddy="false" Dddy="0" IsMathDddy="true" />
 <Synchronline>
-<LeftBoundary IsFix="true" x="0.45" IsMathX="true" y="45" />
-<RightBoundary IsFix="true" x="0.55" IsMathX="true" y="55" />
-<Gradient Numerator="100" Denominator="1" IsMath="false" IsFix="false" />
+<LeftBoundary IsFix="true" x="0.4" IsMathX="true" y="0.6" />
+<RightBoundary IsFix="true" x="0.7" IsMathX="true" y="0.8" />
+<Gradient Numerator="2" Denominator="3" IsMath="false" IsFix="false" />
 </Synchronline>
 <Curve Type="Polynomial5" >
 <LeftBoundary IsDefinedDdy="false" Ddy="0" IsMathDdy="true" IsDefinedDddy="false" Dddy="0" IsMathDddy="true" />

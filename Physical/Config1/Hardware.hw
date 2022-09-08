@@ -251,6 +251,7 @@
     <Parameter ID="SimulationModeOnACOPOS" Location="DriveConfiguration/Channel[1]/RealAxis/Simulation" Value="NotUsed" />
     <Parameter ID="FeatureRef[1]" Location="DriveConfiguration/Channel[1]/RealAxis/AxisFeatures" Value="Feature_CamList" />
     <Parameter ID="ExternalEncoderAxis" Location="DriveConfiguration/Channel[1]" Value="NotUsed" />
+    <Parameter ID="FeatureRef[1]" Location="DriveConfiguration/Channel[1]/ChannelFeatures" Value="Feature_CamList_1" />
   </Module>
   <Module Name="X20AI4622" Type="X20AI4622" Version="1.2.0.0">
     <Connection Connector="SS1" TargetModule="X20TB12f" TargetConnector="SS" />

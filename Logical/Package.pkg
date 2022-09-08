@@ -8,6 +8,6 @@
     <Object Type="Package">Simulation</Object>
     <Object Type="Package">mappView</Object>
     <Object Type="Package">Package</Object>
-    <Object Type="File" Description="Cam for mapp Motion">Cam.cam</Object>
+    <Object Type="DataObject" Language="Cam">b1_Nozzle</Object>
   </Objects>
 </Package>
