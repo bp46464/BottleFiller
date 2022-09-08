@@ -6,8 +6,8 @@ PROGRAM _INIT
 	
 	
 	RobVisData.Conveyor := 0.0;
-	RobVisData.Cart := -100.0;
-	RobVisData.Nozzle := 199.0;
+	RobVisData.Cart := 0.0;
+	RobVisData.Nozzle := 200.0;
 END_PROGRAM
 
 PROGRAM _CYCLIC

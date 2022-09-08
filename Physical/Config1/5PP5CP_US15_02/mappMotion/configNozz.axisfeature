@@ -108,8 +108,8 @@
             <Selector ID="Cam" Value="CamName">
               <Property ID="CamName" Value="b1_Nozzle" />
             </Selector>
-            <Property ID="MasterFactor" Value="40000" />
-            <Property ID="SlaveFactor" Value="40000" />
+            <Property ID="MasterFactor" Value="45000" />
+            <Property ID="SlaveFactor" Value="20000" />
             <Selector ID="CompensationMode" Value="NoCompensation" />
             <Group ID="AdvancedParameters">
               <Property ID="RepeatCounterInit" Value="0" />
@@ -120,7 +120,7 @@
                 <Property ID="Type" Value="StateEnd" />
                 <Property ID="Transition" Value="EndOfState" />
                 <Property ID="SynchronousUpdate" Value="NotUsed" />
-                <Property ID="NextState" Value="4" />
+                <Property ID="NextState" Value="2" />
               </Group>
             </Group>
           </Group>
