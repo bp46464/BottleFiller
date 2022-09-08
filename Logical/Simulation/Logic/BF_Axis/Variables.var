@@ -25,4 +25,5 @@ END_VAR
 VAR
 	axisMgmt : axisesManagementType;
 	controlInfo : gAxisOutputsTyp;
+	connectHelper : INT := 0;
 END_VAR

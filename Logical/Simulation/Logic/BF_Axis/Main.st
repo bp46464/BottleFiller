@@ -114,7 +114,6 @@ PROGRAM _CYCLIC
 			
 		HOMING:
 			IF gControl.manual THEN
-				
 				MpAxisCartParType.Homing.Mode:=141;
 				MpAxisCartParType.Homing.Options.HomingDirection:=3;
 				MpAxisCartParType.Homing.Options.HomingVelocity:=50;
@@ -162,18 +161,40 @@ PROGRAM _CYCLIC
 			END_IF;
 			
 		CONNECT:
-			camSeq.EndSequence:=0;
-			camSeqNozzle.EndSequence:=0;
-			camSeq.StartSequence:=1;
-			camSeqNozzle.StartSequence:=1;
-
-			IF camSeq.Running AND camSeqNozzle.Running THEN
-				camSeq.Signal1:=1;
-				camSeqNozzle.Signal1:=1;
-				gMainAction.connected:=1;
+			
+			IF connectHelper=0 THEN
+				camSeq.EndSequence:=0;
+				camSeqNozzle.EndSequence:=0;
+				MpAxisConv.Stop:=1;
+				MpAxisNozzle.Stop:=1;
+				MpAxisCart.Stop:=1;
 			END_IF;
+			
+			IF MpAxisConv.Stopped AND MpAxisCart.Stopped AND MpAxisNozzle.Stopped THEN
+				MpAxisConv.Stop:=0;
+				MpAxisNozzle.Stop:=0;
+				MpAxisCart.Stop:=0;
+				connectHelper:=1;
+			END_IF;
+			
+			IF connectHelper=1 THEN
+		
+				camSeq.StartSequence:=1;
+				camSeqNozzle.StartSequence:=1;
+	
+				IF camSeq.InCam AND camSeqNozzle.InCam THEN
+					camSeq.Signal1:=1;
+					camSeqNozzle.Signal1:=1;
+					gMainAction.connected:=1;
+					connectHelper:=0;
+				END_IF;
+			END_IF;
+			
+
 		
 		DISCONNECT:
+			gMainAction.homed:=0;
+			gMainAction.connected:=0;
 			MpAxisConv.MoveVelocity:=0;
 			camSeq.Signal1:=0;
 			camSeqNozzle.Signal1:=0;

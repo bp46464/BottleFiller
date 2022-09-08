@@ -160,22 +160,11 @@
         </ReadTarget>
       </Operand>
       <EventHandler>
-        <Sequence>
-          <Step order="0">
-            <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gAxisUpdate.Conveyor.Velocity">
-                <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=updateVelocity" />
-              </Target>
-            </Action>
-          </Step>
-          <Step order="1">
-            <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.needUpdate">
-                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
-              </Target>
-            </Action>
-          </Step>
-        </Sequence>
+        <Action>
+          <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gAxisUpdate.Conveyor.Velocity">
+            <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=updateVelocity" />
+          </Target>
+        </Action>
       </EventHandler>
     </EventBinding>
     <EventBinding id="serviceContent.Button3.Click">
@@ -492,7 +481,7 @@
           <Method xsi:type="widgets.brease.CheckBox.Action.GetValueBool" />
         </ReadTarget>
       </Operand>
-      <EventHandler condition="newValueBool">
+      <EventHandler condition="inCamValue">
         <Sequence>
           <Step order="0">
             <Action>
@@ -510,7 +499,7 @@
           </Step>
         </Sequence>
       </EventHandler>
-      <EventHandler condition="NOT newValueBool">
+      <EventHandler condition="NOT inCamValue">
         <Sequence>
           <Step order="0">
             <Action>
@@ -520,6 +509,50 @@
             </Action>
           </Step>
           <Step order="2">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::BF_Work:switch">
+                <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="2" />
+              </Target>
+            </Action>
+          </Step>
+        </Sequence>
+      </EventHandler>
+    </EventBinding>
+    <EventBinding id="serviceContent.Button8.Click">
+      <Source xsi:type="widgets.brease.Button.Event" contentRefId="serviceContent" widgetRefId="Button8" event="Click" />
+      <Operand datatype="BOOL" name="isInCam">
+        <ReadTarget xsi:type="opcUa.NodeAction.Read" refId="::AsGlobalPV:gControl.inCam">
+          <Method xsi:type="opcUa.NodeAction.GetValue" />
+        </ReadTarget>
+      </Operand>
+      <EventHandler condition="NOT isInCam">
+        <Sequence>
+          <Step order="0">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.inCam">
+                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="= NOT isInCam" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="1">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::BF_Work:switch">
+                <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="1" />
+              </Target>
+            </Action>
+          </Step>
+        </Sequence>
+      </EventHandler>
+      <EventHandler condition="isInCam">
+        <Sequence>
+          <Step order="0">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.inCam">
+                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="= NOT isInCam" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="1">
             <Action>
               <Target xsi:type="opcUa.NodeAction" refId="::BF_Work:switch">
                 <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="2" />
