@@ -17,8 +17,6 @@ PROGRAM _CYCLIC
 //
 //	MpBFRecipeXml();
 	
-
-	
 	
 	SimulationAxisPosition.Cart := LREAL_TO_REAL(gAxisOutputs.Cart.position);
 	SimulationAxisPosition.Conveyor := LREAL_TO_REAL(gAxisOutputs.Conveyor.position);
@@ -68,7 +66,20 @@ PROGRAM _CYCLIC
 		WORK:
 			
 			
-	
+			result:= gControl.bottleCnt MOD 5;
+			
+			
+			IF result=1 THEN
+				gCamSeqParam.nozzle.signal1:=1;
+			END_IF;
+			IF result <> 1 THEN
+				gCamSeqParam.nozzle.signal1:=0;
+				gCamSeqParam.cart.signal1:=0;
+			END_IF;
+			
+			
+			
+			
 
 		ERROR:
 		

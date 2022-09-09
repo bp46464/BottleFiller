@@ -1,5 +1,13 @@
 
 TYPE
+	camSequencersParams : 	STRUCT 
+		cart : camParam;
+		nozzle : camParam;
+	END_STRUCT;
+	camParam : 	STRUCT 
+		signal1 : BOOL := FALSE;
+		currentStateIndex : INT;
+	END_STRUCT;
 	gAxisOutputsTyp : 	STRUCT 
 		Conveyor : gControlInfoTyp;
 		Cart : gControlInfoTyp;
@@ -46,6 +54,7 @@ TYPE
 		needUpdate : BOOL;
 		moveVelocity : BOOL;
 		disconnect : BOOL := FALSE;
+		bottleCnt : INT;
 	END_STRUCT;
 	gParametersUpdate : 	STRUCT  (*update parameters*)
 		Velocity : REAL;

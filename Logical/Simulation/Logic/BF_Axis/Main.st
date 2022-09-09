@@ -52,6 +52,10 @@ PROGRAM _CYCLIC
 	MpAxisNozzle.JogNegative:=gControl.Nozzle.jogNegative;
 	MpAxisNozzle.JogPositive:=gControl.Nozzle.jogPositive;
 	
+	//cam params
+//	camSeq.Signal1:=gCamSeqParam.cart.signal1;
+	camSeqNozzle.Signal1:=gCamSeqParam.nozzle.signal1;
+	
 	IF gControl.needUpdate THEN
 
 		//conveyor
@@ -184,7 +188,6 @@ PROGRAM _CYCLIC
 	
 				IF camSeq.InCam AND camSeqNozzle.InCam THEN
 					camSeq.Signal1:=1;
-					camSeqNozzle.Signal1:=1;
 					gMainAction.connected:=1;
 					connectHelper:=0;
 				END_IF;
@@ -241,6 +244,9 @@ PROGRAM _CYCLIC
 	controlInfo.Nozzle.velocity:=MpAxisNozzle.Velocity;
 	controlInfo.Nozzle.updateDone:=MpAxisNozzle.UpdateDone;
 	controlInfo.Nozzle.MoveActive:=MpAxisNozzle.Info.Jogging;
+	
+	gCamSeqParam.cart.currentStateIndex:=camSeq.ActualStateIndex;
+	gCamSeqParam.nozzle.currentStateIndex:=camSeq.ActualStateIndex;
 	
 	gAxisOutputs:=controlInfo;
 END_PROGRAM

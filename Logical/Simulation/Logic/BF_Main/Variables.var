@@ -27,6 +27,8 @@ VAR
 END_VAR
 (*other variables*)
 VAR
+	result : INT;
+	counter : INT;
 	roleInfo : MpUserXMgrUIRoleInfoType;
 	MpBFRecipeXml : MpRecipeXml;
 	MpBFRecipeRegPar : MpRecipeRegPar; (*MpBFRecipeHMI : MpRecipeUI;

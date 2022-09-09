@@ -5,4 +5,5 @@ VAR
 	gAxisUpdate : gAxisUpdateParType;
 	gMainAction : gMainActionTyp;
 	gAxisOutputs : gAxisOutputsTyp;
+	gCamSeqParam : camSequencersParams;
 END_VAR

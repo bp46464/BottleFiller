@@ -56,7 +56,7 @@ PROGRAM _CYCLIC
 	IF (diBottleOld <> diBottle) AND diBottle THEN
 		cntBottle := cntBottle + 1;
 	END_IF
-	
+	gControl.bottleCnt:= UDINT_TO_INT(cntBottle);
 	diBottleOld := diBottle;
 	
 	// --------------------------------------------
