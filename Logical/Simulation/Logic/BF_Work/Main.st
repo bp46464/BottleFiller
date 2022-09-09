@@ -33,7 +33,7 @@ PROGRAM _CYCLIC
 				
 			
 			IF switch=1 OR EDGEPOS(gControl.inCam) THEN
-				IF NOT gMainAction.homed THEN
+				IF NOT (gMachineInterface.DigitalInputs.CartHomingSwitch AND gMachineInterface.DigitalInputs.ConveyorHomingSwitch AND gMachineInterface.DigitalInputs.NozzleHomingSwitch)  THEN
 					gAxisCase:=HOMING; //<------------------------------
 				END_IF;
 				

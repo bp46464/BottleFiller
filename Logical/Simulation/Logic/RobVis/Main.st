@@ -7,7 +7,7 @@ PROGRAM _INIT
 	
 	RobVisData.Conveyor := 0.0;
 	RobVisData.Cart := 0.0;
-	RobVisData.Nozzle := 200.0;
+	RobVisData.Nozzle := 195.0;
 END_PROGRAM
 
 PROGRAM _CYCLIC
@@ -55,8 +55,8 @@ PROGRAM _CYCLIC
 	// --------------------------------------------	
 	IF (diBottleOld <> diBottle) AND diBottle THEN
 		cntBottle := cntBottle + 1;
+		gControl.bottleCnt:= gControl.bottleCnt + 1;
 	END_IF
-	gControl.bottleCnt:= UDINT_TO_INT(cntBottle);
 	diBottleOld := diBottle;
 	
 	// --------------------------------------------

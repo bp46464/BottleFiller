@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio Version="4.11.2.75" FileVersion="4.9"?>
+<CamProfile NcSwId="ACP10" MasterAxisVelocity="1" MasterAxisAcceleration="0" DefaultCurveType="Polynomial5" MathematicalNotation="true" >
+<FixPoint x="0" IsMathX="true" y="0" IsDefinedDy="false" Dy="0" IsMathDy="true" IsDefinedDdy="false" Ddy="0" IsMathDdy="true" IsDefinedDddy="false" Dddy="0" IsMathDddy="true" />
+<FixPoint x="1" IsMathX="true" y="1" IsDefinedDy="false" Dy="0" IsMathDy="true" IsDefinedDdy="false" Ddy="0" IsMathDdy="true" IsDefinedDddy="false" Dddy="0" IsMathDddy="true" />
+<Synchronline>
+<LeftBoundary IsFix="true" x="1e-06" IsMathX="true" y="1e-06" />
+<RightBoundary IsFix="true" x="0.5" IsMathX="true" y="0.4" />
+<Gradient Numerator="4" Denominator="5" IsMath="false" IsFix="false" />
+</Synchronline>
+<Synchronline>
+<LeftBoundary IsFix="true" x="0.685" IsMathX="true" y="0.725" />
+<RightBoundary IsFix="true" x="0.875" IsMathX="true" y="0.9" />
+<Gradient Numerator="35" Denominator="38" IsMath="false" IsFix="false" />
+</Synchronline>
+<Curve Type="Polynomial5" >
+<LeftBoundary IsDefinedDdy="false" Ddy="0" IsMathDdy="true" IsDefinedDddy="false" Dddy="0" IsMathDddy="true" />
+<RightBoundary IsDefinedDdy="false" Ddy="0" IsMathDdy="true" IsDefinedDddy="false" Dddy="0" IsMathDddy="true" />
+ <Spline3 IsContinuous4Derivative="false" IsDefinedSaddlePoint="false" IsDefinedLineAs2ndSegment="false" IsDefinedSlopeOfLine="false" SlopeOfLine="0" IsMathSlopeOfLine="true" />
+<Supremum y="1.7e+308" Dy="1.7e+308" IsMathDy="true" Ddy="1.7e+308" IsMathDdy="true" Dddy="1.7e+308" IsMathDddy="true" />
+<Infimum y="-1.7e+308" Dy="-1.7e+308" IsMathDy="true" Ddy="-1.7e+308" IsMathDdy="true" Dddy="-1.7e+308" IsMathDddy="true" />
+</Curve>
+<Curve Type="Polynomial5" >
+<LeftBoundary IsDefinedDdy="false" Ddy="0" IsMathDdy="true" IsDefinedDddy="false" Dddy="0" IsMathDddy="true" />
+<RightBoundary IsDefinedDdy="false" Ddy="0" IsMathDdy="true" IsDefinedDddy="false" Dddy="0" IsMathDddy="true" />
+ <Spline3 IsContinuous4Derivative="false" IsDefinedSaddlePoint="false" IsDefinedLineAs2ndSegment="false" IsDefinedSlopeOfLine="false" SlopeOfLine="0" IsMathSlopeOfLine="true" />
+<Supremum y="1.7e+308" Dy="1.7e+308" IsMathDy="true" Ddy="1.7e+308" IsMathDdy="true" Dddy="1.7e+308" IsMathDddy="true" />
+<Infimum y="-1.7e+308" Dy="-1.7e+308" IsMathDy="true" Ddy="-1.7e+308" IsMathDdy="true" Dddy="-1.7e+308" IsMathDddy="true" />
+</Curve>
+<Curve Type="Polynomial5" >
+<LeftBoundary IsDefinedDdy="false" Ddy="0" IsMathDdy="true" IsDefinedDddy="false" Dddy="0" IsMathDddy="true" />
+<RightBoundary IsDefinedDdy="false" Ddy="0" IsMathDdy="true" IsDefinedDddy="false" Dddy="0" IsMathDddy="true" />
+ <Spline3 IsContinuous4Derivative="false" IsDefinedSaddlePoint="false" IsDefinedLineAs2ndSegment="false" IsDefinedSlopeOfLine="false" SlopeOfLine="0" IsMathSlopeOfLine="true" />
+<Supremum y="1.7e+308" Dy="1.7e+308" IsMathDy="true" Ddy="1.7e+308" IsMathDdy="true" Dddy="1.7e+308" IsMathDddy="true" />
+<Infimum y="-1.7e+308" Dy="-1.7e+308" IsMathDy="true" Ddy="-1.7e+308" IsMathDdy="true" Dddy="-1.7e+308" IsMathDddy="true" />
+</Curve>
+<Cam Name="" LeftBoundaryIndex="0" RightBoundaryIndex="5" >
+<Supremum y="1.7e+308" Dy="1.7e+308" IsMathDy="true" Ddy="1.7e+308" IsMathDdy="true" Dddy="1.7e+308" IsMathDddy="true" />
+<Infimum y="-1.7e+308" Dy="-1.7e+308" IsMathDy="true" Ddy="-1.7e+308" IsMathDdy="true" Dddy="1.7e+308" IsMathDddy="true" />
+</Cam>
+<ChartExtensions>
+</ChartExtensions>
+</CamProfile>

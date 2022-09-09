@@ -88,8 +88,8 @@
       <Group ID="Position">
         <Property ID="LowerLimitMin" Value="-1.79769313486231E308" />
         <Property ID="UpperLimitMax" Value="1.79769313486231E308" />
-        <Property ID="LowerLimit" Value="-10" />
-        <Property ID="UpperLimit" Value="210" />
+        <Property ID="LowerLimit" Value="0" />
+        <Property ID="UpperLimit" Value="200" />
       </Group>
       <Property ID="VelocityIsReadOnly" Value="0" />
       <Selector ID="Velocity">

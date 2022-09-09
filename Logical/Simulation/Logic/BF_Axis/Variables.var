@@ -14,6 +14,8 @@ END_VAR
 VAR
 	camSeq : MpAxisCamSequencer;
 	camSeqNozzle : MpAxisCamSequencer;
+	camNozzleParameters : MpAxisCamSequencerParType;
+	configCamNozzle : McAcpAxCamAutParType;
 	camParameters : MpAxisCamSequencerParType;
 END_VAR
 (*Other Variables*)

@@ -5,7 +5,17 @@
     <Group ID="Row[1]">
       <Property ID="CamName" Value="b1_Nozzle" />
       <Property ID="CamID" Value="1" />
-      <Property ID="Description" />
+      <Property ID="Description" Value="bottle type 1" />
+    </Group>
+    <Group ID="Row[2]">
+      <Property ID="CamName" Value="b2_Nozzle" />
+      <Property ID="CamID" Value="2" />
+      <Property ID="Description" Value="bottle type 2" />
+    </Group>
+    <Group ID="Row[3]">
+      <Property ID="CamName" Value="b3_Nozzle" />
+      <Property ID="CamID" Value="3" />
+      <Property ID="Description" Value="bottle type 3" />
     </Group>
   </Element>
 </Configuration>

@@ -8,10 +8,15 @@ PROGRAM _INIT
 	MpAxisConvParType.AutoTune.MaxPositionError:=30;
 	//Nozzle parameters
 	MpAxisNozzleParType := MpAxisConvParType;
-	MpAxisNozzleParType.Homing.Position:=200;
+	MpAxisNozzleParType.Homing.Position:=195;
 	//Cart parameters
 	MpAxisCartParType := MpAxisConvParType;
 	
+	camNozzleParameters.CamSequence.Get.GetOnEnable:=1;
+	camNozzleParameters.CamSequence.Get.Command:=mcGET_PAR_ACTUAL;
+	camNozzleParameters.CamSequence.Data.DataAddress:=ADR(configCamNozzle);
+	camNozzleParameters.CamSequence.Data.DataSize:=SIZEOF(configCamNozzle);
+	camNozzleParameters.CamSequence.Set.Command:=mcSET_UPDATE_FROM_ADR;
 END_PROGRAM
 
 PROGRAM _CYCLIC
@@ -23,7 +28,7 @@ PROGRAM _CYCLIC
 	
 	//Sequence declaration
 	camSeq(MpLink := ADR(axisCart), Enable := 1, Parameters := ADR(camParameters), MpLinkMaster := ADR(axisConv));
-	camSeqNozzle(MpLink := ADR(axisNozzle), Enable := 1, Parameters := ADR(camParameters), MpLinkMaster := ADR(axisConv));
+	camSeqNozzle(MpLink := ADR(axisNozzle), Enable := 1, Parameters := ADR(camNozzleParameters), MpLinkMaster := ADR(axisConv));
 	
 	
 	
@@ -117,6 +122,7 @@ PROGRAM _CYCLIC
 			END_IF;
 			
 		HOMING:
+			gControl.bottleCnt:=0;
 			IF gControl.manual THEN
 				MpAxisCartParType.Homing.Mode:=141;
 				MpAxisCartParType.Homing.Options.HomingDirection:=3;
