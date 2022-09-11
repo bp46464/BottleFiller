@@ -9,7 +9,6 @@
   <TaskClass Name="Cyclic#2" />
   <TaskClass Name="Cyclic#3" />
   <TaskClass Name="Cyclic#4">
-    <Task Name="test" Source="Package.test.prg" Memory="UserROM" Language="IEC" Debugging="true" Disabled="true" />
     <Task Name="RobVis" Source="Simulation.Logic.RobVis.prg" Memory="UserROM" Language="IEC" Debugging="true" />
   </TaskClass>
   <TaskClass Name="Cyclic#5" />
@@ -20,10 +19,10 @@
     <DataObject Name="McAcpSys" Source="" Memory="UserROM" Language="Binary" />
   </DataObjects>
   <NcDataObjects>
-    <NcDataObject Name="mcdrivelog" Source="" Memory="UserROM" Language="Binary" />
     <NcDataObject Name="b1_Nozzle" Source="b1_Nozzle.dob" Memory="UserROM" Language="Cam" />
     <NcDataObject Name="b2_Nozzle" Source="b2_Nozzle.dob" Memory="UserROM" Language="Cam" />
     <NcDataObject Name="b3_Nozzle" Source="b3_Nozzle.dob" Memory="UserROM" Language="Cam" />
+    <NcDataObject Name="mcdrivelog" Source="" Memory="UserROM" Language="Binary" />
   </NcDataObjects>
   <Binaries>
     <BinaryObject Name="McAcpDrv" Source="" Memory="UserROM" Language="Binary" />
@@ -52,6 +51,7 @@
     <BinaryObject Name="configCam" Source="" Memory="UserROM" Language="Binary" />
     <BinaryObject Name="configNozz" Source="" Memory="UserROM" Language="Binary" />
     <BinaryObject Name="Config_1" Source="" Memory="UserROM" Language="Binary" />
+    <BinaryObject Name="Config_2" Source="" Memory="UserROM" Language="Binary" />
   </Binaries>
   <Libraries>
     <LibraryObject Name="McBase" Source="Libraries.McBase.lby" Memory="UserROM" Language="binary" Debugging="true" />

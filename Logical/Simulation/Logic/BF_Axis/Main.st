@@ -17,6 +17,7 @@ PROGRAM _INIT
 	camNozzleParameters.CamSequence.Data.DataAddress:=ADR(configCamNozzle);
 	camNozzleParameters.CamSequence.Data.DataSize:=SIZEOF(configCamNozzle);
 	camNozzleParameters.CamSequence.Set.Command:=mcSET_UPDATE_FROM_ADR;
+	camNozzleParameters.CamSequence.Set.Mode:=mcAXIS_CAM_SEQ_SET_ON_UPDATE;
 END_PROGRAM
 
 PROGRAM _CYCLIC

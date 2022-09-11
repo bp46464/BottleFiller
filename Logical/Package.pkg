@@ -7,7 +7,6 @@
     <Object Type="Package" Description="Global libraries">Libraries</Object>
     <Object Type="Package">Simulation</Object>
     <Object Type="Package">mappView</Object>
-    <Object Type="Package">Package</Object>
     <Object Type="DataObject" Language="Cam">b1_Nozzle</Object>
     <Object Type="DataObject" Language="Cam">b2_Nozzle</Object>
     <Object Type="DataObject" Language="Cam">b3_Nozzle</Object>
