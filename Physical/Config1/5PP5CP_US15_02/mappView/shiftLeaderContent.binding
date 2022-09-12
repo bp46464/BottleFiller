@@ -31,19 +31,12 @@
 
 
 
-<Binding mode="oneWay">
-<Source xsi:type="opcUa" refId="::BootleFill:bottleFillerRecipeTyp.diSpeedProfile" attribute="value" />
-<Target xsi:type="brease" contentRefId="shiftLeaderContent" widgetRefId="NumericOutput3" attribute="value" />
-</Binding>
-<Binding mode="oneWay">
-<Source xsi:type="opcUa" refId="::BootleFill:bottleFillerRecipeTyp.diBottleShape" attribute="value" />
-<Target xsi:type="brease" contentRefId="shiftLeaderContent" widgetRefId="NumericOutput4" attribute="value" />
-</Binding>
+
 
 
 
 <Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::AsGlobalPV:gAxisUpdate.Conveyor.Velocity" attribute="value" />
+<Source xsi:type="opcUa" refId="::AsGlobalPV:gAxisOutputs.Conveyor.velocity" attribute="value" />
 <Target xsi:type="brease" contentRefId="shiftLeaderContent" widgetRefId="NumericOutput2" attribute="value" />
 </Binding>
 </Bindings>

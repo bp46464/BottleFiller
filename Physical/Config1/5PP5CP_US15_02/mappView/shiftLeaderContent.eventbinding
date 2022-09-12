@@ -1,108 +1,191 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <EventBindingSet id="shiftLeaderContent_eventbinding" xmlns="http://www.br-automation.com/iat2014/eventbinding/v2" xmlns:types="http://www.br-automation.com/iat2015/widgetTypes/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Bindings>
-    <EventBinding id="shiftLeaderContent.Button1.Click">
-      <Source xsi:type="widgets.brease.Button.Event" contentRefId="shiftLeaderContent" widgetRefId="Button1" event="Click" />
-      <EventHandler>
-        <Action>
-          <ReadTarget xsi:type="opcUa.NodeAction.Read" refId="::BootleFill:bottleFillerRecipeTyp.diPumpSpeedFlow">
-            <Method xsi:type="opcUa.NodeAction.GetValue" />
-          </ReadTarget>
-          <Result>
-            <ResultHandler>
-              <Action>
-                <Target xsi:type="widgets.brease.NumericOutput.Action" contentRefId="shiftLeaderContent" widgetRefId="NumericOutput1">
-                  <Method xsi:type="widgets.brease.NumericOutput.Action.SetValue" value="=result" />
-                </Target>
-              </Action>
-            </ResultHandler>
-          </Result>
-        </Action>
-      </EventHandler>
-      <EventHandler>
-        <Action>
-          <ReadTarget xsi:type="opcUa.NodeAction.Read" refId="::BootleFill:MpAxisCartParType.Velocity">
-            <Method xsi:type="opcUa.NodeAction.GetValue" />
-          </ReadTarget>
-          <Result>
-            <ResultHandler>
-              <Action>
-                <Target xsi:type="widgets.brease.NumericOutput.Action" contentRefId="shiftLeaderContent" widgetRefId="NumericOutput2">
-                  <Method xsi:type="widgets.brease.NumericOutput.Action.SetValue" value="=result" />
-                </Target>
-              </Action>
-            </ResultHandler>
-          </Result>
-        </Action>
-      </EventHandler>
-      <EventHandler>
-        <Action>
-          <ReadTarget xsi:type="opcUa.NodeAction.Read" refId="::BootleFill:bottleFillerRecipeTyp.diSpeedProfile">
-            <Method xsi:type="opcUa.NodeAction.GetValue" />
-          </ReadTarget>
-          <Result>
-            <ResultHandler>
-              <Action>
-                <Target xsi:type="widgets.brease.NumericOutput.Action" contentRefId="shiftLeaderContent" widgetRefId="NumericOutput3">
-                  <Method xsi:type="widgets.brease.NumericOutput.Action.SetValue" value="=result" />
-                </Target>
-              </Action>
-            </ResultHandler>
-          </Result>
-        </Action>
-      </EventHandler>
-      <EventHandler>
-        <Action>
-          <ReadTarget xsi:type="opcUa.NodeAction.Read" refId="::BootleFill:bottleFillerRecipeTyp.diBottleShape">
-            <Method xsi:type="opcUa.NodeAction.GetValue" />
-          </ReadTarget>
-          <Result>
-            <ResultHandler>
-              <Action>
-                <Target xsi:type="widgets.brease.NumericOutput.Action" contentRefId="shiftLeaderContent" widgetRefId="NumericOutput4">
-                  <Method xsi:type="widgets.brease.NumericOutput.Action.SetValue" value="=result" />
-                </Target>
-              </Action>
-            </ResultHandler>
-          </Result>
-        </Action>
-      </EventHandler>
-    </EventBinding>
     <EventBinding id="shiftLeaderContent.Button2.Click">
       <Source xsi:type="widgets.brease.Button.Event" contentRefId="shiftLeaderContent" widgetRefId="Button2" event="Click" />
-      <EventHandler>
-        <Action>
-          <ReadTarget xsi:type="widgets.brease.NumericInput.ReadAction" contentRefId="shiftLeaderContent" widgetRefId="NumericInput2">
-            <Method xsi:type="widgets.brease.NumericInput.Action.GetValue" />
-          </ReadTarget>
-          <Result>
-            <ResultHandler>
-              <Action>
-                <Target xsi:type="opcUa.NodeAction" refId="::BootleFill:MpAxisConvParType.Velocity">
-                  <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=result" />
-                </Target>
-              </Action>
-            </ResultHandler>
-          </Result>
-        </Action>
+      <Operand datatype="ANY_REAL" name="velocityUpdate">
+        <ReadTarget xsi:type="widgets.brease.NumericInput.ReadAction" contentRefId="shiftLeaderContent" widgetRefId="NumericInput2">
+          <Method xsi:type="widgets.brease.NumericInput.Action.GetValue" />
+        </ReadTarget>
+      </Operand>
+      <Operand datatype="ANY_STRING" name="currentBottleType">
+        <ReadTarget xsi:type="widgets.brease.ListBox.ReadAction" contentRefId="shiftLeaderContent" widgetRefId="ListBox1">
+          <Method xsi:type="widgets.brease.ListBox.Action.GetSelectedValue" />
+        </ReadTarget>
+      </Operand>
+      <Operand datatype="ANY_INT" name="speedProfile">
+        <ReadTarget xsi:type="widgets.brease.ListBox.ReadAction" contentRefId="shiftLeaderContent" widgetRefId="ListBox2">
+          <Method xsi:type="widgets.brease.ListBox.Action.GetSelectedIndex" />
+        </ReadTarget>
+      </Operand>
+      <Operand datatype="ANY_STRING" name="speedValue">
+        <ReadTarget xsi:type="widgets.brease.ListBox.ReadAction" contentRefId="shiftLeaderContent" widgetRefId="ListBox2">
+          <Method xsi:type="widgets.brease.ListBox.Action.GetSelectedValue" />
+        </ReadTarget>
+      </Operand>
+      <EventHandler condition="speedProfile = 3">
+        <Sequence>
+          <Step order="0">
+            <Action>
+              <Target xsi:type="widgets.brease.TextOutput.Action" contentRefId="shiftLeaderContent" widgetRefId="TextOutput6">
+                <Method xsi:type="widgets.brease.TextOutput.Action.SetValue" value="Nonstandard" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="1">
+            <Action>
+              <Target xsi:type="widgets.brease.TextOutput.Action" contentRefId="shiftLeaderContent" widgetRefId="TextOutput5">
+                <Method xsi:type="widgets.brease.TextOutput.Action.SetValue" value="=currentBottleType" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="2">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gAxisUpdate.Conveyor.Velocity">
+                <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=velocityUpdate" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="3">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::BF_Axis:camSeqNozzle.Update">
+                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="4">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::BF_Axis:MpAxisConv.Update">
+                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+              </Target>
+            </Action>
+          </Step>
+        </Sequence>
+      </EventHandler>
+      <EventHandler condition="speedProfile = 2">
+        <Sequence>
+          <Step order="0">
+            <Action>
+              <Target xsi:type="widgets.brease.TextOutput.Action" contentRefId="shiftLeaderContent" widgetRefId="TextOutput6">
+                <Method xsi:type="widgets.brease.TextOutput.Action.SetValue" value="Fast" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="1">
+            <Action>
+              <Target xsi:type="widgets.brease.TextOutput.Action" contentRefId="shiftLeaderContent" widgetRefId="TextOutput5">
+                <Method xsi:type="widgets.brease.TextOutput.Action.SetValue" value="=currentBottleType" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="2">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gAxisUpdate.staticVelocity">
+                <Method xsi:type="opcUa.NodeAction.SetValueString" value="=speedValue" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="3">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::BF_Axis:camSeqNozzle.Update">
+                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="4">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.needUpdate">
+                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+              </Target>
+            </Action>
+          </Step>
+        </Sequence>
+      </EventHandler>
+      <EventHandler condition="speedProfile = 1">
+        <Sequence>
+          <Step order="0">
+            <Action>
+              <Target xsi:type="widgets.brease.TextOutput.Action" contentRefId="shiftLeaderContent" widgetRefId="TextOutput6">
+                <Method xsi:type="widgets.brease.TextOutput.Action.SetValue" value="Normal" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="1">
+            <Action>
+              <Target xsi:type="widgets.brease.TextOutput.Action" contentRefId="shiftLeaderContent" widgetRefId="TextOutput5">
+                <Method xsi:type="widgets.brease.TextOutput.Action.SetValue" value="=currentBottleType" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="2">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gAxisUpdate.staticVelocity">
+                <Method xsi:type="opcUa.NodeAction.SetValueString" value="=speedValue" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="3">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::BF_Axis:camSeqNozzle.Update">
+                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="4">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.needUpdate">
+                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+              </Target>
+            </Action>
+          </Step>
+        </Sequence>
+      </EventHandler>
+      <EventHandler condition="speedProfile = 0">
+        <Sequence>
+          <Step order="0">
+            <Action>
+              <Target xsi:type="widgets.brease.TextOutput.Action" contentRefId="shiftLeaderContent" widgetRefId="TextOutput6">
+                <Method xsi:type="widgets.brease.TextOutput.Action.SetValue" value="Slow" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="1">
+            <Action>
+              <Target xsi:type="widgets.brease.TextOutput.Action" contentRefId="shiftLeaderContent" widgetRefId="TextOutput5">
+                <Method xsi:type="widgets.brease.TextOutput.Action.SetValue" value="=currentBottleType" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="2">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gAxisUpdate.staticVelocity">
+                <Method xsi:type="opcUa.NodeAction.SetValueString" value="=speedValue" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="3">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::BF_Axis:camSeqNozzle.Update">
+                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="4">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.needUpdate">
+                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+              </Target>
+            </Action>
+          </Step>
+        </Sequence>
       </EventHandler>
     </EventBinding>
-    <EventBinding id="shiftLeaderContent.Button4.Click">
-      <Source xsi:type="widgets.brease.Button.Event" contentRefId="shiftLeaderContent" widgetRefId="Button4" event="Click" />
+    <EventBinding id="shiftLeaderContent.ListBox1.SelectedIndexChanged">
+      <Source xsi:type="widgets.brease.ListBox.Event" contentRefId="shiftLeaderContent" widgetRefId="ListBox1" event="SelectedIndexChanged" />
       <EventHandler>
         <Action>
-          <Target xsi:type="widgets.brease.TextPad.Action" contentRefId="shiftLeaderContent" widgetRefId="TextPad1">
-            <Method xsi:type="widgets.brease.TextPad.Action.OpenFileExplorer" />
-          </Target>
-        </Action>
-      </EventHandler>
-    </EventBinding>
-    <EventBinding id="eventbinding_0">
-      <Source xsi:type="widgets.brease.Button.Event" contentRefId="shiftLeaderContent" widgetRefId="Button3" event="Click" />
-      <EventHandler>
-        <Action>
-          <Target xsi:type="widgets.brease.TextPad.Action" contentRefId="shiftLeaderContent" widgetRefId="TextPad1">
-            <Method xsi:type="widgets.brease.TextPad.Action.SaveAs" />
+          <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.currentBottleType">
+            <Method xsi:type="opcUa.NodeAction.SetValueString" value="=selectedValue" />
           </Target>
         </Action>
       </EventHandler>

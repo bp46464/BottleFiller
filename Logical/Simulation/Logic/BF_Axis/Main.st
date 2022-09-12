@@ -27,6 +27,9 @@ PROGRAM _CYCLIC
 	MpAxisCart(MpLink := ADR(axisCart), Enable := 1, Parameters := ADR(MpAxisCartParType),   AutoTune := 1);
 	MpAxisNozzle(MpLink := ADR(axisNozzle), Enable := 1, Parameters := ADR(MpAxisNozzleParType),  AutoTune := 1);
 	
+	//sequence parameters
+	configCamNozzle.State[3].CamID:=STRING_TO_USINT(gControl.currentBottleType);
+	
 	//Sequence declaration
 	camSeq(MpLink := ADR(axisCart), Enable := 1, Parameters := ADR(camParameters), MpLinkMaster := ADR(axisConv));
 	camSeqNozzle(MpLink := ADR(axisNozzle), Enable := 1, Parameters := ADR(camNozzleParameters), MpLinkMaster := ADR(axisConv));
@@ -34,6 +37,7 @@ PROGRAM _CYCLIC
 	
 	
 	//conveyor management
+	MpAxisConvParType.Velocity:=gAxisUpdate.Conveyor.Velocity;
 	MpAxisConv.ErrorReset:=gControl.Conveyor.errorReset;
 	MpAxisConv.Power:=gControl.power;
 	MpAxisConv.Home:=gControl.Conveyor.home;
@@ -62,14 +66,24 @@ PROGRAM _CYCLIC
 //	camSeq.Signal1:=gCamSeqParam.cart.signal1;
 	camSeqNozzle.Signal1:=gCamSeqParam.nozzle.signal1;
 	
+
+	
+	IF camSeqNozzle.UpdateDone THEN
+		camSeqNozzle.Update:=0;
+	END_IF;
+	IF MpAxisConv.UpdateDone THEN
+		MpAxisConv.Update:=0;
+	END_IF;
+	
 	IF gControl.needUpdate THEN
 
 		//conveyor
+		MpAxisConvParType.Velocity:=STRING_TO_UINT(gAxisUpdate.staticVelocity);
 		MpAxisConvParType.Jog.LimitPosition.FirstPosition:=gAxisUpdate.Conveyor.FirstPosition;
 		MpAxisConvParType.Jog.LimitPosition.LastPosition:=gAxisUpdate.Conveyor.LastPosition;
 		MpAxisConvParType.Position:=gAxisUpdate.Conveyor.Position;
 		//	MpAxisConvParType.Homing.Mode:=gAxisUpdate.Conveyor.Homing;
-		MpAxisConvParType.Velocity:=gAxisUpdate.Conveyor.Velocity;
+		//MpAxisConvParType.Velocity:=gAxisUpdate.Conveyor.Velocity;
 		MpAxisConvParType.Jog.Velocity:=gAxisUpdate.Conveyor.Velocity;
 			
 		//cart
@@ -256,6 +270,7 @@ PROGRAM _CYCLIC
 	gCamSeqParam.nozzle.currentStateIndex:=camSeq.ActualStateIndex;
 	
 	gAxisOutputs:=controlInfo;
+	
 END_PROGRAM
 
 PROGRAM _EXIT

@@ -106,6 +106,7 @@
           <Variable Name="power" />
           <Variable Name="moveVelocity" />
           <Variable Name="disconnect" />
+          <Variable Name="currentBottleType" />
         </Variable>
         <Variable Name="gMachineInterface">
           <Variable Name="DigitalInputs">
@@ -140,6 +141,7 @@
             <Variable Name="Homing" />
             <Variable Name="Direction" />
           </Variable>
+          <Variable Name="staticVelocity" />
         </Variable>
         <Variable Name="gAxisOutputs">
           <Variable Name="Conveyor">
@@ -163,6 +165,7 @@
             <Variable Name="position" />
             <Variable Name="velocity" />
           </Variable>
+          <Variable Name="currentBottleType" />
         </Variable>
       </GlobalVariables>
       <Task Name="BootleFill">
@@ -193,11 +196,15 @@
         <Variable Name="axisMgmt" />
         <Variable Name="camParameters" />
         <Variable Name="camSeq" />
-        <Variable Name="camSeqNozzle" />
+        <Variable Name="camSeqNozzle">
+          <Variable Name="Update" />
+        </Variable>
         <Variable Name="homed" />
         <Variable Name="MpAxisCart" />
         <Variable Name="MpAxisCartParType" />
-        <Variable Name="MpAxisConv" />
+        <Variable Name="MpAxisConv">
+          <Variable Name="Update" />
+        </Variable>
         <Variable Name="MpAxisConvParType" />
         <Variable Name="MpAxisNozzle" />
         <Variable Name="MpAxisNozzleParType" />
@@ -217,6 +224,130 @@
             <Variable Name="error" />
             <Variable Name="isPowered" />
             <Variable Name="isHomed" />
+          </Variable>
+        </Variable>
+        <Variable Name="configCamNozzle">
+          <Variable Name="Common">
+            <Variable Name="Master">
+              <Variable Name="MasterAxis" />
+              <Variable Name="MasterParID" />
+              <Variable Name="MasterStartPosition" />
+              <Variable Name="MasterStartInterval" />
+              <Variable Name="MaxMasterVelocity" />
+            </Variable>
+            <Variable Name="AdvancedParameters">
+              <Variable Name="StartStateParam">
+                <Variable Name="StartState" />
+                <Variable Name="MasterStartRelPos" />
+              </Variable>
+              <Variable Name="AdditiveAxes">
+                <Variable Name="AdditiveMasterAxis" />
+                <Variable Name="AdditiveMasterParID" />
+                <Variable Name="AdditiveSlaveAxis" />
+                <Variable Name="AdditiveSlaveParID" />
+              </Variable>
+              <Variable Name="MasterStartPosMode" />
+              <Variable Name="ControlSettings">
+                <Variable Name="CrossLeftBoundary" />
+                <Variable Name="CamChangeImmediately" />
+              </Variable>
+              <Variable Name="MessageSettings">
+                <Variable Name="ErrorsInStandby" />
+                <Variable Name="ExceedingLimits" />
+              </Variable>
+              <Variable Name="TriggerAndLatch">
+                <Variable Name="Trigger1Delay" />
+                <Variable Name="Trigger2Delay" />
+                <Variable Name="SlaveLatchParID" />
+              </Variable>
+              <Variable Name="EventParID1" />
+              <Variable Name="EventParID2" />
+              <Variable Name="EventParID3" />
+              <Variable Name="EventParID4" />
+              <Variable Name="StartIntervalPos1" />
+              <Variable Name="StartIntervalPos2" />
+              <Variable Name="StartIntervalPos3" />
+              <Variable Name="StartIntervalPos4" />
+              <Variable Name="Factors">
+                <Variable Name="SlaveFactorParID" />
+              </Variable>
+            </Variable>
+          </Variable>
+          <Variable Name="State" />
+        </Variable>
+        <Variable Name="camNozzleParameters">
+          <Variable Name="Deceleration" />
+          <Variable Name="CamSequence">
+            <Variable Name="Data">
+              <Variable Name="DataObjectName" />
+              <Variable Name="DataAddress" />
+              <Variable Name="DataSize" />
+            </Variable>
+            <Variable Name="Get">
+              <Variable Name="Command" />
+              <Variable Name="GetOnEnable" />
+            </Variable>
+            <Variable Name="Set">
+              <Variable Name="Mode" />
+              <Variable Name="Command" />
+              <Variable Name="UpdateCamList" />
+            </Variable>
+          </Variable>
+          <Variable Name="ParLockCommand" />
+          <Variable Name="Offset">
+            <Variable Name="Shift" />
+            <Variable Name="Velocity" />
+            <Variable Name="Acceleration" />
+            <Variable Name="Options">
+              <Variable Name="ShiftMode" />
+              <Variable Name="ProfileBase" />
+              <Variable Name="ProfileBaseMaxVelocity" />
+              <Variable Name="DistanceParameters">
+                <Variable Name="ProfileDistance" />
+              </Variable>
+              <Variable Name="ZoneParameters">
+                <Variable Name="StartPosition" />
+                <Variable Name="EndPosition" />
+                <Variable Name="Period" />
+              </Variable>
+              <Variable Name="Jerk" />
+              <Variable Name="ShiftAlternativeValueSource" />
+            </Variable>
+            <Variable Name="CmdIndependentActivation" />
+          </Variable>
+          <Variable Name="Phasing">
+            <Variable Name="Shift" />
+            <Variable Name="Velocity" />
+            <Variable Name="Acceleration" />
+            <Variable Name="Options">
+              <Variable Name="ShiftMode" />
+              <Variable Name="ProfileBase" />
+              <Variable Name="ProfileBaseMaxVelocity" />
+              <Variable Name="DistanceParameters">
+                <Variable Name="ProfileDistance" />
+              </Variable>
+              <Variable Name="ZoneParameters">
+                <Variable Name="StartPosition" />
+                <Variable Name="EndPosition" />
+                <Variable Name="Period" />
+              </Variable>
+              <Variable Name="Jerk" />
+              <Variable Name="ShiftAlternativeValueSource" />
+            </Variable>
+            <Variable Name="CmdIndependentActivation" />
+          </Variable>
+          <Variable Name="CamList" />
+          <Variable Name="Recovery">
+            <Variable Name="Mode" />
+            <Variable Name="Velocity" />
+            <Variable Name="Acceleration" />
+            <Variable Name="Deceleration" />
+            <Variable Name="Jerk" />
+            <Variable Name="Options">
+              <Variable Name="ToleranceWindow" />
+              <Variable Name="RestartPositionOffset" />
+            </Variable>
+            <Variable Name="MasterPositionOffset" />
           </Variable>
         </Variable>
       </Task>

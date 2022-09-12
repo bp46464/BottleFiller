@@ -58,7 +58,7 @@
               <Property ID="PredefinedCam" Value="ZeroPoint" />
             </Selector>
             <Property ID="MasterFactor" Value="100" />
-            <Property ID="SlaveFactor" Value="-100" />
+            <Property ID="SlaveFactor" Value="100" />
             <Selector ID="CompensationMode" Value="MasterSlaveAbsolutePosition">
               <Property ID="MasterPosition" Value="90" />
               <Property ID="SlavePosition" Value="195" />
@@ -85,7 +85,7 @@
               <Property ID="PredefinedCam" Value="OneToOne" />
             </Selector>
             <Property ID="MasterFactor" Value="100" />
-            <Property ID="SlaveFactor" Value="100" />
+            <Property ID="SlaveFactor" Value="-100" />
             <Selector ID="CompensationMode" Value="SlaveCompensationAbsSlPos">
               <Property ID="MasterDistance" Value="50" />
               <Property ID="SlavePosition" Value="5" />
