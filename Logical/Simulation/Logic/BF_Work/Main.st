@@ -33,7 +33,7 @@ PROGRAM _CYCLIC
 				
 			
 			IF switch=1 OR EDGEPOS(gControl.inCam) THEN
-				IF NOT (gMachineInterface.DigitalInputs.CartHomingSwitch AND gMachineInterface.DigitalInputs.ConveyorHomingSwitch AND gMachineInterface.DigitalInputs.NozzleHomingSwitch)  THEN
+				IF NOT gMainAction.homed THEN
 					gAxisCase:=HOMING; //<------------------------------
 				END_IF;
 				
@@ -101,6 +101,7 @@ PROGRAM _CYCLIC
 			END_IF;
 				
 		AUTOMAT:
+
 			gControl.moveVelocity:= gControl.start AND (NOT gControl.stop);  
 			IF gControl.manual THEN
 				gControl.moveVelocity:=0;

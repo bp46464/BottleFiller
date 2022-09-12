@@ -73,15 +73,5 @@
         </Action>
       </EventHandler>
     </EventBinding>
-    <EventBinding id="operatorContent.Button3.Click">
-      <Source xsi:type="widgets.brease.Button.Event" contentRefId="operatorContent" widgetRefId="Button3" event="Click" />
-      <EventHandler>
-        <Action>
-          <Target xsi:type="opcUa.NodeAction" refId="::BootleFill:MpAxisConv.Update">
-            <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
-          </Target>
-        </Action>
-      </EventHandler>
-    </EventBinding>
-  </Bindings>
+	</Bindings>
 </EventBindingSet>

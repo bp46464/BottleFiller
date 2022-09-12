@@ -2,23 +2,6 @@
 <BindingsSet id="serviceContent_binding" xmlns="http://www.br-automation.com/iat2015/binding/engineering/v2" xmlns:bt="http://www.br-automation.com/iat2015/bindingListTypes/engineering/v2" xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<Bindings>
 
-
-
-
-
-
-
-
-<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::BootleFill:inCam" attribute="value" />
-<Target xsi:type="brease" contentRefId="serviceContent" widgetRefId="CheckBox1" attribute="value" />
-</Binding>
-
-
-<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::AsGlobalPV:gAxisUpdate.Conveyor.Velocity" attribute="value" />
-<Target xsi:type="brease" contentRefId="serviceContent" widgetRefId="velocitySlider" attribute="value" />
-</Binding>
 <Binding mode="twoWay">
 <Source xsi:type="opcUa" refId="::AsGlobalPV:gAxisUpdate.Conveyor.Position" attribute="value" />
 <Target xsi:type="brease" contentRefId="serviceContent" widgetRefId="conveyorSlider" attribute="value" />
@@ -30,6 +13,10 @@
 <Binding mode="twoWay">
 <Source xsi:type="opcUa" refId="::AsGlobalPV:gAxisUpdate.Nozzle.Position" attribute="value" />
 <Target xsi:type="brease" contentRefId="serviceContent" widgetRefId="nozzleSlider" attribute="value" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::AsGlobalPV:gAxisOutputs.Conveyor.velocity" attribute="value" />
+<Target xsi:type="brease" contentRefId="serviceContent" widgetRefId="velocitySlider" attribute="value" />
 </Binding>
 </Bindings>
 </BindingsSet>

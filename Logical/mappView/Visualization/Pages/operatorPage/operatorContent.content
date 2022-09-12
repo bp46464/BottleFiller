@@ -3,16 +3,15 @@
   <Widgets>
     <Widget xsi:type="widgets.brease.Button" id="Button1" top="140" left="120" width="140" zIndex="0" text="Start Machine" />
     <Widget xsi:type="widgets.brease.Button" id="Button2" top="180" left="120" width="140" zIndex="1" text="Stop Machine" />
-    <Widget xsi:type="widgets.brease.Button" id="Button3" top="220" left="120" width="140" zIndex="2" text="Load recipe" />
-    <Widget xsi:type="widgets.brease.Button" id="Button4" top="60" left="120" width="140" zIndex="3" text="Power on" />
-    <Widget xsi:type="widgets.brease.AlarmList" id="AlarmList1" top="20" left="360" width="980" height="320" zIndex="4" itemsPerPage="6">
+    <Widget xsi:type="widgets.brease.Button" id="Button4" top="60" left="120" width="140" zIndex="2" text="Power on" />
+    <Widget xsi:type="widgets.brease.AlarmList" id="AlarmList1" top="20" left="360" width="980" height="320" zIndex="3" itemsPerPage="6">
       <Widgets>
         <Widget xsi:type="widgets.brease.AlarmListItem" id="AlarmListItem1" zIndex="0" columnType="code" text="Error Code" />
         <Widget xsi:type="widgets.brease.AlarmListItem" id="AlarmListItem2" width="580" zIndex="1" text="Message" />
         <Widget xsi:type="widgets.brease.AlarmListItem" id="AlarmListItem3" zIndex="2" columnType="severity" text="Severity" />
       </Widgets>
     </Widget>
-    <Widget xsi:type="widgets.brease.Button" id="Button5" top="360" left="1140" width="200" zIndex="5" text="Acknowledge Error" />
-    <Widget xsi:type="widgets.brease.Button" id="Button6" top="100" left="120" width="140" zIndex="6" text="Power off" />
+    <Widget xsi:type="widgets.brease.Button" id="Button5" top="360" left="1140" width="200" zIndex="4" text="Acknowledge Error" />
+    <Widget xsi:type="widgets.brease.Button" id="Button6" top="100" left="120" width="140" zIndex="5" text="Power off" />
   </Widgets>
 </Content>

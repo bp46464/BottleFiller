@@ -82,7 +82,7 @@ PROGRAM _CYCLIC
 		MpAxisConvParType.Jog.LimitPosition.FirstPosition:=gAxisUpdate.Conveyor.FirstPosition;
 		MpAxisConvParType.Jog.LimitPosition.LastPosition:=gAxisUpdate.Conveyor.LastPosition;
 		MpAxisConvParType.Position:=gAxisUpdate.Conveyor.Position;
-		//	MpAxisConvParType.Homing.Mode:=gAxisUpdate.Conveyor.Homing;
+		//MpAxisConvParType.Homing.Mode:=gAxisUpdate.Conveyor.Homing;
 		//MpAxisConvParType.Velocity:=gAxisUpdate.Conveyor.Velocity;
 		MpAxisConvParType.Jog.Velocity:=gAxisUpdate.Conveyor.Velocity;
 			
@@ -91,14 +91,14 @@ PROGRAM _CYCLIC
 		MpAxisCartParType.Jog.LimitPosition.LastPosition:=gAxisUpdate.Cart.LastPosition;
 		MpAxisCartParType.Position:=gAxisUpdate.Cart.Position;
 		//	MpAxisCartParType.Homing.Mode:=gAxisUpdate.Cart.Homing;
-		MpAxisCartParType.Jog.Velocity:=gAxisUpdate.Cart.Velocity;
+		MpAxisCartParType.Jog.Velocity:=50;
 			
 		//nozzle
 		MpAxisNozzleParType.Jog.LimitPosition.FirstPosition:=gAxisUpdate.Nozzle.FirstPosition;
 		MpAxisNozzleParType.Jog.LimitPosition.LastPosition:=gAxisUpdate.Nozzle.LastPosition;
 		MpAxisNozzleParType.Position:=gAxisUpdate.Nozzle.Position;
 		//	MpAxisNozzleParType.Homing.Mode:=gAxisUpdate.Nozzle.Homing;
-		MpAxisNozzleParType.Jog.Velocity:=gAxisUpdate.Nozzle.Velocity;
+		MpAxisNozzleParType.Jog.Velocity:=50;
 		
 		MpAxisNozzle.Update:=1;
 		MpAxisConv.Update:=1;
@@ -140,16 +140,19 @@ PROGRAM _CYCLIC
 			gControl.bottleCnt:=0;
 			IF gControl.manual THEN
 				MpAxisCartParType.Homing.Mode:=141;
+				MpAxisCartParType.Homing.Position:=0;
 				MpAxisCartParType.Homing.Options.HomingDirection:=3;
 				MpAxisCartParType.Homing.Options.HomingVelocity:=50;
 				MpAxisCart.Update:=1;
 				
 				MpAxisConvParType.Homing.Mode:=141;
+				MpAxisConvParType.Homing.Position:=0;
 				MpAxisConvParType.Homing.Options.HomingDirection:=3;
 				MpAxisConvParType.Homing.Options.HomingVelocity:=50;
 				MpAxisConv.Update:=1;
 				
 				MpAxisNozzleParType.Homing.Mode:=141;
+				MpAxisNozzleParType.Homing.Position:=195;
 				MpAxisNozzleParType.Homing.Options.HomingDirection:=3;
 				MpAxisNozzleParType.Homing.Options.HomingVelocity:=50;
 				MpAxisNozzle.Update:=1;
@@ -163,7 +166,7 @@ PROGRAM _CYCLIC
 					MpAxisNozzle.Home:=1;
 					gMainAction.homed:=1;
 				END_IF;
-			ELSE
+			ELSIF NOT gControl.manual THEN
 				MpAxisCart.Home:=1;
 				MpAxisConv.Home:=1;
 				MpAxisNozzle.Home:=1;
@@ -239,6 +242,9 @@ PROGRAM _CYCLIC
 			MpAxisCart.JogPositive:=gControl.Cart.jogPositive;
 			MpAxisNozzle.JogNegative:=gControl.Nozzle.jogNegative;
 			MpAxisNozzle.JogPositive:=gControl.Nozzle.jogPositive;
+			IF MpAxisConv.Position > 0 THEN
+				gMainAction.homed:=0;
+			END_IF;
 			
 	END_CASE;
 	

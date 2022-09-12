@@ -131,6 +131,13 @@
               </Target>
             </Action>
           </Step>
+          <Step order="2">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.needUpdate">
+                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+              </Target>
+            </Action>
+          </Step>
         </Sequence>
       </EventHandler>
       <EventHandler condition="currentPosition &gt; newPosition">
@@ -145,6 +152,13 @@
           <Step order="1">
             <Action>
               <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.Conveyor.jogNegative">
+                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="2">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.needUpdate">
                 <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
               </Target>
             </Action>
@@ -320,6 +334,13 @@
               </Target>
             </Action>
           </Step>
+          <Step order="2">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.needUpdate">
+                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+              </Target>
+            </Action>
+          </Step>
         </Sequence>
       </EventHandler>
       <EventHandler condition="currentPosition &gt; newPosition">
@@ -334,6 +355,13 @@
           <Step order="1">
             <Action>
               <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.Cart.jogNegative">
+                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="2">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.needUpdate">
                 <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
               </Target>
             </Action>
@@ -474,50 +502,6 @@
         </Sequence>
       </EventHandler>
     </EventBinding>
-    <EventBinding id="serviceContent.CheckBox1.ValueChanged">
-      <Source xsi:type="widgets.brease.CheckBox.Event" contentRefId="serviceContent" widgetRefId="CheckBox1" event="ValueChanged" />
-      <Operand datatype="BOOL" name="inCamValue">
-        <ReadTarget xsi:type="widgets.brease.CheckBox.ReadAction" contentRefId="serviceContent" widgetRefId="CheckBox1">
-          <Method xsi:type="widgets.brease.CheckBox.Action.GetValueBool" />
-        </ReadTarget>
-      </Operand>
-      <EventHandler condition="inCamValue">
-        <Sequence>
-          <Step order="0">
-            <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.inCam">
-                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
-              </Target>
-            </Action>
-          </Step>
-          <Step order="1">
-            <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::BF_Work:switch">
-                <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="1" />
-              </Target>
-            </Action>
-          </Step>
-        </Sequence>
-      </EventHandler>
-      <EventHandler condition="NOT inCamValue">
-        <Sequence>
-          <Step order="0">
-            <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.inCam">
-                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="false" />
-              </Target>
-            </Action>
-          </Step>
-          <Step order="2">
-            <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::BF_Work:switch">
-                <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="2" />
-              </Target>
-            </Action>
-          </Step>
-        </Sequence>
-      </EventHandler>
-    </EventBinding>
     <EventBinding id="serviceContent.Button8.Click">
       <Source xsi:type="widgets.brease.Button.Event" contentRefId="serviceContent" widgetRefId="Button8" event="Click" />
       <Operand datatype="BOOL" name="isInCam">
@@ -541,6 +525,55 @@
               </Target>
             </Action>
           </Step>
+          <Step order="2">
+            <Action>
+              <Target xsi:type="widgets.brease.Button.Action" contentRefId="serviceContent" widgetRefId="Button5">
+                <Method xsi:type="widgets.brease.Button.Action.SetEnable" value="false" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="3">
+            <Action>
+              <Target xsi:type="widgets.brease.Button.Action" contentRefId="serviceContent" widgetRefId="Button6">
+                <Method xsi:type="widgets.brease.Button.Action.SetEnable" value="false" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="4">
+            <Action>
+              <Target xsi:type="widgets.brease.Button.Action" contentRefId="serviceContent" widgetRefId="Button7">
+                <Method xsi:type="widgets.brease.Button.Action.SetEnable" value="false" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="5">
+            <Action>
+              <Target xsi:type="widgets.brease.Button.Action" contentRefId="serviceContent" widgetRefId="Button3">
+                <Method xsi:type="widgets.brease.Button.Action.SetEnable" value="true" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="6">
+            <Action>
+              <Target xsi:type="widgets.brease.Button.Action" contentRefId="serviceContent" widgetRefId="Button4">
+                <Method xsi:type="widgets.brease.Button.Action.SetEnable" value="true" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="7">
+            <Action>
+              <Target xsi:type="widgets.brease.BasicSlider.Action" contentRefId="serviceContent" widgetRefId="cartSlider">
+                <Method xsi:type="widgets.brease.BasicSlider.Action.SetEnable" value="false" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="8">
+            <Action>
+              <Target xsi:type="widgets.brease.BasicSlider.Action" contentRefId="serviceContent" widgetRefId="nozzleSlider">
+                <Method xsi:type="widgets.brease.BasicSlider.Action.SetEnable" value="false" />
+              </Target>
+            </Action>
+          </Step>
         </Sequence>
       </EventHandler>
       <EventHandler condition="isInCam">
@@ -556,6 +589,55 @@
             <Action>
               <Target xsi:type="opcUa.NodeAction" refId="::BF_Work:switch">
                 <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="2" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="2">
+            <Action>
+              <Target xsi:type="widgets.brease.Button.Action" contentRefId="serviceContent" widgetRefId="Button5">
+                <Method xsi:type="widgets.brease.Button.Action.SetEnable" value="true" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="3">
+            <Action>
+              <Target xsi:type="widgets.brease.Button.Action" contentRefId="serviceContent" widgetRefId="Button6">
+                <Method xsi:type="widgets.brease.Button.Action.SetEnable" value="true" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="4">
+            <Action>
+              <Target xsi:type="widgets.brease.Button.Action" contentRefId="serviceContent" widgetRefId="Button7">
+                <Method xsi:type="widgets.brease.Button.Action.SetEnable" value="true" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="5">
+            <Action>
+              <Target xsi:type="widgets.brease.Button.Action" contentRefId="serviceContent" widgetRefId="Button3">
+                <Method xsi:type="widgets.brease.Button.Action.SetEnable" value="false" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="6">
+            <Action>
+              <Target xsi:type="widgets.brease.Button.Action" contentRefId="serviceContent" widgetRefId="Button4">
+                <Method xsi:type="widgets.brease.Button.Action.SetEnable" value="false" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="7">
+            <Action>
+              <Target xsi:type="widgets.brease.BasicSlider.Action" contentRefId="serviceContent" widgetRefId="cartSlider">
+                <Method xsi:type="widgets.brease.BasicSlider.Action.SetEnable" value="true" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="8">
+            <Action>
+              <Target xsi:type="widgets.brease.BasicSlider.Action" contentRefId="serviceContent" widgetRefId="nozzleSlider">
+                <Method xsi:type="widgets.brease.BasicSlider.Action.SetEnable" value="true" />
               </Target>
             </Action>
           </Step>
