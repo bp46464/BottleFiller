@@ -2,9 +2,9 @@
 <?AutomationStudio FileVersion="4.9"?>
 <SwConfiguration CpuAddress="SL1" xmlns="http://br-automation.co.at/AS/SwConfiguration">
   <TaskClass Name="Cyclic#1">
-    <Task Name="BootleFill" Source="Simulation.Logic.BF_Main.prg" Memory="UserROM" Language="IEC" Debugging="true" />
-    <Task Name="BF_Axis" Source="Simulation.Logic.BF_Axis.prg" Memory="UserROM" Language="IEC" Debugging="true" />
     <Task Name="BF_Work" Source="Simulation.Logic.BF_Work.prg" Memory="UserROM" Language="IEC" Debugging="true" />
+    <Task Name="BF_Axis" Source="Simulation.Logic.BF_Axis.prg" Memory="UserROM" Language="IEC" Debugging="true" />
+    <Task Name="BootleFill" Source="Simulation.Logic.BF_Main.prg" Memory="UserROM" Language="IEC" Debugging="true" />
   </TaskClass>
   <TaskClass Name="Cyclic#2" />
   <TaskClass Name="Cyclic#3" />

@@ -200,14 +200,30 @@
           <Variable Name="Update" />
         </Variable>
         <Variable Name="homed" />
-        <Variable Name="MpAxisCart" />
-        <Variable Name="MpAxisCartParType" />
+        <Variable Name="MpAxisCart">
+          <Variable Name="Update" />
+          <Variable Name="MoveVelocity" />
+        </Variable>
+        <Variable Name="MpAxisCartParType">
+          <Variable Name="Direction" />
+          <Variable Name="Velocity" />
+        </Variable>
         <Variable Name="MpAxisConv">
           <Variable Name="Update" />
+          <Variable Name="MoveVelocity" />
         </Variable>
-        <Variable Name="MpAxisConvParType" />
-        <Variable Name="MpAxisNozzle" />
-        <Variable Name="MpAxisNozzleParType" />
+        <Variable Name="MpAxisConvParType">
+          <Variable Name="Direction" />
+          <Variable Name="Velocity" />
+        </Variable>
+        <Variable Name="MpAxisNozzle">
+          <Variable Name="Update" />
+          <Variable Name="MoveVelocity" />
+        </Variable>
+        <Variable Name="MpAxisNozzleParType">
+          <Variable Name="Velocity" />
+          <Variable Name="Direction" />
+        </Variable>
         <Variable Name="needUpdate" />
         <Variable Name="controlInfo">
           <Variable Name="Conveyor">

@@ -5,17 +5,28 @@
     <Widget xsi:type="widgets.brease.Button" id="Button2" top="140" left="180" width="220" zIndex="1" text="Disable manual control" />
     <Widget xsi:type="widgets.brease.BasicSlider" id="conveyorSlider" top="240" left="580" width="480" zIndex="2" largeChange="1" maxValue="5000" showUnit="true" showValueDisplay="true" />
     <Widget xsi:type="widgets.brease.BasicSlider" id="velocitySlider" top="100" left="580" width="480" zIndex="3" maxValue="600" minValue="5" showUnit="true" showValueDisplay="true" />
-    <Widget xsi:type="widgets.brease.Button" id="Button3" top="260" left="180" width="140" zIndex="4" text="Move in cam" enable="false" />
-    <Widget xsi:type="widgets.brease.Button" id="Button4" top="300" left="180" width="140" zIndex="5" text="Stop in cam" enable="false" />
-    <Widget xsi:type="widgets.brease.Label" id="Label1" top="80" left="760" width="500" zIndex="6" text="Velocity" />
-    <Widget xsi:type="widgets.brease.Label" id="Label2" top="220" left="580" width="500" zIndex="7" text="Conveyor position" />
+    <Widget xsi:type="widgets.brease.Button" id="Button3" top="240" left="220" width="140" zIndex="4" text="Move in cam" enable="false" />
+    <Widget xsi:type="widgets.brease.Button" id="Button4" top="280" left="220" width="140" zIndex="5" text="Stop in cam" enable="false" />
+    <Widget xsi:type="widgets.brease.Label" id="Label1" top="80" left="760" zIndex="6" text="Velocity" />
+    <Widget xsi:type="widgets.brease.Label" id="Label2" top="220" left="580" width="140" zIndex="7" text="Conveyor position" />
     <Widget xsi:type="widgets.brease.BasicSlider" id="nozzleSlider" top="500" left="580" width="480" zIndex="8" largeChange="1" maxValue="200" showUnit="true" showValueDisplay="true" />
     <Widget xsi:type="widgets.brease.BasicSlider" id="cartSlider" top="360" left="580" width="480" zIndex="9" maxValue="1100" minValue="-100" showUnit="true" showValueDisplay="true" />
-    <Widget xsi:type="widgets.brease.Label" id="Label3" top="340" left="580" width="500" zIndex="10" text="Cart position" />
-    <Widget xsi:type="widgets.brease.Label" id="Label4" top="480" left="580" width="500" zIndex="11" text="Nozzle position" />
-    <Widget xsi:type="widgets.brease.Button" id="Button5" top="280" left="1120" width="160" zIndex="12" text="Run Conveyor" />
-    <Widget xsi:type="widgets.brease.Button" id="Button6" top="400" left="1120" width="160" zIndex="13" text="Run Cart" />
-    <Widget xsi:type="widgets.brease.Button" id="Button7" top="540" left="1120" width="160" zIndex="14" text="Run Nozzle" />
+    <Widget xsi:type="widgets.brease.Label" id="Label3" top="340" left="580" width="100" zIndex="10" text="Cart position" />
+    <Widget xsi:type="widgets.brease.Label" id="Label4" top="480" left="580" width="120" zIndex="11" text="Nozzle position" />
+    <Widget xsi:type="widgets.brease.Button" id="Button5" top="280" left="1160" width="160" zIndex="12" text="Run Conveyor" />
+    <Widget xsi:type="widgets.brease.Button" id="Button6" top="400" left="1160" width="160" zIndex="13" text="Run Cart" />
+    <Widget xsi:type="widgets.brease.Button" id="Button7" top="540" left="1160" width="160" zIndex="14" text="Run Nozzle" />
     <Widget xsi:type="widgets.brease.Button" id="Button8" top="180" left="180" width="220" zIndex="15" text="Connect/Disconnect Axis" />
+    <Widget xsi:type="widgets.brease.Button" id="Button9" top="240" left="160" width="40" zIndex="16" text="&lt;" enable="false" />
+    <Widget xsi:type="widgets.brease.Button" id="Button10" top="240" left="380" width="40" zIndex="17" text="&gt;" enable="false" />
+    <Widget xsi:type="widgets.brease.Button" id="Button11" top="280" left="540" width="40" zIndex="18" text="&lt;" />
+    <Widget xsi:type="widgets.brease.Button" id="Button12" top="280" left="1080" width="40" zIndex="19" text="&gt;" />
+    <Widget xsi:type="widgets.brease.Button" id="Button13" top="400" left="540" width="40" zIndex="20" text="&lt;" />
+    <Widget xsi:type="widgets.brease.Button" id="Button14" top="400" left="1080" width="40" zIndex="21" text="&gt;" />
+    <Widget xsi:type="widgets.brease.Button" id="Button15" top="540" left="540" width="40" zIndex="22" text="&lt;" />
+    <Widget xsi:type="widgets.brease.Button" id="Button16" top="540" left="1080" width="40" zIndex="23" text="&gt;" />
+    <Widget xsi:type="widgets.brease.NumericOutput" id="NumericOutput1" top="480" left="640" zIndex="24" />
+    <Widget xsi:type="widgets.brease.NumericOutput" id="NumericOutput2" top="340" left="620" zIndex="25" />
+    <Widget xsi:type="widgets.brease.NumericOutput" id="NumericOutput3" top="220" left="660" zIndex="26" />
   </Widgets>
 </Content>

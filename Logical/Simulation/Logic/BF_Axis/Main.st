@@ -74,6 +74,12 @@ PROGRAM _CYCLIC
 	IF MpAxisConv.UpdateDone THEN
 		MpAxisConv.Update:=0;
 	END_IF;
+	IF MpAxisNozzle.UpdateDone THEN
+		MpAxisNozzle.Update:=0;
+	END_IF;
+	IF MpAxisCart.UpdateDone THEN
+		MpAxisCart.Update:=0;
+	END_IF;
 	
 	IF gControl.needUpdate THEN
 
@@ -121,7 +127,20 @@ PROGRAM _CYCLIC
 		
 		
 	CASE gAxisCase OF
-		UPDATE:
+		HOLDON:
+			IF NOT (MpAxisCart.Stopped AND MpAxisConv.Stopped AND MpAxisNozzle.Stopped)  THEN
+				MpAxisCart.Stop:=1;
+				MpAxisConv.Stop:=1;
+				MpAxisNozzle.Stop:=1;
+			END_IF;
+			
+			IF  MpAxisConv.Info.PLCopenState = mcAXIS_STANDSTILL AND MpAxisCart.Info.PLCopenState = mcAXIS_STANDSTILL AND MpAxisNozzle.Info.PLCopenState = mcAXIS_STANDSTILL THEN
+				MpAxisCart.Stop:=0;
+				MpAxisConv.Stop:=0;
+				MpAxisNozzle.Stop:=0;
+				gMainAction.stopped:=1;
+			END_IF;
+			
 
 		POWERED:
 			IF (gControl.power AND NOT gControl.stop AND NOT gAxisOutputs.Conveyor.error) THEN //error
@@ -138,89 +157,47 @@ PROGRAM _CYCLIC
 			
 		HOMING:
 			gControl.bottleCnt:=0;
-			IF gControl.manual THEN
-				MpAxisCartParType.Homing.Mode:=141;
-				MpAxisCartParType.Homing.Position:=0;
-				MpAxisCartParType.Homing.Options.HomingDirection:=3;
-				MpAxisCartParType.Homing.Options.HomingVelocity:=50;
-				MpAxisCart.Update:=1;
-				
-				MpAxisConvParType.Homing.Mode:=141;
-				MpAxisConvParType.Homing.Position:=0;
-				MpAxisConvParType.Homing.Options.HomingDirection:=3;
-				MpAxisConvParType.Homing.Options.HomingVelocity:=50;
-				MpAxisConv.Update:=1;
-				
-				MpAxisNozzleParType.Homing.Mode:=141;
-				MpAxisNozzleParType.Homing.Position:=195;
-				MpAxisNozzleParType.Homing.Options.HomingDirection:=3;
-				MpAxisNozzleParType.Homing.Options.HomingVelocity:=50;
-				MpAxisNozzle.Update:=1;
-				
-				IF MpAxisCart.UpdateDone AND MpAxisConv.UpdateDone AND MpAxisNozzle.UpdateDone THEN
-					MpAxisCart.Update:=0;
-					MpAxisCart.Home:=1;
-					MpAxisConv.Update:=0;
-					MpAxisConv.Home:=1;
-					MpAxisNozzle.Update:=0;
-					MpAxisNozzle.Home:=1;
-					gMainAction.homed:=1;
-				END_IF;
-			ELSIF NOT gControl.manual THEN
-				MpAxisCart.Home:=1;
-				MpAxisConv.Home:=1;
-				MpAxisNozzle.Home:=1;
-				gMainAction.homed:=1;
-			END_IF;
-			
+			MpAxisCart.Home:=1;
+			MpAxisConv.Home:=1;
+			MpAxisNozzle.Home:=1;
+			gMainAction.homed:=1;
 			
 			
 		STANDSTILL:
-			
 			IF gControl.start THEN
 				IF gControl.manual THEN
-					// manual operations
-					gAxisCase:=onMOVE; // ??????
+					gAxisCase:=onMOVE;
 				ELSE
 					gAxisCase:=CONNECT;
-					//connect cams
-
 				END_IF;
 			END_IF;
 			
 		CONNECT:
-			
-			IF connectHelper=0 THEN
-				camSeq.EndSequence:=0;
-				camSeqNozzle.EndSequence:=0;
-				MpAxisConv.Stop:=1;
-				MpAxisNozzle.Stop:=1;
-				MpAxisCart.Stop:=1;
+			MpAxisCart.Home:=0;
+			MpAxisConv.Home:=0;
+			MpAxisNozzle.Home:=0;
+			camSeq.EndSequence:=0;
+			camSeqNozzle.EndSequence:=0;
+			camSeq.ErrorReset:=0;
+			camSeq.StartSequence:=1;
+			camSeqNozzle.StartSequence:=1;
+
+			IF camSeq.Error THEN
+				camSeq.ErrorReset:=1;
+				camSeq.StartSequence:=0;
 			END_IF;
 			
-			IF MpAxisConv.Stopped AND MpAxisCart.Stopped AND MpAxisNozzle.Stopped THEN
-				MpAxisConv.Stop:=0;
-				MpAxisNozzle.Stop:=0;
-				MpAxisCart.Stop:=0;
-				connectHelper:=1;
+			IF camSeq.InCam AND camSeqNozzle.InCam THEN
+				camSeq.Signal1:=1;
+				gMainAction.connected:=1;
+				connectHelper:=0;
 			END_IF;
-			
-			IF connectHelper=1 THEN
-		
-				camSeq.StartSequence:=1;
-				camSeqNozzle.StartSequence:=1;
-	
-				IF camSeq.InCam AND camSeqNozzle.InCam THEN
-					camSeq.Signal1:=1;
-					gMainAction.connected:=1;
-					connectHelper:=0;
-				END_IF;
-			END_IF;
-			
 
 		
 		DISCONNECT:
-			gMainAction.homed:=0;
+			MpAxisCart.Home:=0;
+			MpAxisConv.Home:=0;
+			MpAxisNozzle.Home:=0;
 			gMainAction.connected:=0;
 			MpAxisConv.MoveVelocity:=0;
 			camSeq.Signal1:=0;
@@ -235,13 +212,72 @@ PROGRAM _CYCLIC
 				
 			
 		onMOVE:
-			MpAxisConv.MoveVelocity:=gControl.moveVelocity;
-			MpAxisConv.JogNegative:=gControl.Conveyor.jogNegative;
-			MpAxisConv.JogPositive:=gControl.Conveyor.jogPositive;
-			MpAxisCart.JogNegative:=gControl.Cart.jogNegative;
-			MpAxisCart.JogPositive:=gControl.Cart.jogPositive;
-			MpAxisNozzle.JogNegative:=gControl.Nozzle.jogNegative;
-			MpAxisNozzle.JogPositive:=gControl.Nozzle.jogPositive;
+			//karetka
+			IF gControl.manual THEN
+				IF gControl.Cart.safeLevelStop THEN
+					gControl.Cart.stop:=gControl.Cart.safeLevelStop;
+					IF MpAxisCartParType.Direction = 1 AND MpAxisCart.Position >= gControl.Cart.upperLimit THEN
+						gControl.Cart.safeLevelStop:=0;
+						gControl.Cart.stop:=0;
+					ELSIF MpAxisCartParType.Direction = 0 AND MpAxisCart.Position <= gControl.Cart.lowerLimit THEN
+						gControl.Cart.safeLevelStop:=0;
+						gControl.Cart.stop:=0;
+					END_IF;
+				END_IF;
+				
+				IF gControl.Nozzle.safeLevelStop THEN
+					gControl.Nozzle.stop:=gControl.Nozzle.safeLevelStop;
+					IF MpAxisNozzleParType.Direction = 1 AND MpAxisNozzle.Position >= gControl.Nozzle.upperLimit THEN
+						gControl.Nozzle.safeLevelStop:=0;
+						gControl.Nozzle.stop:=0;
+					ELSIF MpAxisNozzleParType.Direction = 0 AND MpAxisNozzle.Position <= gControl.Nozzle.lowerLimit THEN
+						gControl.Nozzle.safeLevelStop:=0;
+						gControl.Nozzle.stop:=0;
+					END_IF;
+				END_IF;
+				
+				
+				MpAxisConv.MoveVelocity:=gControl.moveVelocity;
+				
+
+				IF gControl.Cart.onlyRight AND MpAxisCartParType.Direction = 0 THEN
+					gControl.Cart.stop:=0;
+					MpAxisCart.MoveVelocity:=gControl.Cart.moveVelocity;
+				END_IF;
+				
+				IF gControl.Cart.onlyLeft AND MpAxisCartParType.Direction = 1 THEN
+					gControl.Cart.stop:=0;
+					MpAxisCart.MoveVelocity:=gControl.Cart.moveVelocity;
+				END_IF;
+				
+				IF NOT gControl.Cart.onlyLeft AND NOT gControl.Cart.onlyRight THEN
+					MpAxisCart.MoveVelocity:= NOT gControl.Cart.safeLevelStop AND gControl.Cart.moveVelocity;
+				END_IF;	
+				
+
+				//nozzle
+				IF gControl.Nozzle.onlyRight AND MpAxisNozzleParType.Direction = 0 THEN
+					gControl.Nozzle.stop:=0;
+					MpAxisNozzle.MoveVelocity:=gControl.Nozzle.moveVelocity;
+				END_IF;
+				
+				IF gControl.Nozzle.onlyLeft AND MpAxisNozzleParType.Direction = 1 THEN
+					gControl.Nozzle.stop:=0;
+					MpAxisNozzle.MoveVelocity:=gControl.Nozzle.moveVelocity;
+				END_IF;
+				
+				IF NOT gControl.Nozzle.onlyLeft AND NOT gControl.Nozzle.onlyRight THEN
+					MpAxisNozzle.MoveVelocity:= NOT gControl.Nozzle.safeLevelStop AND gControl.Nozzle.moveVelocity;
+				END_IF;	
+			ELSE
+				MpAxisConv.MoveVelocity:=gControl.moveVelocity;
+				MpAxisConv.JogNegative:=gControl.Conveyor.jogNegative;
+				MpAxisConv.JogPositive:=gControl.Conveyor.jogPositive;
+				MpAxisCart.JogNegative:=gControl.Cart.jogNegative;
+				MpAxisCart.JogPositive:=gControl.Cart.jogPositive;
+				MpAxisNozzle.JogNegative:=gControl.Nozzle.jogNegative;
+				MpAxisNozzle.JogPositive:=gControl.Nozzle.jogPositive;
+			END_IF;
 			IF MpAxisConv.Position > 0 THEN
 				gMainAction.homed:=0;
 			END_IF;

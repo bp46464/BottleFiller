@@ -6,23 +6,12 @@ END_PROGRAM
 
 PROGRAM _CYCLIC
 	(* Insert code here *)
-//	MpBFRecipeXml(MpLink := ADR(BFRecipe) , Enable := 1, DeviceName := ADR('USER') , FileName := ADR('BottleFillerRecipe'));
-//	MpBFRecipeRegPar(MpLink := ADR(BFRecipe), Enable := 1, PVName := ADR('BootleFiller:bottleFillerRecipeTyp'));
-//	MpBFRecipeHMI(MpLink := ADR(BFRecipe), Enable := 1 , ErrorReset := , UISetup := ADR(UISetup) , UIConnect := ADR(MpRecipeUIConnectType));
-
-//	MpAxisConv(MpLink := ADR(axisConv), Enable := 1, Parameters := ADR(MpAxisConvParType), AutoTune := 1);
-//	MpAxisCart(MpLink := ADR(axisCart), Enable := 1, Parameters := ADR(MpAxisCartParType),   AutoTune := 1);
-//	MpAxisNozzle(MpLink := ADR(axisNozzle), Enable := 1, Parameters := ADR(MpAxisNozzleParType),  AutoTune := 1);
-//	
-//
-//	MpBFRecipeXml();
-	
 	
 	SimulationAxisPosition.Cart := LREAL_TO_REAL(gAxisOutputs.Cart.position);
 	SimulationAxisPosition.Conveyor := LREAL_TO_REAL(gAxisOutputs.Conveyor.position);
 	SimulationAxisPosition.Nozzle := LREAL_TO_REAL(gAxisOutputs.Nozzle.position);
 	gAdrAxesPositions := ADR(SimulationAxisPosition);
-	//MpBFRecipeHMI();
+
 	CASE FillerTyp OF
 		DISABLED: 
 			diStart:=0;
@@ -33,6 +22,15 @@ PROGRAM _CYCLIC
 			END_IF;
 			
 		INIT:
+			gControl.Cart.lowerLimit:=-95;
+			gControl.Cart.upperLimit:=1095;
+			
+			gControl.Conveyor.lowerLimit:=0;
+			gControl.Conveyor.upperLimit:=4997;
+			
+			gControl.Nozzle.lowerLimit:=5;
+			gControl.Nozzle.upperLimit:=196;
+			
 			gAxisCase:=POWERED;
 			
 			IF gMainAction.powered THEN
@@ -63,12 +61,9 @@ PROGRAM _CYCLIC
 			END_IF;
 			
 			
-		WORK:
-			
-			
+		WORK:			
 			result:= gControl.bottleCnt MOD 5;
-			
-			
+						
 			IF result=1 THEN
 				gCamSeqParam.nozzle.signal1:=1;
 			END_IF;
@@ -76,10 +71,7 @@ PROGRAM _CYCLIC
 				gCamSeqParam.nozzle.signal1:=0;
 				gCamSeqParam.cart.signal1:=0;
 			END_IF;
-			
-			
-			
-			
+						
 
 		ERROR:
 		

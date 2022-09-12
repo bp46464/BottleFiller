@@ -32,12 +32,18 @@ TYPE
 		moveVelocity : BOOL := FALSE;
 		stop : BOOL := FALSE;
 		currentBottleType : STRING[80] := '1';
+		safeLevelStop : BOOL;
+		onlyLeft : BOOL := FALSE;
+		onlyRight : BOOL := FALSE;
+		upperLimit : INT;
+		lowerLimit : INT;
 	END_STRUCT;
 	gMainActionTyp : 	STRUCT 
 		powered : BOOL := FALSE;
 		homed : BOOL := FALSE;
 		connected : BOOL := FALSE;
 		disconnected : BOOL := FALSE;
+		stopped : BOOL := FALSE;
 	END_STRUCT;
 	gAxisUpdateParType : 	STRUCT  (*update parameters structure*)
 		Conveyor : gParametersUpdate;
@@ -78,7 +84,7 @@ TYPE
 		( (*BF_Axis control*)
 		WAIT,
 		POWERED,
-		UPDATE,
+		HOLDON,
 		HOMING,
 		CONNECT,
 		STANDSTILL,

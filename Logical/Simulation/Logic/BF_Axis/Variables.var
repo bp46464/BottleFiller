@@ -28,4 +28,6 @@ VAR
 	axisMgmt : axisesManagementType;
 	controlInfo : gAxisOutputsTyp;
 	connectHelper : INT := 0;
+	handleStopCart : BOOL := FALSE;
+	handleStopNozzle : BOOL := FALSE;
 END_VAR
