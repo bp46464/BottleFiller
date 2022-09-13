@@ -2,58 +2,13 @@
 <?AutomationStudio FileVersion="4.9"?>
 <Configuration>
   <Element ID="gAlarmXCore" Type="mpalarmxcore">
-    <Group ID="mapp.AlarmX.Core">
-      <Group ID="Mapping">
-        <Group ID="[0]">
-          <Selector ID="[0]" />
-        </Group>
-      </Group>
-      <Group ID="BySeverity">
-        <Group ID="[0]">
-          <Property ID="Severity" Value="10" />
-          <Selector ID="[0]" Value="Reaction">
-            <Property ID="Name" Value="LiquidReaction" />
-          </Selector>
-          <Selector ID="[1]" Value="Reaction">
-            <Property ID="Name" Value="PowerReaction" />
-          </Selector>
-        </Group>
-      </Group>
-    </Group>
     <Group ID="mapp.AlarmX.Core.Configuration">
       <Group ID="[0]">
-        <Property ID="Name" Value="noLiquid" />
-        <Property ID="Message" Value="There is too low liquid level" />
-        <Property ID="Code" Value="1" />
-        <Property ID="Severity" Value="10" />
-        <Selector ID="Behavior" Value="LevelMonitoring">
-          <Group ID="Monitoring">
-            <Property ID="MonitoredPV" Value="::BootleFill:diLiquidLevel" />
-            <Selector ID="LowLimitEnable" Value="Static">
-              <Property ID="Limit" Value="10" />
-              <Selector ID="LowLowLimitEnable" Value="Static">
-                <Property ID="Limit" Value="4" />
-                <Property ID="LimitText" Value="TurboLow" />
-              </Selector>
-            </Selector>
-          </Group>
-        </Selector>
-      </Group>
-      <Group ID="[1]">
         <Property ID="Name" Value="noPower" />
         <Property ID="Message" Value="You should click PowerSwitch first." />
         <Property ID="Code" Value="99" />
         <Property ID="Severity" Value="10" />
         <Selector ID="Behavior" Value="PersistentAlarm" />
-      </Group>
-    </Group>
-    <Group ID="mapp.AlarmX.Core.Snippets">
-      <Selector ID="AutoDetect" Value="1" />
-      <Group ID="[0]">
-        <Property ID="Key" Value="isPowered" />
-        <Selector ID="Value">
-          <Property ID="PV" Value="::BootleFill:diPowerSwitch" />
-        </Selector>
       </Group>
     </Group>
   </Element>

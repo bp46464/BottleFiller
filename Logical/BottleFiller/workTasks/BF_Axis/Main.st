@@ -50,6 +50,7 @@ PROGRAM _CYCLIC
 	MpAxisCart.Power:=gControl.power;
 	MpAxisCart.Home:=gControl.Cart.home;
 	MpAxisCart.Stop:=gControl.Cart.stop;
+	MpAxisCart.MoveVelocity:=gControl.Cart.moveVelocity;
 	MpAxisCart.JogNegative:=gControl.Cart.jogNegative;
 	MpAxisCart.JogPositive:=gControl.Cart.jogPositive;
 	
@@ -60,6 +61,7 @@ PROGRAM _CYCLIC
 	MpAxisNozzle.Home:=gControl.Nozzle.home;
 	MpAxisNozzle.Stop:=gControl.Nozzle.stop;
 	MpAxisNozzle.JogNegative:=gControl.Nozzle.jogNegative;
+	MpAxisNozzle.MoveVelocity:=gControl.Nozzle.moveVelocity;
 	MpAxisNozzle.JogPositive:=gControl.Nozzle.jogPositive;
 	
 	//cam params
@@ -91,6 +93,7 @@ PROGRAM _CYCLIC
 		//MpAxisConvParType.Homing.Mode:=gAxisUpdate.Conveyor.Homing;
 		//MpAxisConvParType.Velocity:=gAxisUpdate.Conveyor.Velocity;
 		MpAxisConvParType.Jog.Velocity:=gAxisUpdate.Conveyor.Velocity;
+	//	MpAxisConvParType.Direction:=gControl.Conveyor.Direction;
 			
 		//cart
 		MpAxisCartParType.Jog.LimitPosition.FirstPosition:=gAxisUpdate.Cart.FirstPosition;
@@ -98,6 +101,7 @@ PROGRAM _CYCLIC
 		MpAxisCartParType.Position:=gAxisUpdate.Cart.Position;
 		//	MpAxisCartParType.Homing.Mode:=gAxisUpdate.Cart.Homing;
 		MpAxisCartParType.Jog.Velocity:=50;
+	//	MpAxisCartParType.Direction:=gControl.Cart.Direction;
 			
 		//nozzle
 		MpAxisNozzleParType.Jog.LimitPosition.FirstPosition:=gAxisUpdate.Nozzle.FirstPosition;
@@ -105,6 +109,7 @@ PROGRAM _CYCLIC
 		MpAxisNozzleParType.Position:=gAxisUpdate.Nozzle.Position;
 		//	MpAxisNozzleParType.Homing.Mode:=gAxisUpdate.Nozzle.Homing;
 		MpAxisNozzleParType.Jog.Velocity:=50;
+	//	MpAxisNozzleParType.Direction:=gControl.Nozzle.Direction;
 		
 		MpAxisNozzle.Update:=1;
 		MpAxisConv.Update:=1;
@@ -291,6 +296,7 @@ PROGRAM _CYCLIC
 	controlInfo.Conveyor.velocity:=MpAxisConv.Velocity;
 	controlInfo.Conveyor.updateDone:=MpAxisConv.UpdateDone;
 	controlInfo.Conveyor.MoveActive:=MpAxisConv.Info.Jogging;
+//	controlInfo.Conveyor.Direction:=MpAxisConvParType.Direction;
 	
 	controlInfo.Cart.error:=MpAxisCart.Error;
 	controlInfo.Cart.isHomed:=MpAxisCart.IsHomed;
@@ -299,6 +305,7 @@ PROGRAM _CYCLIC
 	controlInfo.Cart.velocity:=MpAxisCart.Velocity;
 	controlInfo.Cart.updateDone:=MpAxisCart.UpdateDone;
 	controlInfo.Cart.MoveActive:=MpAxisCart.Info.Jogging;
+//	controlInfo.Cart.Direction:=MpAxisCartParType.Direction;
 	
 	controlInfo.Nozzle.error:=MpAxisNozzle.Error;
 	controlInfo.Nozzle.isHomed:=MpAxisNozzle.IsHomed;
@@ -307,7 +314,7 @@ PROGRAM _CYCLIC
 	controlInfo.Nozzle.velocity:=MpAxisNozzle.Velocity;
 	controlInfo.Nozzle.updateDone:=MpAxisNozzle.UpdateDone;
 	controlInfo.Nozzle.MoveActive:=MpAxisNozzle.Info.Jogging;
-	
+//	controlInfo.Nozzle.Direction:=MpAxisNozzleParType.Direction;
 	gCamSeqParam.cart.currentStateIndex:=camSeq.ActualStateIndex;
 	gCamSeqParam.nozzle.currentStateIndex:=camSeq.ActualStateIndex;
 	

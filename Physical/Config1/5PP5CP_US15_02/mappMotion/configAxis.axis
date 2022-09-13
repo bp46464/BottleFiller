@@ -37,7 +37,25 @@
         <Property ID="Deceleration" Value="100000" />
       </Selector>
     </Selector>
-    <Selector ID="Alarms" Value="None" />
+    <Selector ID="Alarms" Value="MpAlarmX">
+      <Group ID="mapp.AlarmX.Core.Configuration">
+        <Group ID="[0]">
+          <Property ID="Message" Value="Conveyor system problem" />
+          <Property ID="Code" Value="100" />
+          <Property ID="Severity" Value="10" />
+        </Group>
+        <Group ID="[3]">
+          <Property ID="Message" Value="Conveyor Operation Problem" />
+          <Property ID="Code" Value="200" />
+          <Property ID="Severity" Value="20" />
+        </Group>
+        <Group ID="[14]">
+          <Property ID="Message" Value="Conveyor Motor problem" />
+          <Property ID="Code" Value="300" />
+          <Property ID="Severity" Value="30" />
+        </Group>
+      </Group>
+    </Selector>
   </Element>
   <Element ID="axisCart" Type="axis">
     <Property ID="BaseTypeIsReadOnly" Value="0" />
@@ -72,7 +90,25 @@
         <Property ID="Deceleration" Value="100000" />
       </Selector>
     </Selector>
-    <Selector ID="Alarms" Value="None" />
+    <Selector ID="Alarms" Value="MpAlarmX">
+      <Group ID="mapp.AlarmX.Core.Configuration">
+        <Group ID="[0]">
+          <Property ID="Message" Value="Cart System problem" />
+          <Property ID="Code" Value="101" />
+          <Property ID="Severity" Value="10" />
+        </Group>
+        <Group ID="[3]">
+          <Property ID="Message" Value="Cart Operation problem" />
+          <Property ID="Code" Value="201" />
+          <Property ID="Severity" Value="20" />
+        </Group>
+        <Group ID="[14]">
+          <Property ID="Message" Value="Cart Motor problem" />
+          <Property ID="Code" Value="301" />
+          <Property ID="Severity" Value="30" />
+        </Group>
+      </Group>
+    </Selector>
   </Element>
   <Element ID="axisNozzle" Type="axis">
     <Property ID="BaseTypeIsReadOnly" Value="0" />
@@ -107,6 +143,24 @@
         <Property ID="Deceleration" Value="800000" />
       </Selector>
     </Selector>
-    <Selector ID="Alarms" Value="None" />
+    <Selector ID="Alarms" Value="MpAlarmX">
+      <Group ID="mapp.AlarmX.Core.Configuration">
+        <Group ID="[0]">
+          <Property ID="Message" Value="Nozzle System problem" />
+          <Property ID="Code" Value="102" />
+          <Property ID="Severity" Value="10" />
+        </Group>
+        <Group ID="[3]">
+          <Property ID="Message" Value="Nozzle Operation problem" />
+          <Property ID="Code" Value="202" />
+          <Property ID="Severity" Value="20" />
+        </Group>
+        <Group ID="[14]">
+          <Property ID="Message" Value="Nozzle Motor problem" />
+          <Property ID="Code" Value="302" />
+          <Property ID="Severity" Value="30" />
+        </Group>
+      </Group>
+    </Selector>
   </Element>
 </Configuration>

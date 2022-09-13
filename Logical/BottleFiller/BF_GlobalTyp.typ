@@ -22,6 +22,7 @@ TYPE
 		velocity : REAL := 0;
 		updateDone : BOOL := FALSE;
 		MoveActive : BOOL := FALSE;
+		Direction : STRING[80];
 	END_STRUCT;
 	gControlTyp : 	STRUCT  (*parameters, inputs*)
 		power : BOOL := FALSE;
@@ -37,6 +38,7 @@ TYPE
 		onlyRight : BOOL := FALSE;
 		upperLimit : INT;
 		lowerLimit : INT;
+		Direction : STRING[80];
 	END_STRUCT;
 	gMainActionTyp : 	STRUCT 
 		powered : BOOL := FALSE;

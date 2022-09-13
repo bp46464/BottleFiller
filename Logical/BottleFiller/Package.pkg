@@ -4,11 +4,7 @@
   <Objects>
     <Object Type="File" Private="true">BF_GlobarVar.var</Object>
     <Object Type="File" Private="true">BF_GlobalTyp.typ</Object>
-    <Object Type="File" Description="Global data types">GlobalRobVis.typ</Object>
-    <Object Type="File" Description="Global variables">GlobalRobVis.var</Object>
-    <Object Type="Program" Language="IEC">RobVis</Object>
     <Object Type="Program" Language="IEC">BF_Main</Object>
-    <Object Type="Program" Language="IEC">BF_Work</Object>
-    <Object Type="Program" Language="IEC">BF_Axis</Object>
+    <Object Type="Package">workTasks</Object>
   </Objects>
 </Package>

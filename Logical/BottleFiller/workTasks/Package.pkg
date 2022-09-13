@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio FileVersion="4.9"?>
+<Package xmlns="http://br-automation.co.at/AS/Package">
+  <Objects>
+    <Object Type="File" Description="Global data types">GlobalRobVis.typ</Object>
+    <Object Type="File" Description="Global variables">GlobalRobVis.var</Object>
+    <Object Type="Program" Language="IEC">RobVis</Object>
+    <Object Type="Program" Language="IEC">BF_Work</Object>
+    <Object Type="Program" Language="IEC">BF_Axis</Object>
+    <Object Type="Program" Language="IEC">BF_Alarm</Object>
+    <Object Type="Package">Sim</Object>
+  </Objects>
+</Package>

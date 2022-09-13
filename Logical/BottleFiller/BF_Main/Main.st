@@ -63,7 +63,7 @@ PROGRAM _CYCLIC
 			
 		WORK:			
 			result:= gControl.bottleCnt MOD 5;
-						
+					
 			IF result=1 THEN
 				gCamSeqParam.nozzle.signal1:=1;
 			END_IF;

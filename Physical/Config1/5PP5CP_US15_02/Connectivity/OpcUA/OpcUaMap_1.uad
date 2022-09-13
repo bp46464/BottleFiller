@@ -13,16 +13,6 @@
         <ACE RoleName="Operator" Access="0x01FF" />
         <ACE RoleName="Service" Access="0x01FF" />
       </ACL>
-      <ACL Id="4">
-        <ACE RoleName="Shift Leader" Access="0x0008" />
-        <ACE RoleName="Operator" Access="0x0008" />
-        <ACE RoleName="Service" Access="0x01FF" />
-      </ACL>
-      <ACL Id="29">
-        <ACE RoleName="Shift Leader" Access="0x0008" />
-        <ACE RoleName="Operator" Access="0x01FF" />
-        <ACE RoleName="Service" Access="0x01FF" />
-      </ACL>
     </ACLAliases>
     <EURangeViolationAliases />
     <EURangesAliases>
@@ -167,31 +157,10 @@
           </Variable>
           <Variable Name="currentBottleType" />
         </Variable>
+        <Variable Name="gAlarmXCore">
+          <Variable Name="Internal" />
+        </Variable>
       </GlobalVariables>
-      <Task Name="BootleFill">
-        <Variable Name="roleInfo">
-          <Variable Name="Name" />
-          <Variable Name="Index" />
-        </Variable>
-        <Variable AclId="2" AclInherit="2" Name="bottleFillerRecipeTyp" AutomaticEnable="True">
-          <Variable Name="diPumpSpeedFlow" />
-          <Variable Name="diVelocity" />
-          <Variable Name="diSpeedProfile" />
-          <Variable Name="diBottleShape" />
-        </Variable>
-        <Variable Name="doPumpRelay" />
-        <Variable AclId="29" AclInherit="2" Name="diPowerSwitch" />
-        <Variable AclId="29" AclInherit="2" Name="diStart" />
-        <Variable AclId="29" AclInherit="2" Name="diStop" />
-        <Variable AclId="4" AclInherit="2" Name="diManual" />
-        <Variable Name="SimulationAxisPosition">
-          <Variable Name="Conveyor" />
-          <Variable Name="Cart" />
-          <Variable Name="Nozzle" />
-        </Variable>
-        <Variable Name="inCam" />
-        <Variable Name="changedPosition" />
-      </Task>
       <Task Name="BF_Axis">
         <Variable Name="axisMgmt" />
         <Variable Name="camParameters" />
@@ -371,6 +340,35 @@
       <Task Name="BF_Work">
         <Variable Name="switch" />
       </Task>
+      <Task Name="BF_Alarm">
+        <Variable Name="BF_MpAlarm">
+          <Variable Name="MpLink" />
+          <Variable Name="Enable" />
+          <Variable Name="ErrorReset" />
+          <Variable Name="Active" />
+          <Variable Name="Error" />
+          <Variable Name="StatusID" />
+          <Variable Name="ActiveAlarms" />
+          <Variable Name="PendingAlarms" />
+          <Variable Name="Info">
+            <Variable Name="Diag">
+              <Variable Name="StatusID">
+                <Variable Name="ID" />
+                <Variable Name="Severity" />
+                <Variable Name="Code" />
+              </Variable>
+            </Variable>
+          </Variable>
+          <Variable Name="Internal">
+            <Variable Name="pObject" />
+            <Variable Name="State" />
+          </Variable>
+        </Variable>
+        <Variable Name="resetError" />
+        <Variable Name="caseError" />
+        <Variable Name="error" />
+      </Task>
+      <Task Name="BF_Main" />
     </Module>
   </DefaultView>
 </OpcUaSource>

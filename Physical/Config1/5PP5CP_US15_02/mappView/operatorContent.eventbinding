@@ -6,7 +6,7 @@
       <EventHandler>
         <Action>
           <Target xsi:type="widgets.brease.AlarmList.Action" contentRefId="operatorContent" widgetRefId="AlarmList1">
-            <Method xsi:type="widgets.brease.AlarmList.Action.AcknowledgeAll" />
+            <Method xsi:type="widgets.brease.AlarmList.Action.Acknowledge" />
           </Target>
         </Action>
       </EventHandler>
@@ -73,5 +73,35 @@
         </Action>
       </EventHandler>
     </EventBinding>
-	</Bindings>
+    <EventBinding id="operatorContent.Button3.Click">
+      <Source xsi:type="widgets.brease.Button.Event" contentRefId="operatorContent" widgetRefId="Button3" event="Click" />
+      <EventHandler>
+        <Action>
+          <Target xsi:type="opcUa.NodeAction" refId="::BF_Alarm:resetError">
+            <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="2" />
+          </Target>
+        </Action>
+      </EventHandler>
+    </EventBinding>
+    <EventBinding id="operatorContent.Button7.Click">
+      <Source xsi:type="widgets.brease.Button.Event" contentRefId="operatorContent" widgetRefId="Button7" event="Click" />
+      <EventHandler>
+        <Action>
+          <Target xsi:type="opcUa.NodeAction" refId="::BF_Alarm:resetError">
+            <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="3" />
+          </Target>
+        </Action>
+      </EventHandler>
+    </EventBinding>
+    <EventBinding id="operatorContent.Button8.Click">
+      <Source xsi:type="widgets.brease.Button.Event" contentRefId="operatorContent" widgetRefId="Button8" event="Click" />
+      <EventHandler>
+        <Action>
+          <Target xsi:type="opcUa.NodeAction" refId="::BF_Alarm:resetError">
+            <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="1" />
+          </Target>
+        </Action>
+      </EventHandler>
+    </EventBinding>
+  </Bindings>
 </EventBindingSet>
