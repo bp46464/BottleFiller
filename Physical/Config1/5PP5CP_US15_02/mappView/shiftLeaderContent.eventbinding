@@ -25,35 +25,70 @@
       </Operand>
       <EventHandler condition="speedProfile = 3">
         <Sequence>
-          <Step order="0">
+          <Step order="2">
             <Action>
               <Target xsi:type="widgets.brease.TextOutput.Action" contentRefId="shiftLeaderContent" widgetRefId="TextOutput6">
                 <Method xsi:type="widgets.brease.TextOutput.Action.SetValue" value="Nonstandard" />
               </Target>
             </Action>
           </Step>
-          <Step order="1">
+          <Step order="3">
             <Action>
               <Target xsi:type="widgets.brease.TextOutput.Action" contentRefId="shiftLeaderContent" widgetRefId="TextOutput5">
                 <Method xsi:type="widgets.brease.TextOutput.Action.SetValue" value="=currentBottleType" />
               </Target>
             </Action>
           </Step>
-          <Step order="2">
+          <Step order="4">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.minVelocity">
+                <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=0.8*velocityUpdate" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="5">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.maxVelocity">
+                <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=1.2*velocityUpdate" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="6">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.incVisible">
+                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="7">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.decVisible">
+                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="8">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.part">
+                <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=0.05 * velocityUpdate" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="9">
             <Action>
               <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gAxisUpdate.Conveyor.Velocity">
                 <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=velocityUpdate" />
               </Target>
             </Action>
           </Step>
-          <Step order="3">
+          <Step order="10">
             <Action>
               <Target xsi:type="opcUa.NodeAction" refId="::BF_Axis:camSeqNozzle.Update">
                 <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
               </Target>
             </Action>
           </Step>
-          <Step order="4">
+          <Step order="11">
             <Action>
               <Target xsi:type="opcUa.NodeAction" refId="::BF_Axis:MpAxisConv.Update">
                 <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
@@ -71,28 +106,28 @@
               </Target>
             </Action>
           </Step>
-          <Step order="1">
+          <Step order="3">
             <Action>
               <Target xsi:type="widgets.brease.TextOutput.Action" contentRefId="shiftLeaderContent" widgetRefId="TextOutput5">
                 <Method xsi:type="widgets.brease.TextOutput.Action.SetValue" value="=currentBottleType" />
               </Target>
             </Action>
           </Step>
-          <Step order="2">
+          <Step order="4">
             <Action>
               <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gAxisUpdate.staticVelocity">
                 <Method xsi:type="opcUa.NodeAction.SetValueString" value="=speedValue" />
               </Target>
             </Action>
           </Step>
-          <Step order="3">
+          <Step order="5">
             <Action>
               <Target xsi:type="opcUa.NodeAction" refId="::BF_Axis:camSeqNozzle.Update">
                 <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
               </Target>
             </Action>
           </Step>
-          <Step order="4">
+          <Step order="6">
             <Action>
               <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.needUpdate">
                 <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
@@ -110,28 +145,28 @@
               </Target>
             </Action>
           </Step>
-          <Step order="1">
+          <Step order="3">
             <Action>
               <Target xsi:type="widgets.brease.TextOutput.Action" contentRefId="shiftLeaderContent" widgetRefId="TextOutput5">
                 <Method xsi:type="widgets.brease.TextOutput.Action.SetValue" value="=currentBottleType" />
               </Target>
             </Action>
           </Step>
-          <Step order="2">
+          <Step order="4">
             <Action>
               <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gAxisUpdate.staticVelocity">
                 <Method xsi:type="opcUa.NodeAction.SetValueString" value="=speedValue" />
               </Target>
             </Action>
           </Step>
-          <Step order="3">
+          <Step order="5">
             <Action>
               <Target xsi:type="opcUa.NodeAction" refId="::BF_Axis:camSeqNozzle.Update">
                 <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
               </Target>
             </Action>
           </Step>
-          <Step order="4">
+          <Step order="6">
             <Action>
               <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.needUpdate">
                 <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
@@ -149,28 +184,28 @@
               </Target>
             </Action>
           </Step>
-          <Step order="1">
+          <Step order="3">
             <Action>
               <Target xsi:type="widgets.brease.TextOutput.Action" contentRefId="shiftLeaderContent" widgetRefId="TextOutput5">
                 <Method xsi:type="widgets.brease.TextOutput.Action.SetValue" value="=currentBottleType" />
               </Target>
             </Action>
           </Step>
-          <Step order="2">
+          <Step order="4">
             <Action>
               <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gAxisUpdate.staticVelocity">
                 <Method xsi:type="opcUa.NodeAction.SetValueString" value="=speedValue" />
               </Target>
             </Action>
           </Step>
-          <Step order="3">
+          <Step order="5">
             <Action>
               <Target xsi:type="opcUa.NodeAction" refId="::BF_Axis:camSeqNozzle.Update">
                 <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
               </Target>
             </Action>
           </Step>
-          <Step order="4">
+          <Step order="6">
             <Action>
               <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.needUpdate">
                 <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />

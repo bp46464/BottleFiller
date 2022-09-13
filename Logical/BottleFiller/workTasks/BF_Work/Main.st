@@ -121,12 +121,16 @@ PROGRAM _CYCLIC
 				gControl.Nozzle.onlyLeft:=0;
 				gControl.Nozzle.onlyRight:=0;
 			END_IF;
-			
-
-				
+	
 		AUTOMAT:
-
-			gControl.moveVelocity:= gControl.start AND (NOT gControl.stop);  
+			IF gControl.stop THEN
+				IF gCamSeqParam.nozzle.currentStateIndex = 4 THEN
+					gControl.moveVelocity:=0;		
+				END_IF;
+			ELSE
+				gControl.moveVelocity:=gControl.start;
+				
+			END_IF;
 			IF gControl.manual THEN
 				gControl.moveVelocity:=0;
 				gAxisCase:=DISCONNECT;

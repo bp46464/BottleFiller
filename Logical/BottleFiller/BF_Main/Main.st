@@ -71,7 +71,9 @@ PROGRAM _CYCLIC
 				gCamSeqParam.nozzle.signal1:=0;
 				gCamSeqParam.cart.signal1:=0;
 			END_IF;
-						
+					
+			
+			
 
 		ERROR:
 		

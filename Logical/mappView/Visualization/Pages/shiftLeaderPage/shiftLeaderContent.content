@@ -14,7 +14,7 @@
         <Widget xsi:type="widgets.brease.ListBox" id="ListBox1" top="383" left="499" width="101" height="120" zIndex="8" dataProvider="[{'value':'1','text':'Shape 1'},{'value':'2','text':'Shape 2'},{'value':'3','text':'Shape 3'}]" selectedValue="1" />
         <Widget xsi:type="widgets.brease.Button" id="Button2" top="243" left="739" width="160" height="60" zIndex="9" breakWord="true" multiLine="true" text="Update recipe" />
         <Widget xsi:type="widgets.brease.TextOutput" id="TextOutput5" top="426" left="379" zIndex="10" value="1" />
-        <Widget xsi:type="widgets.brease.ListBox" id="ListBox2" top="223" left="499" width="101" height="117" zIndex="11" dataProvider="[{'value':'10','text':'Slow'},{'value':'30','text':'Normal'},{'value':'60','text':'Fast'},{'value':'0','text':'Nonstandard'}]" selectedIndex="1" selectedValue="30" />
+        <Widget xsi:type="widgets.brease.ListBox" id="ListBox2" top="223" left="499" width="101" height="117" zIndex="11" dataProvider="[{'value':'10','text':'Slow'},{'value':'50','text':'Normal'},{'value':'90','text':'Fast'},{'value':'0','text':'Nonstandard'}]" selectedIndex="1" selectedValue="50" />
         <Widget xsi:type="widgets.brease.TextOutput" id="TextOutput6" top="263" left="359" zIndex="12" value="Normal" />
       </Widgets>
     </Widget>

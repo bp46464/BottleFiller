@@ -8,6 +8,6 @@
     <Object Type="Program" Language="IEC">BF_Work</Object>
     <Object Type="Program" Language="IEC">BF_Axis</Object>
     <Object Type="Program" Language="IEC">BF_Alarm</Object>
-    <Object Type="Package">Sim</Object>
+    <Object Type="Package">Simulation</Object>
   </Objects>
 </Package>

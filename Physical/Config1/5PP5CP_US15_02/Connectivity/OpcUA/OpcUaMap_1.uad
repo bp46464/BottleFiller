@@ -97,6 +97,12 @@
           <Variable Name="moveVelocity" />
           <Variable Name="disconnect" />
           <Variable Name="currentBottleType" />
+          <Variable Name="maxVelocity" />
+          <Variable Name="minVelocity" />
+          <Variable Name="part" />
+          <Variable Name="decVisible" />
+          <Variable Name="incVisible" />
+          <Variable Name="partVelUpd" />
         </Variable>
         <Variable Name="gMachineInterface">
           <Variable Name="DigitalInputs">
@@ -156,6 +162,7 @@
             <Variable Name="velocity" />
           </Variable>
           <Variable Name="currentBottleType" />
+          <Variable Name="velocity" />
         </Variable>
         <Variable Name="gAlarmXCore">
           <Variable Name="Internal" />

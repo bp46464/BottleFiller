@@ -13,6 +13,7 @@ TYPE
 		Cart : gControlInfoTyp;
 		Nozzle : gControlInfoTyp;
 		currentBottleType : UINT := 1;
+		velocity : REAL;
 	END_STRUCT;
 	gControlInfoTyp : 	STRUCT  (*parameters, output*)
 		error : BOOL := FALSE;
@@ -62,11 +63,17 @@ TYPE
 		stop : BOOL := FALSE;
 		manual : BOOL := FALSE;
 		inCam : BOOL := FALSE;
-		needUpdate : BOOL := FALSE;
+		needUpdate : BOOL := TRUE;
 		moveVelocity : BOOL := FALSE;
 		disconnect : BOOL := FALSE;
 		bottleCnt : INT := 0;
 		currentBottleType : STRING[80] := '1';
+		part : REAL;
+		partVelUpd : BOOL := FALSE;
+		maxVelocity : REAL;
+		decVisible : BOOL := TRUE;
+		incVisible : BOOL := TRUE;
+		minVelocity : REAL;
 	END_STRUCT;
 	gParametersUpdate : 	STRUCT  (*update parameters*)
 		Velocity : REAL := 10;
