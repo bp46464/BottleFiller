@@ -21,6 +21,7 @@ END_VAR
 (*Other Variables*)
 VAR
 	needUpdate : BOOL := FALSE;
+	mouseEvent : BOOL := FALSE;
 	homed : BOOL := FALSE; (*defines if all the axises are homed*)
 END_VAR
 (*global used variables*)

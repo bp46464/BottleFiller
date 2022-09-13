@@ -213,7 +213,7 @@ PROGRAM _CYCLIC
 			
 		onMOVE:
 			//karetka
-			IF gControl.manual THEN
+			IF mouseEvent THEN
 				IF gControl.Cart.safeLevelStop THEN
 					gControl.Cart.stop:=gControl.Cart.safeLevelStop;
 					IF MpAxisCartParType.Direction = 1 AND MpAxisCart.Position >= gControl.Cart.upperLimit THEN

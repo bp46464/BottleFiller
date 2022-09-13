@@ -366,6 +366,7 @@
             <Variable Name="MasterPositionOffset" />
           </Variable>
         </Variable>
+        <Variable Name="mouseEvent" />
       </Task>
       <Task Name="BF_Work">
         <Variable Name="switch" />

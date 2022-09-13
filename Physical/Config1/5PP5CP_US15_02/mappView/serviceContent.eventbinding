@@ -887,21 +887,21 @@
       <Source xsi:type="widgets.brease.Button.Event" contentRefId="serviceContent" widgetRefId="Button10" event="MouseDown" />
       <EventHandler>
         <Sequence>
-          <Step order="0">
+          <Step order="1">
             <Action>
               <Target xsi:type="opcUa.NodeAction" refId="::BF_Axis:MpAxisConvParType.Direction">
                 <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="0" />
               </Target>
             </Action>
           </Step>
-          <Step order="1">
+          <Step order="2">
             <Action>
               <Target xsi:type="opcUa.NodeAction" refId="::BF_Axis:MpAxisConv.Update">
                 <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
               </Target>
             </Action>
           </Step>
-          <Step order="2">
+          <Step order="3">
             <Action>
               <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.moveVelocity">
                 <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
@@ -925,21 +925,21 @@
       <Source xsi:type="widgets.brease.Button.Event" contentRefId="serviceContent" widgetRefId="Button9" event="MouseDown" />
       <EventHandler>
         <Sequence>
-          <Step order="0">
+          <Step order="1">
             <Action>
               <Target xsi:type="opcUa.NodeAction" refId="::BF_Axis:MpAxisConvParType.Direction">
                 <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="1" />
               </Target>
             </Action>
           </Step>
-          <Step order="1">
+          <Step order="2">
             <Action>
               <Target xsi:type="opcUa.NodeAction" refId="::BF_Axis:MpAxisConv.Update">
                 <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
               </Target>
             </Action>
           </Step>
-          <Step order="2">
+          <Step order="3">
             <Action>
               <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.moveVelocity">
                 <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
@@ -979,6 +979,13 @@
           </Step>
           <Step order="2">
             <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::BF_Axis:mouseEvent">
+                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="3">
+            <Action>
               <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.moveVelocity">
                 <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
               </Target>
@@ -990,11 +997,22 @@
     <EventBinding id="serviceContent.Button11.MouseUp">
       <Source xsi:type="widgets.brease.Button.Event" contentRefId="serviceContent" widgetRefId="Button11" event="MouseUp" />
       <EventHandler>
-        <Action>
-          <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.moveVelocity">
-            <Method xsi:type="opcUa.NodeAction.SetValueBool" value="false" />
-          </Target>
-        </Action>
+        <Sequence>
+          <Step order="0">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.moveVelocity">
+                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="false" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="1">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::BF_Axis:mouseEvent">
+                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="false" />
+              </Target>
+            </Action>
+          </Step>
+        </Sequence>
       </EventHandler>
     </EventBinding>
     <EventBinding id="serviceContent.Button12.MouseDown">
@@ -1003,19 +1021,26 @@
         <Sequence>
           <Step order="0">
             <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::BF_Axis:mouseEvent">
+                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="1">
+            <Action>
               <Target xsi:type="opcUa.NodeAction" refId="::BF_Axis:MpAxisConvParType.Direction">
                 <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="0" />
               </Target>
             </Action>
           </Step>
-          <Step order="1">
+          <Step order="2">
             <Action>
               <Target xsi:type="opcUa.NodeAction" refId="::BF_Axis:MpAxisConv.Update">
                 <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
               </Target>
             </Action>
           </Step>
-          <Step order="2">
+          <Step order="3">
             <Action>
               <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.moveVelocity">
                 <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
@@ -1028,11 +1053,22 @@
     <EventBinding id="serviceContent.Button12.MouseUp">
       <Source xsi:type="widgets.brease.Button.Event" contentRefId="serviceContent" widgetRefId="Button12" event="MouseUp" />
       <EventHandler>
-        <Action>
-          <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.moveVelocity">
-            <Method xsi:type="opcUa.NodeAction.SetValueBool" value="false" />
-          </Target>
-        </Action>
+        <Sequence>
+          <Step order="0">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.moveVelocity">
+                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="false" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="1">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::BF_Axis:mouseEvent">
+                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="false" />
+              </Target>
+            </Action>
+          </Step>
+        </Sequence>
       </EventHandler>
     </EventBinding>
     <EventBinding id="serviceContent.Button13.MouseDown">
@@ -1041,19 +1077,26 @@
         <Sequence>
           <Step order="0">
             <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::BF_Axis:mouseEvent">
+                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="1">
+            <Action>
               <Target xsi:type="opcUa.NodeAction" refId="::BF_Axis:MpAxisCartParType.Direction">
                 <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="1" />
               </Target>
             </Action>
           </Step>
-          <Step order="1">
+          <Step order="2">
             <Action>
               <Target xsi:type="opcUa.NodeAction" refId="::BF_Axis:MpAxisCart.Update">
                 <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
               </Target>
             </Action>
           </Step>
-          <Step order="2">
+          <Step order="3">
             <Action>
               <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.Cart.moveVelocity">
                 <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
@@ -1066,11 +1109,22 @@
     <EventBinding id="serviceContent.Button13.MouseUp">
       <Source xsi:type="widgets.brease.Button.Event" contentRefId="serviceContent" widgetRefId="Button13" event="MouseUp" />
       <EventHandler>
-        <Action>
-          <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.Cart.moveVelocity">
-            <Method xsi:type="opcUa.NodeAction.SetValueBool" value="false" />
-          </Target>
-        </Action>
+        <Sequence>
+          <Step order="0">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.Cart.moveVelocity">
+                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="false" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="1">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::BF_Axis:mouseEvent">
+                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="false" />
+              </Target>
+            </Action>
+          </Step>
+        </Sequence>
       </EventHandler>
     </EventBinding>
     <EventBinding id="serviceContent.Button14.MouseDown">
@@ -1079,19 +1133,26 @@
         <Sequence>
           <Step order="0">
             <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::BF_Axis:mouseEvent">
+                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="1">
+            <Action>
               <Target xsi:type="opcUa.NodeAction" refId="::BF_Axis:MpAxisCartParType.Direction">
                 <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="0" />
               </Target>
             </Action>
           </Step>
-          <Step order="1">
+          <Step order="2">
             <Action>
               <Target xsi:type="opcUa.NodeAction" refId="::BF_Axis:MpAxisCart.Update">
                 <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
               </Target>
             </Action>
           </Step>
-          <Step order="2">
+          <Step order="3">
             <Action>
               <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.Cart.moveVelocity">
                 <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
@@ -1104,11 +1165,22 @@
     <EventBinding id="serviceContent.Button14.MouseUp">
       <Source xsi:type="widgets.brease.Button.Event" contentRefId="serviceContent" widgetRefId="Button14" event="MouseUp" />
       <EventHandler>
-        <Action>
-          <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.Cart.moveVelocity">
-            <Method xsi:type="opcUa.NodeAction.SetValueBool" value="false" />
-          </Target>
-        </Action>
+        <Sequence>
+          <Step order="0">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.Cart.moveVelocity">
+                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="false" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="1">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::BF_Axis:mouseEvent">
+                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="false" />
+              </Target>
+            </Action>
+          </Step>
+        </Sequence>
       </EventHandler>
     </EventBinding>
     <EventBinding id="serviceContent.Button15.MouseDown">
@@ -1117,19 +1189,26 @@
         <Sequence>
           <Step order="0">
             <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::BF_Axis:mouseEvent">
+                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="1">
+            <Action>
               <Target xsi:type="opcUa.NodeAction" refId="::BF_Axis:MpAxisNozzleParType.Direction">
                 <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="1" />
               </Target>
             </Action>
           </Step>
-          <Step order="1">
+          <Step order="2">
             <Action>
               <Target xsi:type="opcUa.NodeAction" refId="::BF_Axis:MpAxisNozzle.Update">
                 <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
               </Target>
             </Action>
           </Step>
-          <Step order="2">
+          <Step order="3">
             <Action>
               <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.Nozzle.moveVelocity">
                 <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
@@ -1142,11 +1221,22 @@
     <EventBinding id="serviceContent.Button15.MouseUp">
       <Source xsi:type="widgets.brease.Button.Event" contentRefId="serviceContent" widgetRefId="Button15" event="MouseUp" />
       <EventHandler>
-        <Action>
-          <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.Nozzle.moveVelocity">
-            <Method xsi:type="opcUa.NodeAction.SetValueBool" value="false" />
-          </Target>
-        </Action>
+        <Sequence>
+          <Step order="0">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.Nozzle.moveVelocity">
+                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="false" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="1">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::BF_Axis:mouseEvent">
+                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="false" />
+              </Target>
+            </Action>
+          </Step>
+        </Sequence>
       </EventHandler>
     </EventBinding>
     <EventBinding id="serviceContent.Button16.MouseDown">
@@ -1155,19 +1245,26 @@
         <Sequence>
           <Step order="0">
             <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::BF_Axis:mouseEvent">
+                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="1">
+            <Action>
               <Target xsi:type="opcUa.NodeAction" refId="::BF_Axis:MpAxisNozzleParType.Direction">
                 <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="0" />
               </Target>
             </Action>
           </Step>
-          <Step order="1">
+          <Step order="2">
             <Action>
               <Target xsi:type="opcUa.NodeAction" refId="::BF_Axis:MpAxisNozzle.Update">
                 <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
               </Target>
             </Action>
           </Step>
-          <Step order="2">
+          <Step order="3">
             <Action>
               <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.Nozzle.moveVelocity">
                 <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
@@ -1180,11 +1277,22 @@
     <EventBinding id="serviceContent.Button16.MouseUp">
       <Source xsi:type="widgets.brease.Button.Event" contentRefId="serviceContent" widgetRefId="Button16" event="MouseUp" />
       <EventHandler>
-        <Action>
-          <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.Nozzle.moveVelocity">
-            <Method xsi:type="opcUa.NodeAction.SetValueBool" value="false" />
-          </Target>
-        </Action>
+        <Sequence>
+          <Step order="0">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.Nozzle.moveVelocity">
+                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="false" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="1">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::BF_Axis:mouseEvent">
+                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="false" />
+              </Target>
+            </Action>
+          </Step>
+        </Sequence>
       </EventHandler>
     </EventBinding>
   </Bindings>

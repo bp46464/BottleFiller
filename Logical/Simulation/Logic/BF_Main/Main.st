@@ -28,8 +28,8 @@ PROGRAM _CYCLIC
 			gControl.Conveyor.lowerLimit:=0;
 			gControl.Conveyor.upperLimit:=4997;
 			
-			gControl.Nozzle.lowerLimit:=5;
-			gControl.Nozzle.upperLimit:=196;
+			gControl.Nozzle.lowerLimit:=2;
+			gControl.Nozzle.upperLimit:=197;
 			
 			gAxisCase:=POWERED;
 			
