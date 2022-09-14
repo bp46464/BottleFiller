@@ -7,6 +7,7 @@ END_PROGRAM
 PROGRAM _CYCLIC
 	(* Insert code here *)
 	BF_MpAlarm(MpLink:=ADR(gAlarmXCore), Enable:=TRUE);
+	
 	gControl.moveVelocity:= gControl.moveVelocity AND NOT error;
 	gControl.Conveyor.jogNegative:= gControl.Conveyor.jogNegative AND NOT error;
 	gControl.Conveyor.jogPositive:= gControl.Conveyor.jogPositive AND NOT error;
@@ -50,11 +51,6 @@ PROGRAM _CYCLIC
 		handleError:
 			IF resetError = 1 THEN
 				gControl.Nozzle.errorReset:=1;
-//				IF gAxisOutputs.Nozzle.Direction=mcDIR_NEGATIVE THEN
-//					gControl.Nozzle.Direction:=mcDIR_POSITIVE;
-//				ELSE
-//					gControl.Nozzle.Direction:=mcDIR_NEGATIVE;
-//				END_IF;
 				IF NOT gAxisOutputs.Nozzle.error THEN
 					gControl.Nozzle.errorReset:=0;
 					caseError:=inError;
@@ -63,11 +59,6 @@ PROGRAM _CYCLIC
 			END_IF;
 			IF resetError = 2 THEN
 				gControl.Conveyor.errorReset:=1;
-//				IF gAxisOutputs.Conveyor.Direction=mcDIR_NEGATIVE THEN
-//					gControl.Conveyor.Direction:=mcDIR_POSITIVE;
-//				ELSE
-//					gControl.Conveyor.Direction:=mcDIR_NEGATIVE;
-//				END_IF;
 				IF NOT gAxisOutputs.Conveyor.error THEN
 					gControl.Conveyor.errorReset:=0;
 					caseError:=inError;
@@ -76,11 +67,6 @@ PROGRAM _CYCLIC
 			END_IF;
 			IF resetError = 3 THEN
 				gControl.Cart.errorReset:=1;
-//				IF gAxisOutputs.Cart.Direction=mcDIR_NEGATIVE THEN
-//					gControl.Cart.Direction:=mcDIR_POSITIVE;
-//				ELSE
-//					gControl.Cart.Direction:=mcDIR_NEGATIVE;
-//				END_IF;
 				IF NOT gAxisOutputs.Cart.error THEN
 					gControl.Cart.errorReset:=0;
 					caseError:=inError;

@@ -1,10 +1,12 @@
 
 PROGRAM _INIT
 	(* Insert code here *)
+	
 	//Conveyor parameters
 	MpAxisConvParType.AutoTune.Mode:=mcAXIS_TUNE_AUTOMATIC;
 	MpAxisConvParType.AutoTune.MaxCurrentPercent:=80;
 	MpAxisConvParType.AutoTune.MaxDistance:=30;
+	MpAxisConvParType.AutoTune.SaveControllerSettings:=1;
 	MpAxisConvParType.AutoTune.MaxPositionError:=30;
 	//Nozzle parameters
 	MpAxisNozzleParType := MpAxisConvParType;
@@ -12,24 +14,25 @@ PROGRAM _INIT
 	//Cart parameters
 	MpAxisCartParType := MpAxisConvParType;
 	
+	//dynamiczna zmiana camów
 	camNozzleParameters.CamSequence.Get.GetOnEnable:=1;
 	camNozzleParameters.CamSequence.Get.Command:=mcGET_PAR_ACTUAL;
 	camNozzleParameters.CamSequence.Data.DataAddress:=ADR(configCamNozzle);
 	camNozzleParameters.CamSequence.Data.DataSize:=SIZEOF(configCamNozzle);
 	camNozzleParameters.CamSequence.Set.Command:=mcSET_UPDATE_FROM_ADR;
 	camNozzleParameters.CamSequence.Set.Mode:=mcAXIS_CAM_SEQ_SET_ON_UPDATE;
+	MpAxisConv.AutoTune:=1;
+	MpAxisCart.AutoTune:=1;
+	MpAxisNozzle.AutoTune:=1;
 END_PROGRAM
 
 PROGRAM _CYCLIC
 	(* Insert code here *)
-	//axis declaration
-//	IF MpAxisConvParType.Velocity <> MpAxisConv.Velocity THEN
-//		MpAxisConv.Update:=1;
-//	END_IF;
-//	
-	MpAxisConv(MpLink := ADR(axisConv), Enable := 1, Parameters := ADR(MpAxisConvParType), AutoTune := 1);
-	MpAxisCart(MpLink := ADR(axisCart), Enable := 1, Parameters := ADR(MpAxisCartParType),   AutoTune := 1);
-	MpAxisNozzle(MpLink := ADR(axisNozzle), Enable := 1, Parameters := ADR(MpAxisNozzleParType),  AutoTune := 1);
+
+	//deklaracja osi
+	MpAxisConv(MpLink := ADR(axisConv), Enable := 1, Parameters := ADR(MpAxisConvParType));
+	MpAxisCart(MpLink := ADR(axisCart), Enable := 1, Parameters := ADR(MpAxisCartParType));
+	MpAxisNozzle(MpLink := ADR(axisNozzle), Enable := 1, Parameters := ADR(MpAxisNozzleParType));
 	
 	//sequence parameters
 	configCamNozzle.State[3].CamID:=STRING_TO_USINT(gControl.currentBottleType);
@@ -67,9 +70,9 @@ PROGRAM _CYCLIC
 	MpAxisNozzle.JogPositive:=gControl.Nozzle.jogPositive;
 	
 	//cam params
-//	camSeq.Signal1:=gCamSeqParam.cart.signal1;
 	camSeqNozzle.Signal1:=gCamSeqParam.nozzle.signal1;
 	
+	//aktualizacja predkosci po kliknieciu przycisku manipulujacego predkoscia o +-5%
 	IF gControl.partVelUpd THEN
 		MpAxisConvParType.Velocity:=gAxisUpdate.Conveyor.Velocity;
 		MpAxisConv.Update:=1;
@@ -78,7 +81,7 @@ PROGRAM _CYCLIC
 	
 	
 
-	
+	//aktualizacja osi po zmianie parametrów
 	IF gControl.needUpdate THEN
 		//conveyor
 		MpAxisConvParType.Velocity:=STRING_TO_UINT(gAxisUpdate.staticVelocity);

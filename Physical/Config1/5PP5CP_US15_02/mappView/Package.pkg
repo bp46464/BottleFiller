@@ -15,5 +15,6 @@
     <Object Type="File">operatorContent.eventbinding</Object>
     <Object Type="File">serviceContent.binding</Object>
     <Object Type="File">serviceContent.eventbinding</Object>
+    <Object Type="File">header.binding</Object>
   </Objects>
 </Package>

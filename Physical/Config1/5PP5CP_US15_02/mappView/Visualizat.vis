@@ -15,6 +15,7 @@
     <BindingsSet refId="operatorContent_binding" />
     <BindingsSet refId="serviceContent_binding" />
     <BindingsSet refId="shiftLeaderContent_binding" />
+    <BindingsSet refId="header_binding" />
   </BindingsSets>
   <EventBindingsSets>
     <EventBindingsSet refId="loginContent_eventbinding" />
@@ -35,7 +36,7 @@
     <Content refId="shiftLeaderContent" />
   </Contents>
   <SnippetsSets />
-
+  <VariablesSets />
   <ExpressionsSets />
   <StartTheme themeRefId="BuRThemeFlat2" />
   <Themes>

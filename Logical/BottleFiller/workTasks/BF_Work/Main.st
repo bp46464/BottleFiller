@@ -9,7 +9,7 @@ PROGRAM _CYCLIC
 	CASE gFillerTyp OF
 			
 		MANUAL:
-			
+			//wy³¹czenie jegów od razu po zatrzymaniu ruchu - wczeœniej by³ b³¹d 
 			IF EDGENEG(gAxisOutputs.Cart.MoveActive) THEN
 				gControl.Cart.jogNegative:=0;
 				gControl.Cart.jogPositive:=0;
@@ -24,6 +24,7 @@ PROGRAM _CYCLIC
 				gControl.Nozzle.jogPositive:=0;
 			END_IF;
 				
+			//Switch zale¿ny od tego, czy osie maj¹ byæ po³¹czone, czy roz³¹czone
 			IF EDGEPOS(gControl.inCam) THEN
 				switch:=1;
 			END_IF;
@@ -32,7 +33,7 @@ PROGRAM _CYCLIC
 				switch:=2;
 			END_IF;
 				
-			
+			//³¹czenie osi
 			IF switch=1 OR EDGEPOS(gControl.inCam) THEN
 				IF NOT gMainAction.stopped THEN
 					gAxisCase:=HOLDON;
@@ -51,14 +52,16 @@ PROGRAM _CYCLIC
 					gControl.Cart.home:=0;
 					gControl.Conveyor.home:=0;
 					gControl.Nozzle.home:=0;
-					gMainAction.homed:=0;
 					
+					gMainAction.homed:=0;
 					gMainAction.stopped:=0;
+					
 					gAxisCase:=onMOVE;
 					switch:=0;
 				END_IF;
 			END_IF;
 			
+			//roz³¹czanie osi
 			IF switch=2 OR EDGENEG(gControl.inCam) THEN
 				IF NOT gMainAction.disconnected THEN
 					gAxisCase:=DISCONNECT;
@@ -77,6 +80,7 @@ PROGRAM _CYCLIC
 				END_IF;	
 			END_IF;
 			
+			//wchodzenie ponownie w tryb automatyczny
 			IF NOT gControl.manual THEN
 				gAxisCase:=HOMING;
 				IF gMainAction.homed THEN
@@ -123,14 +127,16 @@ PROGRAM _CYCLIC
 			END_IF;
 	
 		AUTOMAT:
+			//w przypadku naciœniêcia przycisku Stop Machine maszyna zatrzyma siê po nape³nieniu butelek, w state 4
 			IF gControl.stop THEN
 				IF gCamSeqParam.nozzle.currentStateIndex = 4 THEN
 					gControl.moveVelocity:=0;		
 				END_IF;
 			ELSE
 				gControl.moveVelocity:=gControl.start;
-				
 			END_IF;
+			
+			//prze³¹czenie z automatu na manual
 			IF gControl.manual THEN
 				gControl.moveVelocity:=0;
 				gAxisCase:=DISCONNECT;
@@ -138,7 +144,6 @@ PROGRAM _CYCLIC
 					gFillerTyp:=MANUAL;
 				END_IF;
 			END_IF;
-		
 	END_CASE;
 	
 END_PROGRAM
