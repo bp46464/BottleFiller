@@ -28,5 +28,25 @@
     <Widget xsi:type="widgets.brease.NumericOutput" id="NumericOutput1" top="480" left="640" zIndex="24" />
     <Widget xsi:type="widgets.brease.NumericOutput" id="NumericOutput2" top="340" left="620" zIndex="25" />
     <Widget xsi:type="widgets.brease.NumericOutput" id="NumericOutput3" top="220" left="660" zIndex="26" />
+    <Widget xsi:type="widgets.brease.Label" id="Label5" top="400" left="220" width="120" zIndex="29" text="Current Velocity" />
+    <Widget xsi:type="widgets.brease.Label" id="Label6" top="460" left="320" width="120" zIndex="33" text="Max Velocity" />
+    <Widget xsi:type="widgets.brease.Label" id="Label7" top="460" left="100" width="120" zIndex="35" text="Min Velocity" />
+    <Widget xsi:type="widgets.brease.NumericOutput" id="NumericOutput4" top="400" left="300" zIndex="38" />
+    <Widget xsi:type="widgets.brease.NumericOutput" id="NumericOutput5" top="460" left="180" zIndex="39" />
+    <Widget xsi:type="widgets.brease.NumericOutput" id="NumericOutput6" top="460" left="420" zIndex="40" />
+    <Widget xsi:type="widgets.brease.Label" id="Label8" top="360" left="260" width="140" zIndex="36" text="Parameters" />
+    <Widget xsi:type="widgets.brease.Line" id="Line3" zIndex="34" x1="300" x2="300" y1="620" y2="440" />
+    <Widget xsi:type="widgets.brease.Label" id="Label9" top="500" left="100" width="120" zIndex="37" text="Conv Position" />
+    <Widget xsi:type="widgets.brease.Label" id="Label10" top="540" left="100" width="120" zIndex="41" text="Cart Position" />
+    <Widget xsi:type="widgets.brease.Label" id="Label11" top="580" left="100" width="120" zIndex="42" text="Nozzle Position" />
+    <Widget xsi:type="widgets.brease.NumericOutput" id="NumericOutput7" top="500" left="180" zIndex="44" />
+    <Widget xsi:type="widgets.brease.NumericOutput" id="NumericOutput8" top="580" left="180" zIndex="45" />
+    <Widget xsi:type="widgets.brease.NumericOutput" id="NumericOutput9" top="540" left="180" zIndex="46" />
+    <Widget xsi:type="widgets.brease.Label" id="Label12" top="500" left="320" width="120" zIndex="43" text="Conv Velocity" />
+    <Widget xsi:type="widgets.brease.Label" id="Label13" top="540" left="320" width="120" zIndex="27" text="Cart Velocity" />
+    <Widget xsi:type="widgets.brease.Label" id="Label14" top="580" left="320" width="120" zIndex="28" text="Nozzle Velocity" />
+    <Widget xsi:type="widgets.brease.NumericOutput" id="NumericOutput10" top="500" left="420" zIndex="30" />
+    <Widget xsi:type="widgets.brease.NumericOutput" id="NumericOutput11" top="580" left="420" zIndex="31" />
+    <Widget xsi:type="widgets.brease.NumericOutput" id="NumericOutput12" top="540" left="420" zIndex="32" />
   </Widgets>
 </Content>

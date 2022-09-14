@@ -20,6 +20,8 @@ VAR
 END_VAR
 (*Other Variables*)
 VAR
+	timer : TON;
+	stopHelper : USINT := 0;
 	needUpdate : BOOL := FALSE;
 	mouseEvent : BOOL := FALSE;
 	homed : BOOL := FALSE; (*defines if all the axises are homed*)

@@ -84,8 +84,13 @@ PROGRAM _CYCLIC
 	//aktualizacja osi po zmianie parametrów
 	IF gControl.needUpdate THEN
 		//conveyor
-		MpAxisConvParType.Velocity:=STRING_TO_UINT(gAxisUpdate.staticVelocity);
-		gAxisUpdate.Conveyor.Velocity:=STRING_TO_UINT(gAxisUpdate.staticVelocity);
+		IF gControl.manual THEN
+			MpAxisConvParType.Velocity:=gAxisUpdate.Conveyor.Velocity;
+		ELSE
+			MpAxisConvParType.Velocity:=STRING_TO_UINT(gAxisUpdate.staticVelocity);
+			gAxisUpdate.Conveyor.Velocity:=STRING_TO_UINT(gAxisUpdate.staticVelocity);
+		END_IF;
+		
 		MpAxisConvParType.Jog.LimitPosition.FirstPosition:=gAxisUpdate.Conveyor.FirstPosition;
 		MpAxisConvParType.Jog.LimitPosition.LastPosition:=gAxisUpdate.Conveyor.LastPosition;
 		MpAxisConvParType.Position:=gAxisUpdate.Conveyor.Position;
@@ -122,19 +127,21 @@ PROGRAM _CYCLIC
 		
 	CASE gAxisCase OF
 		HOLDON:
-			IF NOT (MpAxisCart.Stopped AND MpAxisConv.Stopped AND MpAxisNozzle.Stopped)  THEN
-				MpAxisCart.Stop:=1;
-				MpAxisConv.Stop:=1;
-				MpAxisNozzle.Stop:=1;
-			END_IF;
-			
-			IF  MpAxisConv.Info.PLCopenState = mcAXIS_STANDSTILL AND MpAxisCart.Info.PLCopenState = mcAXIS_STANDSTILL AND MpAxisNozzle.Info.PLCopenState = mcAXIS_STANDSTILL THEN
+			MpAxisCart.Stop:=1;
+			MpAxisConv.Stop:=1;
+			MpAxisNozzle.Stop:=1;
+			IF MpAxisConv.Stopped AND MpAxisNozzle.Stopped AND MpAxisCart.Stopped THEN
 				MpAxisCart.Stop:=0;
 				MpAxisConv.Stop:=0;
 				MpAxisNozzle.Stop:=0;
-				gMainAction.stopped:=1;
+				stopHelper:=1;
 			END_IF;
-			
+			IF stopHelper=1 THEN
+				IF  MpAxisConv.Info.PLCopenState = mcAXIS_STANDSTILL AND MpAxisCart.Info.PLCopenState = mcAXIS_STANDSTILL AND MpAxisNozzle.Info.PLCopenState = mcAXIS_STANDSTILL THEN
+					gMainAction.stopped:=1;
+					stopHelper:=0;
+				END_IF;
+			END_IF;
 
 		POWERED:
 			IF (gControl.power AND NOT gAxisOutputs.Conveyor.error) THEN //error
@@ -151,11 +158,20 @@ PROGRAM _CYCLIC
 			
 		HOMING:
 			gControl.bottleCnt:=0;
-			MpAxisCart.Home:=1;
-			MpAxisConv.Home:=1;
-			MpAxisNozzle.Home:=1;
-			gMainAction.homed:=1;
+			IF MpAxisCart.Info.PLCopenState = mcAXIS_STANDSTILL THEN
+				MpAxisConv.Home:=1;
+				MpAxisNozzle.Home:=1;
+				MpAxisCart.Home:=1;
+				
+			END_IF;
 			
+			IF MpAxisCart.Info.PLCopenState = mcAXIS_HOMING THEN
+				connectHelper:=15;
+			END_IF;
+			
+			IF connectHelper=15 AND MpAxisCart.Info.PLCopenState = mcAXIS_STANDSTILL THEN
+				gMainAction.homed:=1;
+			END_IF;
 			
 		STANDSTILL:
 			IF gControl.start THEN
@@ -167,31 +183,29 @@ PROGRAM _CYCLIC
 			END_IF;
 			
 		CONNECT:
-			MpAxisCart.Home:=0;
-			MpAxisConv.Home:=0;
-			MpAxisNozzle.Home:=0;
 			camSeq.EndSequence:=0;
 			camSeqNozzle.EndSequence:=0;
-			camSeq.ErrorReset:=0;
-			camSeq.StartSequence:=1;
-			camSeqNozzle.StartSequence:=1;
-
-			IF camSeq.Error THEN
-				camSeq.ErrorReset:=1;
-				camSeq.StartSequence:=0;
-			END_IF;
 			
-			IF camSeq.InCam AND camSeqNozzle.InCam THEN
+			IF NOT gControl.manual THEN
+				camSeq.StartSequence:=1;
+				camSeqNozzle.StartSequence:=1;
+			ELSE
+				timer.IN:=TRUE;
+				timer.PT:=t#100ms;
+				IF timer.Q THEN
+					//				IF (MpAxisCart.Info.PLCopenState = mcAXIS_STANDSTILL) AND (MpAxisCart.Info.Diag.ExecutingCommand = mcAXIS_CMD_IDLE) THEN
+				(*IF camSeq.Standby THEN*)
+					camSeq.StartSequence:=1;
+					camSeqNozzle.StartSequence:=1;
+				END_IF;
+			END_IF;
+			IF camSeq.InCam AND camSeqNozzle.InCam  THEN
 				camSeq.Signal1:=1;
 				gMainAction.connected:=1;
 				connectHelper:=0;
 			END_IF;
-
 		
 		DISCONNECT:
-			MpAxisCart.Home:=0;
-			MpAxisConv.Home:=0;
-			MpAxisNozzle.Home:=0;
 			gMainAction.connected:=0;
 			MpAxisConv.MoveVelocity:=0;
 			camSeq.Signal1:=0;
@@ -308,6 +322,7 @@ PROGRAM _CYCLIC
 	gCamSeqParam.nozzle.currentStateIndex:=camSeqNozzle.ActualStateIndex;
 	
 	gAxisOutputs:=controlInfo;
+			
 	IF camSeqNozzle.UpdateDone THEN
 		camSeqNozzle.Update:=0;
 	END_IF;
@@ -320,7 +335,7 @@ PROGRAM _CYCLIC
 	IF MpAxisCart.UpdateDone THEN
 		MpAxisCart.Update:=0;
 	END_IF;
-	
+	timer();
 END_PROGRAM
 
 PROGRAM _EXIT

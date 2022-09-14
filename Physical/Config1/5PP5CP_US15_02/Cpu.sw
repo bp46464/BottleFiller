@@ -3,16 +3,16 @@
 <SwConfiguration CpuAddress="SL1" xmlns="http://br-automation.co.at/AS/SwConfiguration">
   <TaskClass Name="Cyclic#1">
     <Task Name="BF_Axis" Source="BottleFiller.workTasks.BF_Axis.prg" Memory="UserROM" Language="IEC" Debugging="true" />
-    <Task Name="BF_Work" Source="BottleFiller.workTasks.BF_Work.prg" Memory="UserROM" Language="IEC" Debugging="true" />
-    <Task Name="BF_Main" Source="BottleFiller.BF_Main.prg" Memory="UserROM" Language="IEC" Debugging="true" />
     <Task Name="BF_Alarm" Source="BottleFiller.workTasks.BF_Alarm.prg" Memory="UserROM" Language="IEC" Debugging="true" />
+    <Task Name="BF_Main" Source="BottleFiller.BF_Main.prg" Memory="UserROM" Language="IEC" Debugging="true" />
+    <Task Name="BF_Work" Source="BottleFiller.workTasks.BF_Work.prg" Memory="UserROM" Language="IEC" Debugging="true" />
   </TaskClass>
   <TaskClass Name="Cyclic#2" />
   <TaskClass Name="Cyclic#3" />
   <TaskClass Name="Cyclic#4">
     <Task Name="RobVis" Source="BottleFiller.workTasks.RobVis.prg" Memory="UserROM" Language="IEC" Debugging="true" />
   </TaskClass>
-   <TaskClass Name="Cyclic#5" />
+  <TaskClass Name="Cyclic#5" />
   <TaskClass Name="Cyclic#6" />
   <TaskClass Name="Cyclic#7" />
   <TaskClass Name="Cyclic#8" />
@@ -36,6 +36,7 @@
     <BinaryObject Name="FWRules" Source="" Memory="UserROM" Language="Binary" />
     <BinaryObject Name="arcoal" Source="" Memory="UserROM" Language="Binary" />
     <BinaryObject Name="arsvcreg" Source="" Memory="UserROM" Language="Binary" />
+    <BinaryObject Name="configAxis" Source="" Memory="UserROM" Language="Binary" />
     <BinaryObject Name="Settings" Source="" Memory="UserROM" Language="Binary" />
     <BinaryObject Name="iomap" Source="" Memory="UserROM" Language="Binary" />
     <BinaryObject Name="asfw" Source="" Memory="SystemROM" Language="Binary" />
@@ -48,13 +49,15 @@
     <BinaryObject Name="ashwd" Source="" Memory="SystemROM" Language="Binary" />
     <BinaryObject Name="User" Source="" Memory="UserROM" Language="Binary" />
     <BinaryObject Name="alarm" Source="" Memory="UserROM" Language="Binary" />
-    <BinaryObject Name="configAxis" Source="" Memory="UserROM" Language="Binary" />
     <BinaryObject Name="configCam" Source="" Memory="UserROM" Language="Binary" />
     <BinaryObject Name="configNozz" Source="" Memory="UserROM" Language="Binary" />
     <BinaryObject Name="Config_1" Source="" Memory="UserROM" Language="Binary" />
     <BinaryObject Name="Config_2" Source="" Memory="UserROM" Language="Binary" />
+    <BinaryObject Name="Config_3" Source="" Memory="UserROM" Language="Binary" />
+    <BinaryObject Name="Config" Source="" Memory="UserROM" Language="Binary" />
   </Binaries>
   <Libraries>
+    <LibraryObject Name="standard" Source="Libraries.standard.lby" Memory="UserROM" Language="binary" Debugging="true" />
     <LibraryObject Name="McBase" Source="Libraries.McBase.lby" Memory="UserROM" Language="binary" Debugging="true" />
     <LibraryObject Name="CoTrace" Source="Libraries.CoTrace.lby" Memory="UserROM" Language="binary" Debugging="true" />
     <LibraryObject Name="AsZip" Source="Libraries.AsZip.lby" Memory="UserROM" Language="binary" Debugging="true" />

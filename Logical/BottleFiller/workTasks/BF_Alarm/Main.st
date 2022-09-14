@@ -28,12 +28,14 @@ PROGRAM _CYCLIC
 			
 			IF BF_MpAlarm.PendingAlarms <> 0 THEN
 				caseError:=inError;
+				
 				error:=1;
 			END_IF;
 			
 		inError:
 			gAxisCase:=WAIT;
-			
+			gMain:=ERROR;
+			gFillerTyp:=WAITING;
 			IF NOT(gControl.start AND NOT gControl.power) THEN
 				MpAlarmXReset(gAlarmXCore, 'noPower');
 			END_IF;
@@ -45,6 +47,8 @@ PROGRAM _CYCLIC
 			IF BF_MpAlarm.PendingAlarms=0 THEN
 				caseError:=noError;
 				error:=0;
+				gMain:=WORK;
+				gFillerTyp:=MANUAL;
 				gAxisCase:=onMOVE;
 			END_IF;
 	

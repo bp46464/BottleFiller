@@ -15,10 +15,7 @@
 <Target xsi:type="brease" contentRefId="serviceContent" widgetRefId="nozzleSlider" attribute="value" />
 </Binding>
 
-<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::AsGlobalPV:gAxisUpdate.Conveyor.Velocity" attribute="value" />
-<Target xsi:type="brease" contentRefId="serviceContent" widgetRefId="velocitySlider" attribute="value" />
-</Binding>
+
 <Binding mode="twoWay">
 <Source xsi:type="opcUa" refId="::AsGlobalPV:gAxisOutputs.Nozzle.position" attribute="value" />
 <Target xsi:type="brease" contentRefId="serviceContent" widgetRefId="NumericOutput1" attribute="value" />
@@ -31,6 +28,10 @@
 <Binding mode="twoWay">
 <Source xsi:type="opcUa" refId="::AsGlobalPV:gAxisOutputs.Conveyor.position" attribute="value" />
 <Target xsi:type="brease" contentRefId="serviceContent" widgetRefId="NumericOutput3" attribute="value" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::AsGlobalPV:gAxisOutputs.velocity" attribute="value" />
+<Target xsi:type="brease" contentRefId="serviceContent" widgetRefId="velocitySlider" attribute="value" />
 </Binding>
 </Bindings>
 </BindingsSet>

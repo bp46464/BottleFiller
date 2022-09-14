@@ -6,4 +6,5 @@ VAR
 	gMainAction : gMainActionTyp;
 	gAxisOutputs : gAxisOutputsTyp;
 	gCamSeqParam : camSequencersParams;
+	gMain : gFillerEnum;
 END_VAR

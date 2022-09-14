@@ -1,6 +1,5 @@
 (*case machine*)
 VAR
-	FillerTyp : FillerEnum;
 	bottleFillerRecipeTyp : bottleFillerRecipeEnum;
 END_VAR
 (*digital inputs*)

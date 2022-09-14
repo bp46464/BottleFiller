@@ -1,7 +1,7 @@
 
 PROGRAM _INIT
 	(* Insert code here *)
-	 FillerTyp:=DISABLED;
+	 gMain:=DISABLED;
 END_PROGRAM
 
 PROGRAM _CYCLIC
@@ -12,13 +12,13 @@ PROGRAM _CYCLIC
 	SimulationAxisPosition.Nozzle := LREAL_TO_REAL(gAxisOutputs.Nozzle.position);
 	gAdrAxesPositions := ADR(SimulationAxisPosition);
 
-	CASE FillerTyp OF
+	CASE gMain OF
 		DISABLED: 
 			diStart:=0;
 			diStop:=0;
 			
 			IF gControl.power THEN
-				FillerTyp:=INIT;
+				gMain:=INIT;
 			END_IF;
 			
 		INIT:
@@ -49,7 +49,7 @@ PROGRAM _CYCLIC
 				IF gMainAction.connected THEN
 					gAxisCase:=onMOVE;
 					gFillerTyp:=AUTOMAT;
-					FillerTyp:=WORK;
+					gMain:=WORK;
 				END_IF;	
 			END_IF;
 			
@@ -57,9 +57,8 @@ PROGRAM _CYCLIC
 				gMainAction.homed:=0;
 				gAxisCase:=onMOVE;
 				gFillerTyp:=MANUAL;
-				FillerTyp:=WORK;
+				gMain:=WORK;
 			END_IF;
-			
 			
 		WORK:			
 			result:= gControl.bottleCnt MOD 5;

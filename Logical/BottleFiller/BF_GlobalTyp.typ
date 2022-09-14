@@ -1,5 +1,13 @@
 
 TYPE
+	gFillerEnum : 
+		( (*Every possible case*)
+		DISABLED,
+		INIT,
+		WORK,
+		STOP,
+		ERROR
+		);
 	camSequencersParams : 	STRUCT 
 		cart : camParam; (*Parametry cama karetki*)
 		nozzle : camParam; (*Parametry cama dysz*)
@@ -75,6 +83,7 @@ TYPE
 		decVisible : BOOL := TRUE; (*Widocznoœæ przycisku Decrease*)
 		incVisible : BOOL := TRUE; (*Widocznoœæ przycisku Increase*)
 		minVelocity : REAL; (*Minimalne Velocity Operatora*)
+		startSeq : BOOL := TRUE;
 	END_STRUCT;
 	gParametersUpdate : 	STRUCT  (*update parameters*)
 		Velocity : REAL := 10;

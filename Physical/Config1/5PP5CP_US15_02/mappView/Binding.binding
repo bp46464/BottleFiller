@@ -17,5 +17,65 @@
 <Source xsi:type="opcUa" refId="::BF_Axis:MpAxisConvParType.Velocity" attribute="value" />
 <Target xsi:type="brease" contentRefId="operatorContent" widgetRefId="NumericOutput1" attribute="value" />
 </Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::BF_Axis:MpAxisConvParType.Velocity" attribute="value" />
+<Target xsi:type="brease" contentRefId="serviceContent" widgetRefId="NumericOutput4" attribute="value" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::AsGlobalPV:gControl.minVelocity" attribute="value" />
+<Target xsi:type="brease" contentRefId="serviceContent" widgetRefId="NumericOutput5" attribute="value" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::AsGlobalPV:gControl.maxVelocity" attribute="value" />
+<Target xsi:type="brease" contentRefId="serviceContent" widgetRefId="NumericOutput6" attribute="value" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::AsGlobalPV:gAxisOutputs.Conveyor.position" attribute="value" />
+<Target xsi:type="brease" contentRefId="serviceContent" widgetRefId="NumericOutput7" attribute="value" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::AsGlobalPV:gAxisOutputs.Conveyor.velocity" attribute="value" />
+<Target xsi:type="brease" contentRefId="serviceContent" widgetRefId="NumericOutput10" attribute="value" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::AsGlobalPV:gAxisOutputs.Cart.position" attribute="value" />
+<Target xsi:type="brease" contentRefId="serviceContent" widgetRefId="NumericOutput9" attribute="value" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::AsGlobalPV:gAxisOutputs.Cart.velocity" attribute="value" />
+<Target xsi:type="brease" contentRefId="serviceContent" widgetRefId="NumericOutput12" attribute="value" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::AsGlobalPV:gAxisOutputs.Nozzle.position" attribute="value" />
+<Target xsi:type="brease" contentRefId="serviceContent" widgetRefId="NumericOutput8" attribute="value" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::AsGlobalPV:gAxisOutputs.Nozzle.velocity" attribute="value" />
+<Target xsi:type="brease" contentRefId="serviceContent" widgetRefId="NumericOutput11" attribute="value" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::AsGlobalPV:gAxisOutputs.Conveyor.position" attribute="value" />
+<Target xsi:type="brease" contentRefId="operatorContent" widgetRefId="NumericOutput4" attribute="value" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::AsGlobalPV:gAxisOutputs.Cart.position" attribute="value" />
+<Target xsi:type="brease" contentRefId="operatorContent" widgetRefId="NumericOutput6" attribute="value" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::AsGlobalPV:gAxisOutputs.Nozzle.position" attribute="value" />
+<Target xsi:type="brease" contentRefId="operatorContent" widgetRefId="NumericOutput5" attribute="value" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::AsGlobalPV:gAxisOutputs.Conveyor.velocity" attribute="value" />
+<Target xsi:type="brease" contentRefId="operatorContent" widgetRefId="NumericOutput7" attribute="value" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::AsGlobalPV:gAxisOutputs.Cart.velocity" attribute="value" />
+<Target xsi:type="brease" contentRefId="operatorContent" widgetRefId="NumericOutput9" attribute="value" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::AsGlobalPV:gAxisOutputs.Nozzle.velocity" attribute="value" />
+<Target xsi:type="brease" contentRefId="operatorContent" widgetRefId="NumericOutput8" attribute="value" />
+</Binding>
 </Bindings>
 </BindingsSet>

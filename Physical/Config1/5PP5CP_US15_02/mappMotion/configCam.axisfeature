@@ -6,11 +6,11 @@
       <Selector ID="CamAutomatType" Value="ACOPOS">
         <Group ID="CommonParameters">
           <Group ID="Master">
-            <Selector ID="ValueSource" Value="SetPosition">
+            <Selector ID="ValueSource" Value="ActualPosition">
               <Property ID="AxisReference" Value="axisConv" />
               <Property ID="MaxVelocity" Value="600" />
             </Selector>
-            <Property ID="StartPosition" Value="0" />
+            <Property ID="StartPosition" Value="0.0" />
             <Selector ID="StartInterval" Value="MasterAxisPeriod" />
           </Group>
           <Group ID="AdvancedParameters">

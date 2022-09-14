@@ -35,6 +35,7 @@ PROGRAM _CYCLIC
 				
 			//³¹czenie osi
 			IF switch=1 OR EDGEPOS(gControl.inCam) THEN
+				
 				IF NOT gMainAction.stopped THEN
 					gAxisCase:=HOLDON;
 				END_IF;
@@ -44,18 +45,17 @@ PROGRAM _CYCLIC
 				END_IF;
 				
 				IF gMainAction.stopped AND gMainAction.homed AND NOT gMainAction.connected THEN
+					gControl.Cart.home:=0;
+					gControl.Conveyor.home:=0;
+					gControl.Nozzle.home:=0;
+					gControl.startSeq:=1;
 					gMainAction.disconnected:=0;
 					gAxisCase:=CONNECT;
 				END_IF;
 
 				IF gMainAction.stopped AND gMainAction.connected AND gMainAction.homed THEN
-					gControl.Cart.home:=0;
-					gControl.Conveyor.home:=0;
-					gControl.Nozzle.home:=0;
-					
 					gMainAction.homed:=0;
 					gMainAction.stopped:=0;
-					
 					gAxisCase:=onMOVE;
 					switch:=0;
 				END_IF;
