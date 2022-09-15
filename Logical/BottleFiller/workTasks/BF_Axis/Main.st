@@ -28,9 +28,19 @@ END_PROGRAM
 
 PROGRAM _CYCLIC
 	(* Insert code here *)
-//	MpAxisConv.AutoTune:=0;
-//	MpAxisCart.AutoTune:=0;
-//	MpAxisNozzle.AutoTune:=0;
+	
+	IF gControl.emergencySTOP THEN
+		gAxisCase:=STANDSTILL;
+		gMain:=STOP;
+		gFillerTyp:=WAITING;
+	END_IF;
+	
+	IF MpAxisConv.Info.AutoTuneDone THEN
+		MpAxisConv.AutoTune:=0;
+		MpAxisCart.AutoTune:=0;
+		MpAxisNozzle.AutoTune:=0;
+	END_IF;
+	
 	//deklaracja osi
 	MpAxisConv(MpLink := ADR(axisConv), Enable := 1, Parameters := ADR(MpAxisConvParType));
 	MpAxisCart(MpLink := ADR(axisCart), Enable := 1, Parameters := ADR(MpAxisCartParType));
@@ -79,9 +89,7 @@ PROGRAM _CYCLIC
 		MpAxisConvParType.Velocity:=gAxisUpdate.Conveyor.Velocity;
 		MpAxisConv.Update:=1;
 		gControl.partVelUpd:=0;
-	END_IF;
-	
-	
+	END_IF;	
 
 	//aktualizacja osi po zmianie parametrów
 	IF gControl.needUpdate THEN
@@ -109,13 +117,19 @@ PROGRAM _CYCLIC
 		MpAxisCartParType.Jog.LimitPosition.FirstPosition:=gAxisUpdate.Cart.FirstPosition;
 		MpAxisCartParType.Jog.LimitPosition.LastPosition:=gAxisUpdate.Cart.LastPosition;
 		MpAxisCartParType.Position:=gAxisUpdate.Cart.Position;
-		MpAxisCartParType.Jog.Velocity:=50;
+		MpAxisCartParType.Jog.Velocity:=gAxisUpdate.Conveyor.Velocity;
+		MpAxisCartParType.Velocity:=gAxisUpdate.Conveyor.Velocity;
 			
 		//nozzle
 		MpAxisNozzleParType.Jog.LimitPosition.FirstPosition:=gAxisUpdate.Nozzle.FirstPosition;
 		MpAxisNozzleParType.Jog.LimitPosition.LastPosition:=gAxisUpdate.Nozzle.LastPosition;
 		MpAxisNozzleParType.Position:=gAxisUpdate.Nozzle.Position;
-		MpAxisNozzleParType.Jog.Velocity:=50;
+		MpAxisNozzleParType.Jog.Velocity:=gAxisUpdate.Conveyor.Velocity;
+		MpAxisNozzleParType.Velocity:=gAxisUpdate.Conveyor.Velocity;
+		
+		camParameters.Offset.Velocity:=gAxisUpdate.Conveyor.Velocity+30;
+		camNozzleParameters.Offset.Velocity:=gAxisUpdate.Conveyor.Velocity+30;
+		
 		
 		MpAxisNozzle.Update:=1;
 		MpAxisConv.Update:=1;
@@ -146,7 +160,7 @@ PROGRAM _CYCLIC
 			END_IF;
 
 		POWERED:
-			IF (gControl.power AND NOT gAxisOutputs.Conveyor.error) THEN //error
+			IF (gControl.power AND NOT gAxisOutputs.Conveyor.error) THEN
 				//power on axis
 				MpAxisCart.Power:=1;
 				MpAxisConv.Power:=1;
@@ -180,7 +194,12 @@ PROGRAM _CYCLIC
 				IF gControl.manual THEN
 					gAxisCase:=onMOVE;
 				ELSE
-					gAxisCase:=CONNECT;
+					IF gControl.inCam THEN
+						gAxisCase:=onMOVE;
+					ELSE
+						gAxisCase:=CONNECT;
+					END_IF;
+					
 				END_IF;
 			END_IF;
 			
@@ -195,17 +214,23 @@ PROGRAM _CYCLIC
 				IF camSeq.Error THEN
 					camSeq.ErrorReset:=1;
 					timer.IN:=TRUE;
-					timer.PT:=t#40ms;
-					IF timer.Q AND camSeq.UpdateDone THEN
+					timer.PT:=t#100ms;
+					IF timer.Q THEN
+						timer.IN:=FALSE;
 						camSeq.StartSequence:=0;
 					END_IF;
 				END_IF;
-				timer.IN:=TRUE;
-				timer.PT:=t#100ms;
-				IF timer.Q THEN
-					camSeq.StartSequence:=1;
-					camSeqNozzle.StartSequence:=1;
+				IF camSeq.StartSequence=0 THEN
+					
+					timer.IN:=TRUE;
+					timer.PT:=t#200ms;
+					IF timer.Q THEN
+						timer.IN:=FALSE;
+						camSeq.StartSequence:=1;
+						camSeqNozzle.StartSequence:=1;
+					END_IF;
 				END_IF;
+				
 			END_IF;
 			IF camSeq.InCam AND camSeqNozzle.InCam  THEN
 				camSeq.Signal1:=1;

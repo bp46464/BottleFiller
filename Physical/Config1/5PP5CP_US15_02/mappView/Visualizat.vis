@@ -23,6 +23,7 @@
     <EventBindingsSet refId="operatorContent_eventbinding" />
     <EventBindingsSet refId="serviceContent_eventbinding" />
     <EventBindingsSet refId="shiftLeaderContent_eventbinding" />
+    <EventBindingsSet refId="nav_eventbinding" />
   </EventBindingsSets>
   <Dialogs />
   <Contents>

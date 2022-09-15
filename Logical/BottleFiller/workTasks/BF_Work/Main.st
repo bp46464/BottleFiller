@@ -35,7 +35,6 @@ PROGRAM _CYCLIC
 				
 			//³¹czenie osi
 			IF switch=1 OR EDGEPOS(gControl.inCam) THEN
-				
 				IF NOT gMainAction.stopped THEN
 					gAxisCase:=HOLDON;
 				END_IF;
@@ -57,7 +56,7 @@ PROGRAM _CYCLIC
 					gMainAction.homed:=0;
 					gMainAction.stopped:=0;
 					gAxisCase:=onMOVE;
-					switch:=0;
+					switch:=3;
 				END_IF;
 			END_IF;
 			
@@ -75,22 +74,26 @@ PROGRAM _CYCLIC
 					gMainAction.homed:=0;
 					gAxisCase:=onMOVE;
 					IF gAxisCase=onMOVE THEN
-						switch:=0;
+						switch:=4;
 					END_IF;
 				END_IF;	
 			END_IF;
 			
 			//wchodzenie ponownie w tryb automatyczny
-			IF NOT gControl.manual THEN
+			IF NOT gControl.manual AND NOT temp THEN
 				gControl.switchToAutomat:=1;
 				IF NOT gMainAction.stopped THEN
 					gAxisCase:=HOLDON;
 				END_IF;
 				
-				IF gMainAction.stopped AND NOT gMainAction.homed THEN
+				gAxisUpdate.Conveyor.Velocity:=tempVelocity;
+				gControl.needUpdate:=1;
+				
+				IF gMainAction.stopped AND switch=4 THEN
 					gAxisCase:=HOMING;
 				END_IF;
-				IF gMainAction.homed AND gMainAction.stopped THEN
+				
+				IF (switch=3 AND gMainAction.stopped) OR (switch=4 AND gMainAction.homed) THEN
 					gAxisCase:=CONNECT;
 					gMainAction.disconnected:=0;
 					IF gMainAction.connected THEN
@@ -139,13 +142,14 @@ PROGRAM _CYCLIC
 					gControl.moveVelocity:=0;		
 				END_IF;
 			ELSE
-				gControl.moveVelocity:=gControl.start;
+				gControl.moveVelocity:=gControl.start AND NOT gControl.stop AND gControl.power;
 			END_IF;
 			
 			//prze³¹czenie z automatu na manual
 			IF gControl.manual THEN
 				gControl.moveVelocity:=0;
 				gAxisCase:=DISCONNECT;
+				tempVelocity:=gAxisOutputs.velocity;
 				IF gMainAction.disconnected THEN
 					gFillerTyp:=MANUAL;
 				END_IF;

@@ -103,6 +103,7 @@
           <Variable Name="decVisible" />
           <Variable Name="incVisible" />
           <Variable Name="partVelUpd" />
+          <Variable Name="emergencySTOP" />
         </Variable>
         <Variable Name="gMachineInterface">
           <Variable Name="DigitalInputs">
@@ -164,15 +165,16 @@
           <Variable Name="currentBottleType" />
           <Variable Name="velocity" />
         </Variable>
-        <Variable Name="gAlarmXCore">
-          <Variable Name="Internal" />
-        </Variable>
         <Variable Name="gPump">
           <Variable Name="PumpFlowSpeed" />
           <Variable Name="PumpRelay" />
           <Variable Name="ValveStatus" />
           <Variable Name="ValveRelay" />
         </Variable>
+        <Variable Name="gBFAlarmXCore">
+          <Variable Name="Internal" />
+        </Variable>
+        <Variable Name="temp" />
       </GlobalVariables>
       <Task Name="BF_Axis">
         <Variable Name="axisMgmt" />
@@ -211,6 +213,7 @@
         <Variable Name="MpAxisCart">
           <Variable Name="Update" />
           <Variable Name="MoveVelocity" />
+          <Variable Name="Stop" />
         </Variable>
         <Variable Name="MpAxisCartParType">
           <Variable Name="Direction" />
@@ -219,6 +222,7 @@
         <Variable Name="MpAxisConv">
           <Variable Name="Update" />
           <Variable Name="MoveVelocity" />
+          <Variable Name="Stop" />
         </Variable>
         <Variable Name="MpAxisConvParType">
           <Variable Name="Direction" />
@@ -227,6 +231,7 @@
         <Variable Name="MpAxisNozzle">
           <Variable Name="Update" />
           <Variable Name="MoveVelocity" />
+          <Variable Name="Stop" />
         </Variable>
         <Variable Name="MpAxisNozzleParType">
           <Variable Name="Velocity" />
@@ -404,10 +409,37 @@
           </Variable>
         </Variable>
         <Variable Name="resetError" />
-        <Variable Name="caseError" />
         <Variable Name="error" />
       </Task>
       <Task Name="BF_Main" />
+      <Task Name="Program1">
+        <Variable Name="BF_MpAlarm">
+          <Variable Name="MpLink" />
+          <Variable Name="Enable" />
+          <Variable Name="ErrorReset" />
+          <Variable Name="Active" />
+          <Variable Name="Error" />
+          <Variable Name="StatusID" />
+          <Variable Name="ActiveAlarms" />
+          <Variable Name="PendingAlarms" />
+          <Variable Name="Info">
+            <Variable Name="Diag">
+              <Variable Name="StatusID">
+                <Variable Name="ID" />
+                <Variable Name="Severity" />
+                <Variable Name="Code" />
+              </Variable>
+            </Variable>
+          </Variable>
+          <Variable Name="Internal">
+            <Variable Name="pObject" />
+            <Variable Name="State" />
+          </Variable>
+        </Variable>
+        <Variable Name="caseError" />
+        <Variable Name="error" />
+        <Variable Name="resetError" />
+      </Task>
     </Module>
   </DefaultView>
 </OpcUaSource>

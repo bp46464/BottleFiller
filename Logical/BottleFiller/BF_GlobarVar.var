@@ -6,6 +6,8 @@ VAR
 	gMainAction : gMainActionTyp;
 	gAxisOutputs : gAxisOutputsTyp;
 	gCamSeqParam : camSequencersParams;
+	gCaseError : gErrorCaseEnum;
 	gMain : gFillerEnum;
 	gPump : gPumpMgmtTyp;
+	temp : BOOL := FALSE;
 END_VAR

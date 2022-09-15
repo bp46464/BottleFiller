@@ -1,6 +1,5 @@
 VAR
 	BF_MpAlarm : MpAlarmXCore;
-	caseError : errorCaseEnum;
 	resetError : USINT := 0;
 	error : BOOL := FALSE;
 END_VAR

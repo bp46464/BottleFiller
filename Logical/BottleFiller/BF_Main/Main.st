@@ -33,7 +33,7 @@ PROGRAM _CYCLIC
 			
 			gAxisCase:=POWERED;
 			
-			IF gMainAction.powered THEN
+			IF gMainAction.powered AND NOT gControl.inCam THEN
 				gAxisCase:=HOMING;
 			END_IF;
 			
@@ -80,7 +80,11 @@ PROGRAM _CYCLIC
 			END_IF;
 
 		ERROR:
-		
+			
+			IF EDGENEG(gControl.emergencySTOP) THEN
+				gMain:=WORK;
+			END_IF;
+			
 		STOP:
 		 
 	END_CASE;

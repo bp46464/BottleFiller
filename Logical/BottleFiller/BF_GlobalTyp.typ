@@ -6,14 +6,6 @@ TYPE
 		ValveStatus : STRING[80];
 		ValveRelay : BOOL := FALSE;
 	END_STRUCT;
-	gFillerEnum : 
-		( (*Every possible case*)
-		DISABLED,
-		INIT,
-		WORK,
-		STOP,
-		ERROR
-		);
 	camSequencersParams : 	STRUCT 
 		cart : camParam; (*Parametry cama karetki*)
 		nozzle : camParam; (*Parametry cama dysz*)
@@ -87,11 +79,26 @@ TYPE
 		partVelUpd : BOOL := FALSE; (*Flaga wskazuj¹ca na koniecznoœæ aktualizacji prêdkoœci*)
 		maxVelocity : REAL; (*Maksymalne Velocity Operatora*)
 		decVisible : BOOL := TRUE; (*Widocznoœæ przycisku Decrease*)
+		emergencySTOP : BOOL := FALSE;
 		switchToAutomat : BOOL := FALSE;
 		incVisible : BOOL := TRUE; (*Widocznoœæ przycisku Increase*)
 		minVelocity : REAL; (*Minimalne Velocity Operatora*)
 		startSeq : BOOL := TRUE;
 	END_STRUCT;
+	gErrorCaseEnum : 
+		(
+		noError,
+		handleError,
+		inError
+		);
+	gFillerEnum : 
+		( (*Every possible case*)
+		DISABLED,
+		INIT,
+		WORK,
+		STOP,
+		ERROR
+		);
 	gParametersUpdate : 	STRUCT  (*update parameters*)
 		Velocity : REAL := 10;
 		Direction : REAL := 1;
@@ -103,18 +110,18 @@ TYPE
 	gBFWorkEnum : 
 		( (*BF_Work control*)
 		WAITING, (*Stan pocz¹tkowy*)
-		MANUAL, (*Tryb manualny*)
-		AUTOMAT (*Tryb automatyczny*)
+		AUTOMAT, (*Tryb automatyczny*)
+		MANUAL (*Tryb manualny*)
 		);
 	gBFCaseEnum : 
 		( (*BF_Axis control*)
 		WAIT, (*Tryb pocz¹tkowy*)
+		STANDSTILL, (*Czeka na ruch*)
 		POWERED, (*Maszyna zasilona*)
 		HOLDON, (*Zatrzymanie maszyny*)
-		HOMING, (*Przywrócenie pozycji pocz¹tkowych*)
 		CONNECT, (*Po³¹czenie osi*)
-		STANDSTILL, (*Czeka na ruch*)
 		onMOVE, (*W ruchu*)
-		DISCONNECT (*Roz³¹czenie osi*)
+		DISCONNECT, (*Roz³¹czenie osi*)
+		HOMING (*Przywrócenie pozycji pocz¹tkowych*)
 		);
 END_TYPE

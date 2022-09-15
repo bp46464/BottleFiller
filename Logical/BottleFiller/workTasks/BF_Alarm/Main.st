@@ -6,7 +6,7 @@ END_PROGRAM
 
 PROGRAM _CYCLIC
 	(* Insert code here *)
-	BF_MpAlarm(MpLink:=ADR(gAlarmXCore), Enable:=TRUE);
+	BF_MpAlarm(MpLink:=ADR(gBFAlarmXCore), Enable:=TRUE);
 	
 	gControl.moveVelocity:= gControl.moveVelocity AND NOT error;
 	gControl.Conveyor.jogNegative:= gControl.Conveyor.jogNegative AND NOT error;
@@ -18,16 +18,20 @@ PROGRAM _CYCLIC
 	gControl.Nozzle.jogPositive := gControl.Nozzle.jogPositive AND NOT error;
 	gControl.Nozzle.moveVelocity := gControl.Nozzle.moveVelocity AND NOT error;
 
-	CASE caseError OF
+	CASE gCaseError OF
 		noError:
 			IF gControl.start AND NOT gControl.power THEN
-				MpAlarmXSet(gAlarmXCore, 'noPower');
-				caseError:=inError;
+				MpAlarmXSet(gBFAlarmXCore, 'noPower');
+				gCaseError:=inError;
 				error:=1;
 			END_IF;
-			
+			IF gControl.emergencySTOP THEN
+				MpAlarmXSet(gBFAlarmXCore, 'emergency');
+				gCaseError:=inError;
+				error:=1;
+			END_IF;
 			IF BF_MpAlarm.PendingAlarms <> 0 THEN
-				caseError:=inError;
+				gCaseError:=inError;
 				
 				error:=1;
 			END_IF;
@@ -37,19 +41,36 @@ PROGRAM _CYCLIC
 			gMain:=ERROR;
 			gFillerTyp:=WAITING;
 			IF NOT(gControl.start AND NOT gControl.power) THEN
-				MpAlarmXReset(gAlarmXCore, 'noPower');
+				MpAlarmXReset(gBFAlarmXCore, 'noPower');
+			END_IF;
+			IF NOT(gControl.emergencySTOP) THEN
+				MpAlarmXReset(gBFAlarmXCore, 'emergency');
 			END_IF;
 			
 			IF resetError <> 0 THEN
-				caseError:=handleError;
+				gCaseError:=handleError;
 			END_IF;
 			
 			IF BF_MpAlarm.PendingAlarms=0 THEN
-				caseError:=noError;
+				
 				error:=0;
 				gMain:=WORK;
-				gFillerTyp:=MANUAL;
-				gAxisCase:=onMOVE;
+				IF temp THEN
+					gAxisCase:=DISCONNECT;
+					IF gMainAction.disconnected THEN
+						gAxisCase:=CONNECT;
+					END_IF;
+					IF gMainAction.connected THEN
+						gAxisCase:=onMOVE;
+						gFillerTyp:=AUTOMAT;
+						gCaseError:=noError;
+					END_IF;
+				ELSE
+					gFillerTyp:=MANUAL;
+					gAxisCase:=onMOVE;
+					gCaseError:=noError;
+				END_IF;
+					
 			END_IF;
 	
 		handleError:
@@ -57,7 +78,7 @@ PROGRAM _CYCLIC
 				gControl.Nozzle.errorReset:=1;
 				IF NOT gAxisOutputs.Nozzle.error THEN
 					gControl.Nozzle.errorReset:=0;
-					caseError:=inError;
+					gCaseError:=inError;
 					resetError:=0;
 				END_IF;
 			END_IF;
@@ -65,7 +86,7 @@ PROGRAM _CYCLIC
 				gControl.Conveyor.errorReset:=1;
 				IF NOT gAxisOutputs.Conveyor.error THEN
 					gControl.Conveyor.errorReset:=0;
-					caseError:=inError;
+					gCaseError:=inError;
 					resetError:=0;
 				END_IF;
 			END_IF;
@@ -73,7 +94,7 @@ PROGRAM _CYCLIC
 				gControl.Cart.errorReset:=1;
 				IF NOT gAxisOutputs.Cart.error THEN
 					gControl.Cart.errorReset:=0;
-					caseError:=inError;
+					gCaseError:=inError;
 					resetError:=0;
 				END_IF;
 			END_IF;

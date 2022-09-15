@@ -41,8 +41,15 @@
           </Step>
           <Step order="2">
             <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.emergencySTOP">
+                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="false" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="3">
+            <Action>
               <Target xsi:type="widgets.brease.Button.Action" contentRefId="operatorContent" widgetRefId="Button6">
-                <Method xsi:type="widgets.brease.Button.Action.SetEnable" value="true" />
+                <Method xsi:type="widgets.brease.Button.Action.SetEnable" value="false" />
               </Target>
             </Action>
           </Step>
@@ -61,6 +68,13 @@
             </Action>
           </Step>
           <Step order="1">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.start">
+                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="false" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="2">
             <Action>
               <Target xsi:type="widgets.brease.Button.Action" contentRefId="operatorContent" widgetRefId="Button6">
                 <Method xsi:type="widgets.brease.Button.Action.SetEnable" value="true" />
@@ -84,7 +98,7 @@
           <Step order="1">
             <Action>
               <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.start">
-                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="false" />
               </Target>
             </Action>
           </Step>

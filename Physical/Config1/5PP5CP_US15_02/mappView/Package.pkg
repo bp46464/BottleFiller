@@ -16,5 +16,6 @@
     <Object Type="File">serviceContent.binding</Object>
     <Object Type="File">serviceContent.eventbinding</Object>
     <Object Type="File">header.binding</Object>
+    <Object Type="File">nav.eventbinding</Object>
   </Objects>
 </Package>

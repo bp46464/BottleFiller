@@ -337,23 +337,29 @@
     </EventBinding>
     <EventBinding id="serviceContent.Button4.Click">
       <Source xsi:type="widgets.brease.Button.Event" contentRefId="serviceContent" widgetRefId="Button4" event="Click" />
-      <EventHandler condition="">
-        <Sequence>
-          <Step order="0">
-            <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.moveVelocity">
-                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="false" />
-              </Target>
-            </Action>
-          </Step>
-          <Step order="1">
-            <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.needUpdate">
-                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
-              </Target>
-            </Action>
-          </Step>
-        </Sequence>
+      <Operand datatype="ANY_REAL" name="currentPosition">
+        <ReadTarget xsi:type="opcUa.NodeAction.Read" refId="::AsGlobalPV:gAxisOutputs.Conveyor.position">
+          <Method xsi:type="opcUa.NodeAction.GetValue" />
+        </ReadTarget>
+      </Operand>
+      <Operand datatype="ANY_REAL" name="inCamConvPosition">
+        <ReadTarget xsi:type="widgets.brease.BasicSlider.ReadAction" contentRefId="serviceContent" widgetRefId="conveyorSlider">
+          <Method xsi:type="widgets.brease.BasicSlider.Action.GetValue" />
+        </ReadTarget>
+      </Operand>
+      <EventHandler condition="currentPosition &lt; inCamConvPosition">
+        <Action>
+          <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.Conveyor.jogPositive">
+            <Method xsi:type="opcUa.NodeAction.SetValueBool" value="false" />
+          </Target>
+        </Action>
+      </EventHandler>
+      <EventHandler condition="currentPosition &gt; inCamConvPosition">
+        <Action>
+          <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.Conveyor.jogNegative">
+            <Method xsi:type="opcUa.NodeAction.SetValueBool" value="false" />
+          </Target>
+        </Action>
       </EventHandler>
     </EventBinding>
     <EventBinding id="serviceContent.cartSlider.ValueChanged">
