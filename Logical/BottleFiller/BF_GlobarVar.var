@@ -7,4 +7,5 @@ VAR
 	gAxisOutputs : gAxisOutputsTyp;
 	gCamSeqParam : camSequencersParams;
 	gMain : gFillerEnum;
+	gPump : gPumpMgmtTyp;
 END_VAR

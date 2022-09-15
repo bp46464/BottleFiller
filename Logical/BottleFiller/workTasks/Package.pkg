@@ -7,6 +7,7 @@
     <Object Type="Program" Language="IEC">RobVis</Object>
     <Object Type="Program" Language="IEC">BF_Work</Object>
     <Object Type="Program" Language="IEC">BF_Axis</Object>
+    <Object Type="Program" Language="ANSIC">Program</Object>
     <Object Type="Program" Language="IEC">BF_Alarm</Object>
     <Object Type="Package">Simulation</Object>
   </Objects>

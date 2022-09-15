@@ -1,5 +1,11 @@
 
 TYPE
+	gPumpMgmtTyp : 	STRUCT 
+		PumpFlowSpeed : USINT;
+		PumpRelay : USINT := 0;
+		ValveStatus : STRING[80];
+		ValveRelay : BOOL := FALSE;
+	END_STRUCT;
 	gFillerEnum : 
 		( (*Every possible case*)
 		DISABLED,
@@ -81,6 +87,7 @@ TYPE
 		partVelUpd : BOOL := FALSE; (*Flaga wskazuj¹ca na koniecznoœæ aktualizacji prêdkoœci*)
 		maxVelocity : REAL; (*Maksymalne Velocity Operatora*)
 		decVisible : BOOL := TRUE; (*Widocznoœæ przycisku Decrease*)
+		switchToAutomat : BOOL := FALSE;
 		incVisible : BOOL := TRUE; (*Widocznoœæ przycisku Increase*)
 		minVelocity : REAL; (*Minimalne Velocity Operatora*)
 		startSeq : BOOL := TRUE;

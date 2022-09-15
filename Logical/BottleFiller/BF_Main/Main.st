@@ -71,8 +71,13 @@ PROGRAM _CYCLIC
 				gCamSeqParam.cart.signal1:=0;
 			END_IF;
 					
-			
-			
+			IF (gCamSeqParam.nozzle.currentStateIndex = 3) AND (gAxisOutputs.Nozzle.position > 0 AND gAxisOutputs.Nozzle.position < 170) THEN
+				gPump.ValveRelay:=1;
+				gPump.ValveStatus:='Opened';
+			ELSE
+				gPump.ValveRelay:=0;
+				gPump.ValveStatus:='Closed';
+			END_IF;
 
 		ERROR:
 		

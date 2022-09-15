@@ -82,18 +82,24 @@ PROGRAM _CYCLIC
 			
 			//wchodzenie ponownie w tryb automatyczny
 			IF NOT gControl.manual THEN
-				gAxisCase:=HOMING;
-				IF gMainAction.homed THEN
-					gControl.Cart.home:=0;
-					gControl.Conveyor.home:=0;
-					gControl.Nozzle.home:=0;
+				gControl.switchToAutomat:=1;
+				IF NOT gMainAction.stopped THEN
+					gAxisCase:=HOLDON;
+				END_IF;
+				
+				IF gMainAction.stopped AND NOT gMainAction.homed THEN
+					gAxisCase:=HOMING;
+				END_IF;
+				IF gMainAction.homed AND gMainAction.stopped THEN
 					gAxisCase:=CONNECT;
 					gMainAction.disconnected:=0;
 					IF gMainAction.connected THEN
 						gMainAction.homed:=0;
+						gMainAction.stopped:=0;
 						switch:=0;
 						gFillerTyp:=AUTOMAT;
 						gAxisCase:=onMOVE;
+						gControl.switchToAutomat:=0;
 					END_IF;
 				END_IF;	
 			END_IF;

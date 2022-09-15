@@ -13,5 +13,17 @@
 <Source xsi:type="opcUa" refId="::AsGlobalPV:gControl.incVisible" attribute="value" />
 <Target xsi:type="brease" contentRefId="operatorContent" widgetRefId="Button9" attribute="enable" />
 </Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::BF_Axis:camParameters.Offset.Shift" attribute="value" />
+<Target xsi:type="brease" contentRefId="operatorContent" widgetRefId="NumericOutput10" attribute="value" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::BF_Axis:camNozzleParameters.Offset.Shift" attribute="value" />
+<Target xsi:type="brease" contentRefId="operatorContent" widgetRefId="NumericOutput11" attribute="value" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::AsGlobalPV:gPump.ValveStatus" attribute="value" />
+<Target xsi:type="brease" contentRefId="operatorContent" widgetRefId="TextOutput1" attribute="value" />
+</Binding>
 </Bindings>
 </BindingsSet>

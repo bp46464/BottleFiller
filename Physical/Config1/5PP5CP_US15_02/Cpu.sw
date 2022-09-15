@@ -2,8 +2,9 @@
 <?AutomationStudio FileVersion="4.9"?>
 <SwConfiguration CpuAddress="SL1" xmlns="http://br-automation.co.at/AS/SwConfiguration">
   <TaskClass Name="Cyclic#1">
+    <Task Name="Program1" Source="BottleFiller.workTasks.Program.prg" Memory="UserROM" Language="ANSIC" Debugging="true" />
     <Task Name="BF_Axis" Source="BottleFiller.workTasks.BF_Axis.prg" Memory="UserROM" Language="IEC" Debugging="true" />
-    <Task Name="BF_Alarm" Source="BottleFiller.workTasks.BF_Alarm.prg" Memory="UserROM" Language="IEC" Debugging="true" />
+    <Task Name="BF_Alarm" Source="BottleFiller.workTasks.BF_Alarm.prg" Memory="UserROM" Language="IEC" Debugging="true" Disabled="true" />
     <Task Name="BF_Main" Source="BottleFiller.BF_Main.prg" Memory="UserROM" Language="IEC" Debugging="true" />
     <Task Name="BF_Work" Source="BottleFiller.workTasks.BF_Work.prg" Memory="UserROM" Language="IEC" Debugging="true" />
   </TaskClass>
@@ -74,6 +75,7 @@
     <LibraryObject Name="MpServer" Source="Libraries.MpServer.lby" Memory="UserROM" Language="Binary" Debugging="true" />
     <LibraryObject Name="MpAlarmX" Source="Libraries.MpAlarmX.lby" Memory="UserROM" Language="Binary" Debugging="true" />
     <LibraryObject Name="astime" Source="Libraries.astime.lby" Memory="UserROM" Language="binary" Debugging="true" />
+    <LibraryObject Name="brsystem" Source="Libraries.brsystem.lby" Memory="UserROM" Language="binary" Debugging="true" />
     <LibraryObject Name="asieccon" Source="" Memory="UserROM" Language="Binary" Debugging="true" />
     <LibraryObject Name="asbrstr" Source="" Memory="UserROM" Language="Binary" Debugging="true" />
     <LibraryObject Name="arcert" Source="" Memory="UserROM" Language="Binary" Debugging="true" />

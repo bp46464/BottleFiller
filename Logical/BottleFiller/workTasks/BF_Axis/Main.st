@@ -28,7 +28,9 @@ END_PROGRAM
 
 PROGRAM _CYCLIC
 	(* Insert code here *)
-
+//	MpAxisConv.AutoTune:=0;
+//	MpAxisCart.AutoTune:=0;
+//	MpAxisNozzle.AutoTune:=0;
 	//deklaracja osi
 	MpAxisConv(MpLink := ADR(axisConv), Enable := 1, Parameters := ADR(MpAxisConvParType));
 	MpAxisCart(MpLink := ADR(axisCart), Enable := 1, Parameters := ADR(MpAxisCartParType));
@@ -186,15 +188,21 @@ PROGRAM _CYCLIC
 			camSeq.EndSequence:=0;
 			camSeqNozzle.EndSequence:=0;
 			
-			IF NOT gControl.manual THEN
+			IF NOT gControl.manual AND NOT gControl.switchToAutomat THEN
 				camSeq.StartSequence:=1;
 				camSeqNozzle.StartSequence:=1;
 			ELSE
+				IF camSeq.Error THEN
+					camSeq.ErrorReset:=1;
+					timer.IN:=TRUE;
+					timer.PT:=t#40ms;
+					IF timer.Q AND camSeq.UpdateDone THEN
+						camSeq.StartSequence:=0;
+					END_IF;
+				END_IF;
 				timer.IN:=TRUE;
 				timer.PT:=t#100ms;
 				IF timer.Q THEN
-					//				IF (MpAxisCart.Info.PLCopenState = mcAXIS_STANDSTILL) AND (MpAxisCart.Info.Diag.ExecutingCommand = mcAXIS_CMD_IDLE) THEN
-				(*IF camSeq.Standby THEN*)
 					camSeq.StartSequence:=1;
 					camSeqNozzle.StartSequence:=1;
 				END_IF;
@@ -322,7 +330,14 @@ PROGRAM _CYCLIC
 	gCamSeqParam.nozzle.currentStateIndex:=camSeqNozzle.ActualStateIndex;
 	
 	gAxisOutputs:=controlInfo;
-			
+	
+	IF camSeq.OffsetDone THEN
+		camSeq.OffsetShift:=0;
+	END_IF;
+	IF camSeqNozzle.OffsetDone THEN
+		camSeqNozzle.OffsetShift:=0;
+	END_IF;
+	
 	IF camSeqNozzle.UpdateDone THEN
 		camSeqNozzle.Update:=0;
 	END_IF;

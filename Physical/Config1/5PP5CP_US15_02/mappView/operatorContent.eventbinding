@@ -42,7 +42,7 @@
           <Step order="2">
             <Action>
               <Target xsi:type="widgets.brease.Button.Action" contentRefId="operatorContent" widgetRefId="Button6">
-                <Method xsi:type="widgets.brease.Button.Action.SetEnable" value="false" />
+                <Method xsi:type="widgets.brease.Button.Action.SetEnable" value="true" />
               </Target>
             </Action>
           </Step>
@@ -73,11 +73,22 @@
     <EventBinding id="operatorContent.Button6.Click">
       <Source xsi:type="widgets.brease.Button.Event" contentRefId="operatorContent" widgetRefId="Button6" event="Click" />
       <EventHandler>
-        <Action>
-          <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.power">
-            <Method xsi:type="opcUa.NodeAction.SetValueBool" value="false" />
-          </Target>
-        </Action>
+        <Sequence>
+          <Step order="0">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.power">
+                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="false" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="1">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gControl.start">
+                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+              </Target>
+            </Action>
+          </Step>
+        </Sequence>
       </EventHandler>
     </EventBinding>
     <EventBinding id="operatorContent.Button3.Click">
@@ -244,6 +255,51 @@
             </Action>
           </Step>
         </Sequence>
+      </EventHandler>
+    </EventBinding>
+    <EventBinding id="operatorContent.BasicSlider1.ValueChanged">
+      <Source xsi:type="widgets.brease.BasicSlider.Event" contentRefId="operatorContent" widgetRefId="BasicSlider1" event="ValueChanged" />
+      <Operand datatype="ANY_REAL" name="offset">
+        <ReadTarget xsi:type="widgets.brease.BasicSlider.ReadAction" contentRefId="operatorContent" widgetRefId="BasicSlider1">
+          <Method xsi:type="widgets.brease.BasicSlider.Action.GetValue" />
+        </ReadTarget>
+      </Operand>
+      <EventHandler>
+        <Action>
+          <Target xsi:type="opcUa.NodeAction" refId="::BF_Axis:camParameters.Offset.Shift">
+            <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=offset" />
+          </Target>
+        </Action>
+      </EventHandler>
+    </EventBinding>
+    <EventBinding id="operatorContent.BasicSlider2.ValueChanged">
+      <Source xsi:type="widgets.brease.BasicSlider.Event" contentRefId="operatorContent" widgetRefId="BasicSlider2" event="ValueChanged" />
+      <EventHandler>
+        <Action>
+          <Target xsi:type="opcUa.NodeAction" refId="::BF_Axis:camNozzleParameters.Offset.Shift">
+            <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=value" />
+          </Target>
+        </Action>
+      </EventHandler>
+    </EventBinding>
+    <EventBinding id="operatorContent.Button11.Click">
+      <Source xsi:type="widgets.brease.Button.Event" contentRefId="operatorContent" widgetRefId="Button11" event="Click" />
+      <EventHandler>
+        <Action>
+          <Target xsi:type="opcUa.NodeAction" refId="::BF_Axis:camSeq.OffsetShift">
+            <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+          </Target>
+        </Action>
+      </EventHandler>
+    </EventBinding>
+    <EventBinding id="operatorContent.Button12.Click">
+      <Source xsi:type="widgets.brease.Button.Event" contentRefId="operatorContent" widgetRefId="Button12" event="Click" />
+      <EventHandler>
+        <Action>
+          <Target xsi:type="opcUa.NodeAction" refId="::BF_Axis:camSeqNozzle.OffsetShift">
+            <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+          </Target>
+        </Action>
       </EventHandler>
     </EventBinding>
   </Bindings>

@@ -167,13 +167,45 @@
         <Variable Name="gAlarmXCore">
           <Variable Name="Internal" />
         </Variable>
+        <Variable Name="gPump">
+          <Variable Name="PumpFlowSpeed" />
+          <Variable Name="PumpRelay" />
+          <Variable Name="ValveStatus" />
+          <Variable Name="ValveRelay" />
+        </Variable>
       </GlobalVariables>
       <Task Name="BF_Axis">
         <Variable Name="axisMgmt" />
-        <Variable Name="camParameters" />
-        <Variable Name="camSeq" />
+        <Variable Name="camParameters">
+          <Variable Name="Offset">
+            <Variable Name="Shift" />
+            <Variable Name="Velocity" />
+            <Variable Name="Acceleration" />
+            <Variable Name="Options">
+              <Variable Name="ShiftMode" />
+              <Variable Name="ProfileBase" />
+              <Variable Name="ProfileBaseMaxVelocity" />
+              <Variable Name="DistanceParameters">
+                <Variable Name="ProfileDistance" />
+              </Variable>
+              <Variable Name="ZoneParameters">
+                <Variable Name="StartPosition" />
+                <Variable Name="EndPosition" />
+                <Variable Name="Period" />
+              </Variable>
+              <Variable Name="Jerk" />
+              <Variable Name="ShiftAlternativeValueSource" />
+            </Variable>
+            <Variable Name="CmdIndependentActivation" />
+          </Variable>
+        </Variable>
+        <Variable Name="camSeq">
+          <Variable Name="OffsetShift" />
+          <Variable Name="Update" />
+        </Variable>
         <Variable Name="camSeqNozzle">
           <Variable Name="Update" />
+          <Variable Name="OffsetShift" />
         </Variable>
         <Variable Name="homed" />
         <Variable Name="MpAxisCart">

@@ -1,0 +1,6 @@
+VAR
+	BF_MpAlarm : MpAlarmXCore;
+	caseError : errorCaseEnum;
+	resetError : USINT := 0;
+	error : INT := 0;
+END_VAR
