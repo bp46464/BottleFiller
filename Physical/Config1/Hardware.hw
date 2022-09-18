@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<?AutomationStudio Version=4.11.3.51 FileVersion="4.9"?>
+<?AutomationStudio Version=4.11.2.75 FileVersion="4.9"?>
 <Hardware xmlns="http://br-automation.co.at/AS/Hardware">
   <Module Name="5PP520.0702-B10" Type="5PP520.0702-B10" Version="2.0.1.1">
     <Connector Name="IF3">
@@ -14,7 +14,6 @@
     <Connection Connector="SY" TargetModule="5PP520.0702-B10" TargetConnector="SY1" />
     <Parameter ID="ConfigurationID" Value="BottleFiller_Config1" />
     <Parameter ID="UserPartitionSize" Value="10" />
-    <Parameter ID="Simulation" Value="1" />
     <Group ID="FileDevice1" />
     <Parameter ID="FileDeviceName1" Value="USER" />
     <Parameter ID="FileDevicePath1" Value="C:\Recipe\" />

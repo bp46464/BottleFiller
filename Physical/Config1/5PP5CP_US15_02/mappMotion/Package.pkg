@@ -7,6 +7,5 @@
     <Object Type="File">configNozz.axisfeature</Object>
     <Object Type="File">Config_1.camlist</Object>
     <Object Type="File">Config_2.axisfeature</Object>
-    <Object Type="File">Config_3.axis</Object>
   </Objects>
 </Package>
